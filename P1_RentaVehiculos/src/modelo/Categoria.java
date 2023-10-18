@@ -32,5 +32,54 @@ public class Categoria {
 	
 	
 	
+	
+	
+	public int getTarifaPequeños() {
+		return tarifaPequeños;
+	}
+
+
+
+
+
+	public int getTarifaSUV() {
+		return tarifaSUV;
+	}
+
+
+
+
+
+	public int getTarifaVans() {
+		return tarifaVans;
+	}
+
+
+
+
+
+	public int getTarifaLujo() {
+		return tarifaLujo;
+	}
+
+
+
+
+
+	public int getTarifaElectricos() {
+		return tarifaElectricos;
+	}
+
+
+
+	public void agregarVehiculoaCategoria(Vehiculo vehiculoPequeño, Vehiculo vehiculoSUV, Vehiculo vehiculoVans, Vehiculo vehiculoLujo, 
+			Vehiculo vehiculoElectrico) {
+		this.pequeños.add(vehiculoPequeño);
+		this.SUV.add(vehiculoSUV);
+		this.Vans.add(vehiculoVans);
+		this.Lujo.add(vehiculoLujo);
+		this.electricos.add(vehiculoElectrico);
+	}
+	
 
 }

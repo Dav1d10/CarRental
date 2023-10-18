@@ -28,6 +28,45 @@ public class Vehiculo {
 		this.alquilado = new HashMap<>();
 		this.noAlquilado = new HashMap<>();
 	}
+
+
+	public String getPlaca() {
+		return this.placa;
+	}
+
+
+	public String getMarca() {
+		return this.marca;
+	}
+
+
+	public String getModelo() {
+		return this.modelo;
+	}
+
+
+	public String getColor() {
+		return this.color;
+	}
+
+
+	public String getTipodeTransmicion() {
+		return this.tipodeTransmicion;
+	}
+
+
+	public String getCapacidadPersonas() {
+		return this.capacidadPersonas;
+	}
+
+
+	public String getUbicacion() {
+		return this.ubicacion;
+	}
+
+
+	
+	
 	
 	
 	

@@ -19,6 +19,33 @@ public class Persona {
 		this.nacionalidad = nacionalidad;
 		this.documentodeIdentidad = documentodeIdentidad;
 	}
+
+
+	public String getNombre() {
+		return this.nombre;
+	}
+
+
+	public String getTelefono() {
+		return this.telefono;
+	}
+
+
+	public String getFechadeNacimiento() {
+		return this.fechadeNacimiento;
+	}
+
+
+	public String getNacionalidad() {
+		return this.nacionalidad;
+	}
+
+
+	public File getDocumentodeIdentidad() {
+		return this.documentodeIdentidad;
+	}
+	
+	
 	
 	
 
