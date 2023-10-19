@@ -1,0 +1,38 @@
+---------DGA RENTAL---------
+
+---------CATALOGO---------
+
+Sedes de la empresa: Prado, Colina, Mazuren, Aguas, Chapinero
+
+Carros Disponibles
+
+Chevrolet 2018:
+
+Caracterisiticas: 
+
+Placa: INL698, Color: Gris, Marca: Chevrolet, Tipo de Transmicion: Automatica, Capacidad: 5 personas, Tipo de Categoria: Pequeno, Ubicacion: Prado
+
+Volvo 2023:
+
+Caracterisiticas: 
+
+Placa: RKN729, Color: Blanco, Marca: Volvo, Tipo de Transmicion: Automatica, Capacidad: 5 personas, Tipo de Categoria: SUV, Ubicacion: Colina
+
+Kia 2020:
+
+Caracterisiticas: 
+
+Placa: GKW977, Color: Negro, Marca: Kia, Tipo de Transmicion: Automatica, Capacidad: 12 personas, Tipo de Categoria: Van, Ubicacion: Mazuren
+
+Mustang 2021:
+
+Caracterisiticas: 
+
+Placa: UCY752, Color: Rojo, Marca: Mustang, Tipo de Transmicion: Automatica, Capacidad: 2 personas, Tipo de Categoria: Lujo, Ubicacion: Aguas
+
+Tesla 2024:
+
+Caracterisiticas: 
+
+Placa: EBX782, Color: Azul, Marca: Tesla, Tipo de Transmicion: Electrica, Capacidad: 5 personas, Tipo de Categoria: Electrico, Ubicacion: Chapinero
+----------------------------------------------

@@ -7,11 +7,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class RentaVehiculos {
 	
 	private List<Vehiculo> Vehiculos;
 	private List<Sedes> Sedes;
+	
 	
 	public RentaVehiculos() {
 		this.Vehiculos = new ArrayList<>();
@@ -25,6 +27,15 @@ public class RentaVehiculos {
 
 	public List<Sedes> getSedes() {
 		return this.Sedes;
+	}
+	
+	
+	public void cargarCatalogo(File archivoCatalogo) throws FileNotFoundException {
+		Scanner scan = new Scanner(archivoCatalogo);
+		while(scan.hasNextLine()) {
+			String linea = scan.nextLine();
+			System.out.println(linea);
+		}
 	}
 	
 	
