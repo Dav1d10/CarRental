@@ -44,5 +44,36 @@ public class Alquiler {
 	}
 	
 	
+	public int precioSeguros(String seguro) {
+		int total = 0;
+		if (seguro.contains("1")) {
+			total += 75;
+		}
+		else if (seguro.contains("2")) {
+			total += 150;
+		}
+		else if (seguro.contains("3")) {
+			total += 200;
+		}
+		else if (seguro.contains("4")) {
+			total += 300;
+		}
+		else if (seguro.contains("5")) {
+			total += 500;
+		}
+		return total;
+	}
+	
+	
+	public int cobroConductorAdicional(Persona conductorAdicional) {
+		return 0;
+	
+	}
+	
+	
+	public void cobroFinal() {
+		
+	}
+	
 
 }
