@@ -12,4 +12,12 @@ public class AdministradorLocal extends Persona {
 		this.administraSede = administraSede; 
 	}
 
+	public String getAdministraSede() {
+		return administraSede;
+	}
+
+	public void setAdministraSede(String administraSede) {
+		this.administraSede = administraSede;
+	}
+
 }

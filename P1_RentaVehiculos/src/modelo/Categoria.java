@@ -80,6 +80,126 @@ public class Categoria {
 		this.Lujo.add(vehiculoLujo);
 		this.electricos.add(vehiculoElectrico);
 	}
+
+
+
+
+
+	public List<Vehiculo> getPequeños() {
+		return pequeños;
+	}
+
+
+
+
+
+	public void setPequeños(List<Vehiculo> pequeños) {
+		this.pequeños = pequeños;
+	}
+
+
+
+
+
+	public List<Vehiculo> getSUV() {
+		return SUV;
+	}
+
+
+
+
+
+	public void setSUV(List<Vehiculo> sUV) {
+		SUV = sUV;
+	}
+
+
+
+
+
+	public List<Vehiculo> getVans() {
+		return Vans;
+	}
+
+
+
+
+
+	public void setVans(List<Vehiculo> vans) {
+		Vans = vans;
+	}
+
+
+
+
+
+	public List<Vehiculo> getLujo() {
+		return Lujo;
+	}
+
+
+
+
+
+	public void setLujo(List<Vehiculo> lujo) {
+		Lujo = lujo;
+	}
+
+
+
+
+
+	public List<Vehiculo> getElectricos() {
+		return electricos;
+	}
+
+
+
+
+
+	public void setElectricos(List<Vehiculo> electricos) {
+		this.electricos = electricos;
+	}
+
+
+
+
+
+	public void setTarifaPequeños(int tarifaPequeños) {
+		this.tarifaPequeños = tarifaPequeños;
+	}
+
+
+
+
+
+	public void setTarifaSUV(int tarifaSUV) {
+		this.tarifaSUV = tarifaSUV;
+	}
+
+
+
+
+
+	public void setTarifaVans(int tarifaVans) {
+		this.tarifaVans = tarifaVans;
+	}
+
+
+
+
+
+	public void setTarifaLujo(int tarifaLujo) {
+		this.tarifaLujo = tarifaLujo;
+	}
+
+
+
+
+
+	public void setTarifaElectricos(int tarifaElectricos) {
+		this.tarifaElectricos = tarifaElectricos;
+	}
 	
 
 }

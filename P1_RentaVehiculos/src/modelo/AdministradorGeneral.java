@@ -18,4 +18,24 @@ public class AdministradorGeneral extends Persona {
 		this.segurosAdicionales = new HashMap<>();
 	}
 
+
+	public Map<String, Integer> getSeguros() {
+		return seguros;
+	}
+
+
+	public void setSeguros(Map<String, Integer> seguros) {
+		this.seguros = seguros;
+	}
+
+
+	public Map<String, Integer> getSegurosAdicionales() {
+		return segurosAdicionales;
+	}
+
+
+	public void setSegurosAdicionales(Map<String, Integer> segurosAdicionales) {
+		this.segurosAdicionales = segurosAdicionales;
+	}
+
 }

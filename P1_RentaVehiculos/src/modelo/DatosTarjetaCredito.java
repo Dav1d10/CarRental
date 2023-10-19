@@ -14,6 +14,46 @@ public class DatosTarjetaCredito {
 		this.cvv = cvv;
 		this.banco = banco;
 	}
+
+
+	public String getNumeroTarjeta() {
+		return numeroTarjeta;
+	}
+
+
+	public void setNumeroTarjeta(String numeroTarjeta) {
+		this.numeroTarjeta = numeroTarjeta;
+	}
+
+
+	public String getFechaVencimiento() {
+		return fechaVencimiento;
+	}
+
+
+	public void setFechaVencimiento(String fechaVencimiento) {
+		this.fechaVencimiento = fechaVencimiento;
+	}
+
+
+	public String getCvv() {
+		return cvv;
+	}
+
+
+	public void setCvv(String cvv) {
+		this.cvv = cvv;
+	}
+
+
+	public String getBanco() {
+		return banco;
+	}
+
+
+	public void setBanco(String banco) {
+		this.banco = banco;
+	}
 	
 	
 	

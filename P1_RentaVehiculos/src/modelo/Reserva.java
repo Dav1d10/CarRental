@@ -15,6 +15,36 @@ public class Reserva extends Alquiler {
 		this.fechayhoraEntrega = fechayhoraEntrega;
 		this.sedeEntrega = null;
 	}
+
+
+	public int getCobroInicial() {
+		return cobroInicial;
+	}
+
+
+	public void setCobroInicial(int cobroInicial) {
+		this.cobroInicial = cobroInicial;
+	}
+
+
+	public String getFechayhoraEntrega() {
+		return fechayhoraEntrega;
+	}
+
+
+	public void setFechayhoraEntrega(String fechayhoraEntrega) {
+		this.fechayhoraEntrega = fechayhoraEntrega;
+	}
+
+
+	public Sedes getSedeEntrega() {
+		return sedeEntrega;
+	}
+
+
+	public void setSedeEntrega(Sedes sedeEntrega) {
+		this.sedeEntrega = sedeEntrega;
+	}
 	
 	
 	

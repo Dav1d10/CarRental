@@ -12,6 +12,16 @@ public class ReservaEspecial extends Reserva {
 		this.sedeOrigen = null;
 		
 	}
+
+
+	public Sedes getSedeOrigen() {
+		return sedeOrigen;
+	}
+
+
+	public void setSedeOrigen(Sedes sedeOrigen) {
+		this.sedeOrigen = sedeOrigen;
+	}
 	
 	
 

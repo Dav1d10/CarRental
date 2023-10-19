@@ -12,6 +12,36 @@ public class Sedes {
 		this.ubicacion = ubicacion;
 		this.horariosAtencion = horariosAtencion;
 	}
+
+
+	public String getNombreSede() {
+		return nombreSede;
+	}
+
+
+	public void setNombreSede(String nombreSede) {
+		this.nombreSede = nombreSede;
+	}
+
+
+	public String getUbicacion() {
+		return ubicacion;
+	}
+
+
+	public void setUbicacion(String ubicacion) {
+		this.ubicacion = ubicacion;
+	}
+
+
+	public String getHorariosAtencion() {
+		return horariosAtencion;
+	}
+
+
+	public void setHorariosAtencion(String horariosAtencion) {
+		this.horariosAtencion = horariosAtencion;
+	}
 	
 	
 

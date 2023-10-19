@@ -65,6 +65,61 @@ public class Vehiculo {
 	}
 
 
+	public Map<String, String> getAlquilado() {
+		return alquilado;
+	}
+
+
+	public void setAlquilado(Map<String, String> alquilado) {
+		this.alquilado = alquilado;
+	}
+
+
+	public Map<String, String> getNoAlquilado() {
+		return noAlquilado;
+	}
+
+
+	public void setNoAlquilado(Map<String, String> noAlquilado) {
+		this.noAlquilado = noAlquilado;
+	}
+
+
+	public void setPlaca(String placa) {
+		this.placa = placa;
+	}
+
+
+	public void setMarca(String marca) {
+		this.marca = marca;
+	}
+
+
+	public void setModelo(String modelo) {
+		this.modelo = modelo;
+	}
+
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+
+	public void setTipodeTransmicion(String tipodeTransmicion) {
+		this.tipodeTransmicion = tipodeTransmicion;
+	}
+
+
+	public void setCapacidadPersonas(String capacidadPersonas) {
+		this.capacidadPersonas = capacidadPersonas;
+	}
+
+
+	public void setUbicacion(String ubicacion) {
+		this.ubicacion = ubicacion;
+	}
+
+
 	
 	
 	

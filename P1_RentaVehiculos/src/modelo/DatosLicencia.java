@@ -16,6 +16,46 @@ public class DatosLicencia {
 		this.imagenLicencia = imagenLicencia;
 		this.fechadeVencimiento = fechadeVencimiento;
 	}
+
+
+	public String getNumeroLicencia() {
+		return numeroLicencia;
+	}
+
+
+	public void setNumeroLicencia(String numeroLicencia) {
+		this.numeroLicencia = numeroLicencia;
+	}
+
+
+	public String getPaisExp() {
+		return paisExp;
+	}
+
+
+	public void setPaisExp(String paisExp) {
+		this.paisExp = paisExp;
+	}
+
+
+	public File getImagenLicencia() {
+		return imagenLicencia;
+	}
+
+
+	public void setImagenLicencia(File imagenLicencia) {
+		this.imagenLicencia = imagenLicencia;
+	}
+
+
+	public String getFechadeVencimiento() {
+		return fechadeVencimiento;
+	}
+
+
+	public void setFechadeVencimiento(String fechadeVencimiento) {
+		this.fechadeVencimiento = fechadeVencimiento;
+	}
 	
 	
 	
