@@ -22,7 +22,7 @@ public class Categoria {
 		this.SUV = new ArrayList<>();
 		this.Vans = new ArrayList<>();
 		this.Lujo = new ArrayList<>();
-		this.electricos =new ArrayList<>();
+		this.electricos = new ArrayList<>();
 		this.tarifaPequeños = tarifaPequeños;
 		this.tarifaSUV = tarifaSUV;
 		this.tarifaVans = tarifaVans;

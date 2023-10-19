@@ -7,16 +7,17 @@ public class Vehiculo {
 	
 	private String placa;
 	private String marca;
-	private String modelo;
+	private int modelo;
 	private String color;
 	private String tipodeTransmicion;
-	private String capacidadPersonas;
+	private int capacidadPersonas;
 	private String ubicacion;
+	private String tipoCategoria;
 	private Map<String, String> alquilado;
 	private Map<String, String> noAlquilado;
 	
 	
-	public Vehiculo(String placa, String marca, String modelo, String color, String tipodeTransmicion, String capacidadPersonas, 
+	public Vehiculo(String placa, String marca, int modelo, String color, String tipodeTransmicion, int capacidadPersonas, String tipoCategoria, 
 			String ubicacion) {
 		this.placa = placa;
 		this.marca = marca;
@@ -24,6 +25,7 @@ public class Vehiculo {
 		this.color = color;
 		this.tipodeTransmicion = tipodeTransmicion;
 		this.capacidadPersonas = capacidadPersonas;
+		this.tipoCategoria = tipoCategoria;
 		this.ubicacion = ubicacion;
 		this.alquilado = new HashMap<>();
 		this.noAlquilado = new HashMap<>();
@@ -40,7 +42,7 @@ public class Vehiculo {
 	}
 
 
-	public String getModelo() {
+	public int getModelo() {
 		return this.modelo;
 	}
 
@@ -55,7 +57,7 @@ public class Vehiculo {
 	}
 
 
-	public String getCapacidadPersonas() {
+	public int getCapacidadPersonas() {
 		return this.capacidadPersonas;
 	}
 
@@ -95,7 +97,7 @@ public class Vehiculo {
 	}
 
 
-	public void setModelo(String modelo) {
+	public void setModelo(int modelo) {
 		this.modelo = modelo;
 	}
 
@@ -110,7 +112,7 @@ public class Vehiculo {
 	}
 
 
-	public void setCapacidadPersonas(String capacidadPersonas) {
+	public void setCapacidadPersonas(int capacidadPersonas) {
 		this.capacidadPersonas = capacidadPersonas;
 	}
 

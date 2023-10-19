@@ -1,6 +1,22 @@
 package consola;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import modelo.RentaVehiculos;
+
 public class Aplicacion {
+	
+	private static RentaVehiculos rentaVehiculos = new RentaVehiculos();
+	
+	
+	private static void cargarDatos() throws FileNotFoundException, IOException {
+		File archivoInventario = new File("data/inventario.txt");
+		File archivoSedes = new File("data(sedes.txt");
+		rentaVehiculos.cargarInformacionInventario(archivoInventario, archivoSedes);
+	}
+	
 
 	
 	private static void mostrarCatalogo() {
