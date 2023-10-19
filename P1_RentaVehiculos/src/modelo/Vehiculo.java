@@ -122,6 +122,16 @@ public class Vehiculo {
 	}
 
 
+	public String getTipoCategoria() {
+		return tipoCategoria;
+	}
+
+
+	public void setTipoCategoria(String tipoCategoria) {
+		this.tipoCategoria = tipoCategoria;
+	}
+
+
 	
 	
 	

@@ -72,14 +72,19 @@ public class Categoria {
 
 
 
-	public void agregarVehiculoaCategoria(Vehiculo vehiculoPequeño, Vehiculo vehiculoSUV, Vehiculo vehiculoVans, Vehiculo vehiculoLujo, 
-			Vehiculo vehiculoElectrico) {
-		this.pequeños.add(vehiculoPequeño);
-		this.SUV.add(vehiculoSUV);
-		this.Vans.add(vehiculoVans);
-		this.Lujo.add(vehiculoLujo);
-		this.electricos.add(vehiculoElectrico);
-	}
+	public static void agregarVehiculoaCategoria(Categoria categoria, Vehiculo vehiculo, String categoriaNombre) {
+        if (categoriaNombre.equals("PEQUEÑO")) {
+            categoria.pequeños.add(vehiculo);
+        } else if (categoriaNombre.equals("SUV")) {
+            categoria.SUV.add(vehiculo);
+        } else if (categoriaNombre.equals("VAN")) {
+            categoria.Vans.add(vehiculo);
+        } else if (categoriaNombre.equals("LUJO")) {
+            categoria.Lujo.add(vehiculo);
+        } else if (categoriaNombre.equals("ELECTRICO")) {
+            categoria.electricos.add(vehiculo);
+        }
+    }
 
 
 

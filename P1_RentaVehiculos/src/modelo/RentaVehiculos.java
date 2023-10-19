@@ -13,6 +13,7 @@ public class RentaVehiculos {
 	
 	private List<Vehiculo> Vehiculos;
 	private List<Sedes> Sedes;
+	private Categoria categoria;
 	
 	
 	public RentaVehiculos() {
@@ -35,7 +36,7 @@ public class RentaVehiculos {
 		while(scan.hasNextLine()) {
 			String linea = scan.nextLine();
 			System.out.println(linea);
-		}
+		scan.close();		}
 	}
 	
 	
@@ -62,10 +63,17 @@ public class RentaVehiculos {
 		}
 	}
 
+	private void cargarCategoria() {
+        for (Vehiculo vehiculo2 : Vehiculos) {
+            String cate = vehiculo2.getTipoCategoria();
+            Categoria.agregarVehiculoaCategoria(categoria, vehiculo2,cate);
+        }
+    }
 	
 	public void cargarInformacionInventario(File archivoInventario, File archivoSedes) throws FileNotFoundException, IOException {
 		cargarInventario(archivoInventario);
 		cargarSedes(archivoSedes);
+		cargarCategoria();
 	}
 	
 	
