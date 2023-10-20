@@ -10,11 +10,11 @@ public class Categoria {
 	private List<Vehiculo> Vans;
 	private List<Vehiculo> Lujo;
 	private List<Vehiculo> electricos;
-	private int tarifaPequeños;
-	private int tarifaSUV;
-	private int tarifaVans;
-	private int tarifaLujo;
-	private int tarifaElectricos;
+	private int tarifaPequeños = 200;
+	private int tarifaSUV = 300;
+	private int tarifaVans = 350;
+	private int tarifaLujo = 400;
+	private int tarifaElectricos = 300;
 	
 	
 	public Categoria(int tarifaPequeños, int tarifaSUV, int tarifaVans, int tarifaLujo, int tarifaElectricos) {
@@ -87,7 +87,34 @@ public class Categoria {
     }
 
 
-
+	public Vehiculo vehiculoAlquilar(String tipoDeCarro, Categoria categoria) {
+		int indiceAEliminar = 0;
+		Vehiculo vehiculo = null;
+		if (tipoDeCarro.equals("PEQUEÑO")) {
+			List<Vehiculo> vehiculos = getPequeños();
+            vehiculo = vehiculos.get(indiceAEliminar);
+            vehiculos.remove(indiceAEliminar);
+        } else if (tipoDeCarro.equals("SUV")) {
+        	List<Vehiculo> vehiculos = getSUV();
+        	vehiculo = vehiculos.get(indiceAEliminar);
+            vehiculos.remove(indiceAEliminar);
+        } else if (tipoDeCarro.equals("VAN")) {
+        	List<Vehiculo> vehiculos = getVans();
+        	vehiculo = vehiculos.get(indiceAEliminar);
+            vehiculos.remove(indiceAEliminar);
+        } else if (tipoDeCarro.equals("LUJO")) {
+        	List<Vehiculo> vehiculos = getLujo();
+        	vehiculo = vehiculos.get(indiceAEliminar);
+            vehiculos.remove(indiceAEliminar);
+        } else if (tipoDeCarro.equals("ELECTRICO")) {
+        	List<Vehiculo> vehiculos = getElectricos();
+        	vehiculo = vehiculos.get(indiceAEliminar);
+            vehiculos.remove(indiceAEliminar);
+     
+        }
+	return vehiculo;
+    }
+	
 
 
 	public List<Vehiculo> getPequeños() {

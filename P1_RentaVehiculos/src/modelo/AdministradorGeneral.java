@@ -9,7 +9,7 @@ public class AdministradorGeneral extends Persona {
 	
 	private Map<String, Integer> seguros;
 	private Map<String, Integer> segurosAdicionales;
-	
+	private String temporada;
 	
 	public AdministradorGeneral(String nombre, String telefono, String fechadeNacimiento, String nacionalidad,
 			File documentodeIdentidad) {
@@ -38,4 +38,16 @@ public class AdministradorGeneral extends Persona {
 		this.segurosAdicionales = segurosAdicionales;
 	}
 
+
+	public String getTemporada() {
+		return temporada;
+	}
+
+
+	public void setTemporada(String temporada) {
+		this.temporada = temporada;
+	}
+	
+
 }
+
