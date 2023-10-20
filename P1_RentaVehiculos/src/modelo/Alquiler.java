@@ -16,15 +16,14 @@ public class Alquiler {
 	private int dias;
 	private String seguro;
 	
-	public Alquiler(String tipodeCarro, Sedes sedeEntrega, Cliente cliente, Cliente conductorAdicional, AdministradorGeneral admin,
-			Categoria categoria, Sedes sedeDevolucion, int dias, String seguro) {
+	public Alquiler(String tipodeCarro, Sedes sedeEntrega, Cliente conductorAdicional, Cliente cliente, AdministradorGeneral admin,
+			Sedes sedeDevolucion, int dias, String seguro) {
 		super();
 		this.tipodeCarro = tipodeCarro;
 		this.sedeEntrega = sedeEntrega;
 		this.cliente = cliente;
 		this.conductorAdicional = conductorAdicional;
 		this.admin = admin;
-		this.categoria = categoria;
 		this.sedeDevolucion = sedeDevolucion;
 		this.dias = dias;
 		this.seguro = seguro;

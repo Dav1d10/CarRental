@@ -3,6 +3,7 @@ package consola;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Map;
 import java.util.Scanner;
 
 import modelo.AdministradorGeneral;
@@ -26,8 +27,72 @@ public class Aplicacion {
 	}
 	
 	
+	private static Sedes elegirSedeEntrega() {
+	    File archivoSedes = new File("sedes.txt");
+	    try {
+	        Map<String, String> sedesInfo = rentaVehiculos.mostrarSedes(archivoSedes);
+	        Scanner scanner = new Scanner(System.in);
+	        System.out.print("Ingrese el nombre de la sede en la que desea recoger el vehiculo: ");
+	        String nombreSedeBuscada = scanner.nextLine();
+	        if (sedesInfo.containsKey(nombreSedeBuscada)) {
+	            String informacionSede = sedesInfo.get(nombreSedeBuscada);
+	            String[] partes = informacionSede.split(";");
+	            if (partes.length == 3) {
+	                String nombreSede = partes[0];
+	                String ubicacion = partes[1];
+	                String horariosAtencion = partes[2];
+	                return new Sedes(nombreSede, ubicacion, horariosAtencion);
+	            } else {
+	                System.out.println("Error en el formato de la informacion de la sede.");
+	            }
+	        } else {
+	            System.out.println("La sede no se encontro en el archivo.");
+	        }
+	    } catch (FileNotFoundException e) {
+	        System.out.println("No se pudo abrir el archivo de sedes.");
+	    }
+	    return null;
+	}
 	
-	private static void iniciarAlquiler(Cliente conductorAdicional, AdministradorGeneral admin, Sedes sedeDevolucion, int dias, String seguro) {
+	
+	private static Sedes elegirSedeDevolucion() {
+	    File archivoSedes = new File("sedes.txt");
+	    try {
+	        Map<String, String> sedesInfo = rentaVehiculos.mostrarSedes(archivoSedes);
+	        Scanner scanner = new Scanner(System.in);
+	        System.out.print("Ingrese el nombre de la sede en la que desea devolver el vehiculo: ");
+	        String nombreSedeBuscada = scanner.nextLine();
+	        if (sedesInfo.containsKey(nombreSedeBuscada)) {
+	            String informacionSede = sedesInfo.get(nombreSedeBuscada);
+	            String[] partes = informacionSede.split(";");
+	            if (partes.length == 3) {
+	                String nombreSede = partes[0];
+	                String ubicacion = partes[1];
+	                String horariosAtencion = partes[2];
+	                return new Sedes(nombreSede, ubicacion, horariosAtencion);
+	            } else {
+	                System.out.println("Error en el formato de la informacion de la sede.");
+	            }
+	        } else {
+	            System.out.println("La sede no se encontro en el archivo.");
+	        }
+	    } catch (FileNotFoundException e) {
+	        System.out.println("No se pudo abrir el archivo de sedes.");
+	    }
+	    return null;
+	}
+
+	private static void mostrarSeguros() {
+        System.out.println("1. Responsabilidad Civil Suplementaria (SLI o LIS)");
+        System.out.println("2. Protección de Responsabilidad del Arrendatario (TP/PLI)");
+        System.out.println("3. Colisión/Daños (CDW o LDW)");
+        System.out.println("4. Cobertura de Pérdida por Daños (LDW/CDW con Franquicia)");
+        System.out.println("5. Seguro Personal de Accidentes (PAI/PEC)");
+        System.out.println("Ingrese la opcion(es) de seguro(s) que desea");
+    }
+	
+	
+	private static void iniciarAlquiler(Cliente conductorAdicional, AdministradorGeneral admin) {
 		System.out.println("Iniciando Alquiler...");
 		System.out.println("Ingrese su nombre: ");
 		String nombre = scanner.next();
@@ -43,13 +108,23 @@ public class Aplicacion {
 		Cliente cliente = new Cliente(nombre, telefono, fechadeNacimiento, nacionalidad, documentoIdentidad);
 		System.out.println("Ingrese el tipo de carro que desea alquilar: ");
 		String tipodeCarro = scanner.next();
-
-		File archivoSedes = new File("data/sedes.txt");
-		rentaVehiculos.mostrarSedes(archivoSedes);
-		String sedeEntrega = scanner.next();
-		System.out.println("Ingrese la cate");
-		rentaVehiculos.generarAlquiler(cliente, tipodeCarro, sedeEntrega, conductorAdicional, admin, categoria, sedeDevolucion, dias, seguro);
+		Sedes sedeEntrega = elegirSedeEntrega();
+		Sedes sedeDevolucion = elegirSedeDevolucion();
+		String diasString = scanner.next();
+        int dias = Integer.parseInt(diasString);
+        mostrarSeguros();
+        String seguro = scanner.next();
+        System.out.println("Ingrese el numero de su licencia: ");
+        String numeroLicencia = scanner.next();
+        System.out.println("Ingrese el pais donde se expidio su licencia: ");
+        String paisExp = scanner.next();
+        System.out.println("Ingrese la ruta donde se encuentra la imagen de su licencia: ");
+        String imagenLicencia = scanner.next();
+        System.out.println("Ingrese la fecha de vencimiento de su licencia: ");
+        String fechaVencimiento = scanner.next();
+		rentaVehiculos.generarAlquiler(tipodeCarro, sedeEntrega, conductorAdicional, cliente, admin, sedeDevolucion, dias, seguro);
 	}
+	
 	
 	private static void cargarDatos() throws FileNotFoundException, IOException {
 		File archivoInventario = new File("data/inventario.txt");
@@ -77,7 +152,7 @@ public class Aplicacion {
 			cargarCatalogo();
 			break;
 		case 2:
-			String tipodeCarro = 
+			iniciarAlquiler();
 		case 0:
 			System.out.println("Gracias por utilizar la aplicacion!");
 			break;

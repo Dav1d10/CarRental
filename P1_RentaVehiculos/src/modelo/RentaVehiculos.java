@@ -6,7 +6,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class RentaVehiculos {
@@ -53,13 +55,20 @@ public class RentaVehiculos {
 	}
 	
 	
-	public void mostrarSedes(File archivoSedes) throws FileNotFoundException {
+	public Map<String, String> mostrarSedes(File archivoSedes) throws FileNotFoundException {
+		Map<String, String> sedes = new HashMap<>();
 		Scanner scan = new Scanner(archivoSedes);
 		while(scan.hasNextLine()) {
 			String linea = scan.nextLine();
-			System.out.println(linea);
+			String[] partes = linea.split(";");
+			if (partes.length >= 2) {
+				String nombreSede = partes[0];
+				String informacionSede = partes[1];
+				sedes.put(nombreSede, informacionSede);
+			}
 		}
 		scan.close();
+		return sedes;
 	}
 	
 	
@@ -104,7 +113,7 @@ public class RentaVehiculos {
 	
 	public void generarAlquiler(String tipodeCarro, Sedes sedeEntrega, Cliente conductorAdicional, Cliente cliente, AdministradorGeneral admin,
 			Sedes sedeDevolucion, int dias, String seguro) {
-			Alquiler alquiler = new Alquiler(tipodeCarro, sedeEntrega, conductorAdicional, cliente, admin, categoria, sedeDevolucion, dias, seguro );
+			Alquiler alquiler = new Alquiler(tipodeCarro, sedeEntrega, conductorAdicional, cliente, admin, sedeDevolucion, dias, seguro );
 			alquileres.add(alquiler);
 	}
 	
