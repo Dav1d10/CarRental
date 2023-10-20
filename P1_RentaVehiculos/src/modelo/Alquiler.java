@@ -5,20 +5,27 @@ public class Alquiler {
 	
 	
 
+	
 	private String tipodeCarro;
 	private Sedes sedeEntrega;
 	private Cliente conductorAdicional;
 	private AdministradorGeneral admin;
 	private Categoria categoria;
+	private Sedes sedeDevolucion;
+	private int dias;
+	private String seguro;
 	
 	public Alquiler(String tipodeCarro, Sedes sedeEntrega, Cliente conductorAdicional, AdministradorGeneral admin,
-			Categoria categoria) {
+			Categoria categoria, Sedes sedeDevolucion, int dias, String seguro) {
 		super();
 		this.tipodeCarro = tipodeCarro;
 		this.sedeEntrega = sedeEntrega;
 		this.conductorAdicional = conductorAdicional;
 		this.admin = admin;
 		this.categoria = categoria;
+		this.sedeDevolucion = sedeDevolucion;
+		this.dias = dias;
+		this.seguro = seguro;
 	}
 	
 	
@@ -64,7 +71,7 @@ public class Alquiler {
 
 
 	
-	private int cobroSeguros(String seguro) {
+	private int cobroSeguros() {
 		int total = 0;
 		if (seguro.contains("1")) {
 			total += 75;
@@ -85,7 +92,7 @@ public class Alquiler {
 	}
 	
 	
-	private int cobroConductorAdicional(Persona conductorAdicional) {
+	private int cobroConductorAdicional() {
 		int precioF = 0;
 		if (conductorAdicional != null) {
 			precioF = 100;
@@ -113,7 +120,7 @@ public class Alquiler {
 	return precioF;
 	}
 	
-	private int tarifaSedeDevolucion(Sedes sedeDevolucion) {
+	private int tarifaSedeDevolucion() {
 		String nombreSedeDevolucion = sedeDevolucion.getNombreSede();
 		String nombreSedeEntrega = sedeEntrega.getNombreSede();
 		int precioF = 0;
@@ -137,30 +144,29 @@ public class Alquiler {
 	}
 	
 	
-	private int cobroPorDias(int dias, Categoria precioTipoDeCarro, String tipoDeCarro) {
+	private int cobroPorDias() {
 		int precioCarro;
-		if (tipoDeCarro.equals("PEQUEÑO")) {
-            precioCarro = precioTipoDeCarro.getTarifaPequeños();
-        } else if (tipoDeCarro.equals("SUV")) {
-        	precioCarro = precioTipoDeCarro.getTarifaSUV();
-        } else if (tipoDeCarro.equals("VAN")) {
-        	precioCarro = precioTipoDeCarro.getTarifaVans();
-        } else if (tipoDeCarro.equals("LUJO")) {
-            precioCarro = precioTipoDeCarro.getTarifaLujo();
+		if (tipodeCarro.equals("PEQUEÑO")) {
+            precioCarro = categoria.getTarifaPequeños();
+        } else if (tipodeCarro.equals("SUV")) {
+        	precioCarro = categoria.getTarifaSUV();
+        } else if (tipodeCarro.equals("VAN")) {
+        	precioCarro = categoria.getTarifaVans();
+        } else if (tipodeCarro.equals("LUJO")) {
+            precioCarro = categoria.getTarifaLujo();
         } else {
-        	precioCarro = precioTipoDeCarro.getTarifaElectricos();
+        	precioCarro = categoria.getTarifaElectricos();
         }
 		int precioF = precioCarro * dias;
 		return precioF ;
 	}
-	public int cobroFinal(String seguro, Persona conductorAdicional, Sedes sedeDevolucion, int dias, 
-			Categoria precioTipoDeCarro, String tipoDeCarro) {
-		int precioSeguros = cobroSeguros(seguro);
-		int precioConductorAdicional = cobroConductorAdicional(conductorAdicional);
+	public int cobroFinal() {
+		int precioSeguros = cobroSeguros();
+		int precioConductorAdicional = cobroConductorAdicional();
 		int precioTemporada = tarifaTemporada();
-		int precioSedeDevolucion = tarifaSedeDevolucion(sedeDevolucion);
-		int precioPorDias = cobroPorDias(dias, precioTipoDeCarro, tipoDeCarro);
-		return (precioSeguros + precioConductorAdicional + precioTemporada + precioSedeDevolucion);
+		int precioSedeDevolucion = tarifaSedeDevolucion();
+		int precioPorDias = cobroPorDias();
+		return (precioSeguros + precioConductorAdicional + precioTemporada + precioSedeDevolucion + precioPorDias);
 		
 		
 		

@@ -14,6 +14,7 @@ public class RentaVehiculos {
 	private List<Vehiculo> Vehiculos;
 	private List<Sedes> Sedes;
 	private Categoria categoria;
+	private List<Alquiler> alquileres;
 	
 	
 	public RentaVehiculos() {
@@ -77,7 +78,10 @@ public class RentaVehiculos {
 		cargarCategoria();
 	}
 	
-	
-	
+	public void generarAlquiler(String tipodeCarro, Sedes sedeEntrega, Cliente conductorAdicional, AdministradorGeneral admin,
+			Categoria categoria, Sedes sedeDevolucion, int dias, String seguro) {
+			Alquiler alquiler = new Alquiler(tipodeCarro, sedeEntrega, conductorAdicional, admin, categoria, sedeDevolucion, dias, seguro );
+			alquileres.add(alquiler);
+	}
 
 }

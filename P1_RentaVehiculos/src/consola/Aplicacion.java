@@ -5,7 +5,11 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
+import modelo.AdministradorGeneral;
+import modelo.Categoria;
+import modelo.Cliente;
 import modelo.RentaVehiculos;
+import modelo.Sedes;
 
 public class Aplicacion {
 	
@@ -20,7 +24,11 @@ public class Aplicacion {
 		rentaVehiculos.cargarCatalogo(archivoCatalogo);
 	}
 	
-	
+	private static void iniciarAlquiler(String tipodeCarro, Sedes sedeEntrega, Cliente conductorAdicional, AdministradorGeneral admin,
+			Categoria categoria, Sedes sedeDevolucion, int dias, String seguro) {
+		System.out.println("Iniciando Alquiler...");
+		rentaVehiculos.generarAlquiler(tipodeCarro, sedeEntrega, conductorAdicional, admin, categoria, sedeDevolucion, dias, seguro);
+	}
 	
 	private static void cargarDatos() throws FileNotFoundException, IOException {
 		File archivoInventario = new File("data/inventario.txt");
@@ -33,8 +41,8 @@ public class Aplicacion {
 	private static void mostrarCatalogo() {
 		System.out.println("------Opciones de la aplicacion------");
 		System.out.println("1. Cargar el catalogo");
-		System.out.println("2. Realizar Reserva");
-		System.out.println("3. Realizar Alquiler");
+		System.out.println("2. Realizar Alquiler");
+		System.out.println("3. Realizar Reserva");
 		System.out.println("4. Mostrar informacion de las sedes de la empresa");
 		System.out.println("0. Salir ");
 		System.out.println("Seleccione una opcion: ");
@@ -47,6 +55,8 @@ public class Aplicacion {
 		case 1:
 			cargarCatalogo();
 			break;
+		case 2:
+			String tipodeCarro = 
 		case 0:
 			System.out.println("Gracias por utilizar la aplicacion!");
 			break;
