@@ -11,15 +11,19 @@ import java.util.Scanner;
 
 public class RentaVehiculos {
 	
+	
 	private List<Vehiculo> Vehiculos;
 	private List<Sedes> Sedes;
 	private Categoria categoria;
 	private List<Alquiler> alquileres;
 	
 	
+	
 	public RentaVehiculos() {
 		this.Vehiculos = new ArrayList<>();
 		this.Sedes = new ArrayList<>();
+		this.alquileres = new ArrayList<>();
+		
 	}
 
 	
@@ -34,6 +38,23 @@ public class RentaVehiculos {
 	
 	public void cargarCatalogo(File archivoCatalogo) throws FileNotFoundException {
 		Scanner scan = new Scanner(archivoCatalogo);
+		while(scan.hasNextLine()) {
+			String linea = scan.nextLine();
+			System.out.println(linea);
+		}
+		scan.close();
+	}
+	
+	
+	public void elegirSede(int indice, String input) {
+		if (input.equals("1")) {
+			
+		}
+	}
+	
+	
+	public void mostrarSedes(File archivoSedes) throws FileNotFoundException {
+		Scanner scan = new Scanner(archivoSedes);
 		while(scan.hasNextLine()) {
 			String linea = scan.nextLine();
 			System.out.println(linea);
@@ -65,6 +86,7 @@ public class RentaVehiculos {
 		}
 	}
 
+	
 	private void cargarCategoria() {
         for (Vehiculo vehiculo2 : Vehiculos) {
             String cate = vehiculo2.getTipoCategoria();
@@ -72,16 +94,19 @@ public class RentaVehiculos {
         }
     }
 	
+	
 	public void cargarInformacionInventario(File archivoInventario, File archivoSedes) throws FileNotFoundException, IOException {
 		cargarInventario(archivoInventario);
 		cargarSedes(archivoSedes);
 		cargarCategoria();
 	}
 	
-	public void generarAlquiler(String tipodeCarro, Sedes sedeEntrega, Cliente conductorAdicional, AdministradorGeneral admin,
-			Categoria categoria, Sedes sedeDevolucion, int dias, String seguro) {
-			Alquiler alquiler = new Alquiler(tipodeCarro, sedeEntrega, conductorAdicional, admin, categoria, sedeDevolucion, dias, seguro );
+	
+	public void generarAlquiler(String tipodeCarro, Sedes sedeEntrega, Cliente conductorAdicional, Cliente cliente, AdministradorGeneral admin,
+			Sedes sedeDevolucion, int dias, String seguro) {
+			Alquiler alquiler = new Alquiler(tipodeCarro, sedeEntrega, conductorAdicional, cliente, admin, categoria, sedeDevolucion, dias, seguro );
 			alquileres.add(alquiler);
 	}
+	
 
 }

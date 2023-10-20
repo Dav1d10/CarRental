@@ -10,6 +10,7 @@ import modelo.Categoria;
 import modelo.Cliente;
 import modelo.RentaVehiculos;
 import modelo.Sedes;
+import java.io.Console;
 
 public class Aplicacion {
 	
@@ -24,15 +25,35 @@ public class Aplicacion {
 		rentaVehiculos.cargarCatalogo(archivoCatalogo);
 	}
 	
-	private static void iniciarAlquiler(String tipodeCarro, Sedes sedeEntrega, Cliente conductorAdicional, AdministradorGeneral admin,
-			Categoria categoria, Sedes sedeDevolucion, int dias, String seguro) {
+	
+	
+	private static void iniciarAlquiler(Cliente conductorAdicional, AdministradorGeneral admin, Sedes sedeDevolucion, int dias, String seguro) {
 		System.out.println("Iniciando Alquiler...");
-		rentaVehiculos.generarAlquiler(tipodeCarro, sedeEntrega, conductorAdicional, admin, categoria, sedeDevolucion, dias, seguro);
+		System.out.println("Ingrese su nombre: ");
+		String nombre = scanner.next();
+		System.out.println("Ingrese su telefono: ");
+		String telefono = scanner.next();
+		System.out.println("Ingrese su fecha de nacimiento: ");
+		String fechadeNacimiento = scanner.next();
+		System.out.println("Ingrese su nacionalidad: ");
+		String nacionalidad = scanner.next();
+		System.out.println("Ingrese la direccion de su documento de identidad: ");
+		String documentodeIdentidad = scanner.next();
+		File documentoIdentidad = new File(documentodeIdentidad);
+		Cliente cliente = new Cliente(nombre, telefono, fechadeNacimiento, nacionalidad, documentoIdentidad);
+		System.out.println("Ingrese el tipo de carro que desea alquilar: ");
+		String tipodeCarro = scanner.next();
+
+		File archivoSedes = new File("data/sedes.txt");
+		rentaVehiculos.mostrarSedes(archivoSedes);
+		String sedeEntrega = scanner.next();
+		System.out.println("Ingrese la cate");
+		rentaVehiculos.generarAlquiler(cliente, tipodeCarro, sedeEntrega, conductorAdicional, admin, categoria, sedeDevolucion, dias, seguro);
 	}
 	
 	private static void cargarDatos() throws FileNotFoundException, IOException {
 		File archivoInventario = new File("data/inventario.txt");
-		File archivoSedes = new File("data(sedes.txt");
+		File archivoSedes = new File("data/sedes.txt");
 		rentaVehiculos.cargarInformacionInventario(archivoInventario, archivoSedes);
 	}
 	
