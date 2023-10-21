@@ -121,7 +121,8 @@ public class RentaVehiculos {
 			Sedes sedeDevolucion, int dias, String seguro) {
 			Alquiler alquiler = new Alquiler(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro );
 			alquileres.add(alquiler);
-	}
+			//System.out.println(alquileres.add(alquiler));
+	}		
 	
 
 }

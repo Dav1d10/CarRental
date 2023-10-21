@@ -135,14 +135,19 @@ public class Aplicacion {
 		return new Cliente(nombre, telefono, fechadeNacimiento, nacionalidad, documentoIdentidad, 
 				new DatosLicencia(numeroLicencia, paisExp, licenciaCliente, fechadeVencimientoLicencia));
 	}
+	
+	
 
-	private static void mostrarSeguros() {
+	private static String mostrarSeguros() {
+		System.out.println("Estos son los seguros disponibles: ");
         System.out.println("1. Responsabilidad Civil Suplementaria (SLI o LIS)");
-        System.out.println("2. Protección de Responsabilidad del Arrendatario (TP/PLI)");
-        System.out.println("3. Colisión/Daños (CDW o LDW)");
-        System.out.println("4. Cobertura de Pérdida por Daños (LDW/CDW con Franquicia)");
+        System.out.println("2. Proteccion de Responsabilidad del Arrendatario (TP/PLI)");
+        System.out.println("3. Colision/Danos (CDW o LDW)");
+        System.out.println("4. Cobertura de Perdida por Danos (LDW/CDW con Franquicia)");
         System.out.println("5. Seguro Personal de Accidentes (PAI/PEC)");
-        System.out.println("Ingrese la opcion(es) de seguro(s) que desea");
+        System.out.println("Ingrese la(s) opcion(es) de seguro(s) que desea: ");
+        String seguro = scanner.next();
+        return seguro;
     }
 	
 	
@@ -154,10 +159,10 @@ public class Aplicacion {
 		Sedes sedeEntrega = elegirSedeEntrega();
 		Sedes sedeDevolucion = elegirSedeDevolucion();
 		Cliente conductorAdicional = quiereConductorAdicional();
+		System.out.println("Ingrese la cantidad de dias por los que quiere alquilar el vehiculo: ");
 		String diasString = scanner.next();
         int dias = Integer.parseInt(diasString);
-        mostrarSeguros();
-        String seguro = scanner.next();
+        String seguro = mostrarSeguros();
 		rentaVehiculos.generarAlquiler(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro);
 	}
 	
@@ -189,6 +194,10 @@ public class Aplicacion {
 			break;
 		case 2:
 			iniciarAlquiler();
+			break;
+		case 3:
+			elegirSedeEntrega();
+			break;
 		case 0:
 			System.out.println("Gracias por utilizar la aplicacion!");
 			break;
