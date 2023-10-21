@@ -25,6 +25,7 @@ public class RentaVehiculos {
 		this.Vehiculos = new ArrayList<>();
 		this.Sedes = new ArrayList<>();
 		this.alquileres = new ArrayList<>();
+		this.categoria = new Categoria();
 		
 	}
 
@@ -108,7 +109,11 @@ public class RentaVehiculos {
 		cargarInventario(archivoInventario);
 		cargarSedes(archivoSedes);
 		cargarCategoria();
-	}
+		List<Vehiculo> SUV = categoria.getSUV();
+		Vehiculo v = SUV.get(0);
+		System.out.println(v.getModelo());
+		System.out.println(v.getMarca());
+		}
 	
 	
 	public void generarAlquiler(String tipodeCarro, Sedes sedeEntrega, Cliente conductorAdicional, Cliente cliente,

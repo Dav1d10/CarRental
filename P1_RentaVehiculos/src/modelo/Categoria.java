@@ -17,17 +17,13 @@ public class Categoria {
 	private int tarifaElectricos = 300;
 	
 	
-	public Categoria(int tarifaPequeños, int tarifaSUV, int tarifaVans, int tarifaLujo, int tarifaElectricos) {
+	public Categoria() {
 		this.pequeños = new ArrayList<>();
 		this.SUV = new ArrayList<>();
 		this.Vans = new ArrayList<>();
 		this.Lujo = new ArrayList<>();
 		this.electricos = new ArrayList<>();
-		this.tarifaPequeños = tarifaPequeños;
-		this.tarifaSUV = tarifaSUV;
-		this.tarifaVans = tarifaVans;
-		this.tarifaLujo = tarifaLujo;
-		this.tarifaElectricos = tarifaElectricos;
+		
 	}
 	
 	
