@@ -3,6 +3,7 @@ package consola;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -29,59 +30,52 @@ public class Aplicacion {
 	
 	
 	private static Sedes elegirSedeEntrega() {
-	    File archivoSedes = new File("sedes.txt");
+	    File archivoSedes = new File("data/sedes.txt");
 	    try {
-	        Map<String, String> sedesInfo = rentaVehiculos.mostrarSedes(archivoSedes);
-	        Scanner scanner = new Scanner(System.in);
+	        List<String> sedesInfo = rentaVehiculos.mostrarSedes(archivoSedes);
 	        System.out.print("Ingrese el nombre de la sede en la que desea recoger el vehiculo: ");
-	        String nombreSedeBuscada = scanner.nextLine();
-	        if (sedesInfo.containsKey(nombreSedeBuscada)) {
-	            String informacionSede = sedesInfo.get(nombreSedeBuscada);
-	            String[] partes = informacionSede.split(";");
-	            if (partes.length == 3) {
-	                String nombreSede = partes[0];
-	                String ubicacion = partes[1];
-	                String horariosAtencion = partes[2];
-	                return new Sedes(nombreSede, ubicacion, horariosAtencion);
-	            } else {
-	                System.out.println("Error en el formato de la informacion de la sede.");
+	        String nombreSedeBuscada = scanner.next();
+	        if (sedesInfo.get(0).equals(nombreSedeBuscada)) {
+	        	System.out.println("entra");
+	        	System.out.println(sedesInfo.get(0) + " - " + sedesInfo.get(1) + " - " + sedesInfo.get(2));
+	            String nombreSede = sedesInfo.get(0);
+	        	String ubicacionSede = sedesInfo.get(1);
+	            String horariosSede = sedesInfo.get(2);
+	            return new Sedes(nombreSede, ubicacionSede, horariosSede);
+	            } 
+	        else {
+	        	System.out.println("Error en el formato de la informacion de la sede.");
 	            }
-	        } else {
-	            System.out.println("La sede no se encontro en el archivo.");
-	        }
-	    } catch (FileNotFoundException e) {
-	        System.out.println("No se pudo abrir el archivo de sedes.");
-	    }
+	        } catch (FileNotFoundException e) {
+		        System.out.println("No se pudo abrir el archivo de sedes.");
+	    } 
 	    return null;
-	}
-	
+	    }
+	 
 	
 	private static Sedes elegirSedeDevolucion() {
-	    File archivoSedes = new File("sedes.txt");
+	    File archivoSedes = new File("data/sedes.txt");
 	    try {
-	        Map<String, String> sedesInfo = rentaVehiculos.mostrarSedes(archivoSedes);
-	        Scanner scanner = new Scanner(System.in);
+	        List<String> sedesInfo = rentaVehiculos.mostrarSedes(archivoSedes);
 	        System.out.print("Ingrese el nombre de la sede en la que desea devolver el vehiculo: ");
-	        String nombreSedeBuscada = scanner.nextLine();
-	        if (sedesInfo.containsKey(nombreSedeBuscada)) {
-	            String informacionSede = sedesInfo.get(nombreSedeBuscada);
-	            String[] partes = informacionSede.split(";");
-	            if (partes.length == 3) {
-	                String nombreSede = partes[0];
-	                String ubicacion = partes[1];
-	                String horariosAtencion = partes[2];
-	                return new Sedes(nombreSede, ubicacion, horariosAtencion);
-	            } else {
-	                System.out.println("Error en el formato de la informacion de la sede.");
+	        String nombreSedeBuscada = scanner.next();
+	        if (sedesInfo.get(0).equals(nombreSedeBuscada)) {
+	        	System.out.println("entra");
+	        	System.out.println(sedesInfo.get(0) + " - " + sedesInfo.get(1) + " - " + sedesInfo.get(2));
+	            String nombreSede = sedesInfo.get(0);
+	        	String ubicacionSede = sedesInfo.get(1);
+	            String horariosSede = sedesInfo.get(2);
+	            return new Sedes(nombreSede, ubicacionSede, horariosSede);
+	            } 
+	        else {
+	        	System.out.println("Error en el formato de la informacion de la sede.");
+	        	return null;
 	            }
-	        } else {
-	            System.out.println("La sede no se encontro en el archivo.");
-	        }
-	    } catch (FileNotFoundException e) {
-	        System.out.println("No se pudo abrir el archivo de sedes.");
+	        } catch (FileNotFoundException e) {
+		        System.out.println("No se pudo abrir el archivo de sedes.");
+		        return null;
+	    } 
 	    }
-	    return null;
-	}
 	
 	
 	private static Cliente quiereConductorAdicional() {
@@ -159,11 +153,11 @@ public class Aplicacion {
 		String tipodeCarro = scanner.next();
 		Sedes sedeEntrega = elegirSedeEntrega();
 		Sedes sedeDevolucion = elegirSedeDevolucion();
+		Cliente conductorAdicional = quiereConductorAdicional();
 		String diasString = scanner.next();
         int dias = Integer.parseInt(diasString);
         mostrarSeguros();
         String seguro = scanner.next();
-        Cliente conductorAdicional = quiereConductorAdicional();
 		rentaVehiculos.generarAlquiler(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro);
 	}
 	

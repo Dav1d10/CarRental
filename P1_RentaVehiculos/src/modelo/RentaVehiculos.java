@@ -56,17 +56,18 @@ public class RentaVehiculos {
 	}
 	
 	
-	public Map<String, String> mostrarSedes(File archivoSedes) throws FileNotFoundException {
-		Map<String, String> sedes = new HashMap<>();
+	public List<String> mostrarSedes(File archivoSedes) throws FileNotFoundException {
+		List<String> sedes = new ArrayList<>();
 		Scanner scan = new Scanner(archivoSedes);
 		while(scan.hasNextLine()) {
 			String linea = scan.nextLine();
 			String[] partes = linea.split(";");
-			if (partes.length >= 2) {
-				String nombreSede = partes[0];
-				String informacionSede = partes[1];
-				sedes.put(nombreSede, informacionSede);
-			}
+			String nombreSede = partes[0];
+			String direccionSede = partes[1];
+			String horarioSede = partes[2];
+			sedes.add(nombreSede);
+			sedes.add(direccionSede);
+			sedes.add(horarioSede);
 		}
 		scan.close();
 		return sedes;
