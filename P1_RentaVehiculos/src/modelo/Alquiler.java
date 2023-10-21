@@ -16,6 +16,8 @@ public class Alquiler {
 	private String seguro;
 	private AdministradorGeneral admin;
 	
+	
+	
 	public Alquiler(String tipodeCarro, Sedes sedeEntrega, Cliente conductorAdicional, Cliente cliente,
 			Sedes sedeDevolucion, int dias, String seguro) {
 		super();
@@ -29,7 +31,19 @@ public class Alquiler {
 	}
 	
 	
-
+	public String toString() {
+		return "Alquiler[" +
+		           "tipodeCarro='" + tipodeCarro + '\'' +
+		           ", sedeEntrega=" + sedeEntrega +
+		           ", cliente=" + cliente +
+		           ", conductorAdicional=" + conductorAdicional +
+		           ", sedeDevolucion=" + sedeDevolucion +
+		           ", dias=" + dias +
+		           ", seguro='" + seguro + '\'' +
+		           "]";
+	}
+	
+	
 	public String getTipodeCarro() {
 		return tipodeCarro;
 	}

@@ -35,47 +35,60 @@ public class Aplicacion {
 	        List<String> sedesInfo = rentaVehiculos.mostrarSedes(archivoSedes);
 	        System.out.print("Ingrese el nombre de la sede en la que desea recoger el vehiculo: ");
 	        String nombreSedeBuscada = scanner.next();
-	        if (sedesInfo.get(0).equals(nombreSedeBuscada)) {
-	        	System.out.println("entra");
-	        	System.out.println(sedesInfo.get(0) + " - " + sedesInfo.get(1) + " - " + sedesInfo.get(2));
-	            String nombreSede = sedesInfo.get(0);
-	        	String ubicacionSede = sedesInfo.get(1);
-	            String horariosSede = sedesInfo.get(2);
-	            return new Sedes(nombreSede, ubicacionSede, horariosSede);
-	            } 
-	        else {
-	        	System.out.println("Error en el formato de la informacion de la sede.");
+	        for (String info : sedesInfo) {
+	            String[] partes = info.split(" - ");
+	            if (partes.length == 3) {
+	            	String nombreSede = partes[0];
+	            	if (nombreSede.equals(nombreSedeBuscada)) {
+	            		//System.out.println("entra");
+	            		//System.out.println(nombreSede + " - " + partes[1] + " - " + partes[2]);
+	            		String ubicacionSede = partes[1];
+	            		String horariosSede = partes[2];
+	            		return new Sedes(nombreSede, ubicacionSede, horariosSede);
 	            }
-	        } catch (FileNotFoundException e) {
-		        System.out.println("No se pudo abrir el archivo de sedes.");
-	    } 
-	    return null;
+	        }
 	    }
-	 
+	    System.out.println("No se encontro la sede con el nombre especificado.");
+	    } catch (FileNotFoundException e) {
+	        System.out.println("No se pudo abrir el archivo de sedes.");
+	    }
+	    return null; 
+	}
 	
+	
+	
+	private static List<String> prueba() throws FileNotFoundException {
+		File archivo = new File("data/sedes.txt");
+		return rentaVehiculos.mostrarSedes(archivo);
+	}
+ 
+	  
+	        
 	private static Sedes elegirSedeDevolucion() {
 	    File archivoSedes = new File("data/sedes.txt");
 	    try {
 	        List<String> sedesInfo = rentaVehiculos.mostrarSedes(archivoSedes);
 	        System.out.print("Ingrese el nombre de la sede en la que desea devolver el vehiculo: ");
 	        String nombreSedeBuscada = scanner.next();
-	        if (sedesInfo.get(0).equals(nombreSedeBuscada)) {
-	        	System.out.println("entra");
-	        	System.out.println(sedesInfo.get(0) + " - " + sedesInfo.get(1) + " - " + sedesInfo.get(2));
-	            String nombreSede = sedesInfo.get(0);
-	        	String ubicacionSede = sedesInfo.get(1);
-	            String horariosSede = sedesInfo.get(2);
-	            return new Sedes(nombreSede, ubicacionSede, horariosSede);
-	            } 
-	        else {
-	        	System.out.println("Error en el formato de la informacion de la sede.");
-	        	return null;
+	        for (String info : sedesInfo) {
+	            String[] partes = info.split(" - ");
+	            if (partes.length == 3) {
+	            	String nombreSede = partes[0];
+	            	if (nombreSede.equals(nombreSedeBuscada)) {
+	            		//System.out.println("entra");
+	            		//System.out.println(nombreSede + " - " + partes[1] + " - " + partes[2]);
+	            		String ubicacionSede = partes[1];
+	            		String horariosSede = partes[2];
+	            		return new Sedes(nombreSede, ubicacionSede, horariosSede);
 	            }
-	        } catch (FileNotFoundException e) {
-		        System.out.println("No se pudo abrir el archivo de sedes.");
-		        return null;
-	    } 
+	        }
 	    }
+	    System.out.println("No se encontro la sede con el nombre especificado.");
+	    } catch (FileNotFoundException e) {
+	        System.out.println("No se pudo abrir el archivo de sedes.");
+	    }
+	    return null; 
+	}
 	
 	
 	private static Cliente quiereConductorAdicional() {

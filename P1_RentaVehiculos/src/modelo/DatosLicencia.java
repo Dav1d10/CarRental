@@ -16,6 +16,16 @@ public class DatosLicencia {
 		this.imagenLicencia = imagenLicencia;
 		this.fechadeVencimiento = fechadeVencimiento;
 	}
+	
+	
+	public String toString() {
+		return "DatosLicencia[" +
+		           "numeroLicencia='" + numeroLicencia + '\'' +
+		           ", paisExp=" + paisExp +
+		           ", imagenLicencia=" + imagenLicencia +
+		           ", fechadeVencimiento=" + fechadeVencimiento +
+		           "]";
+		}
 
 
 	public String getNumeroLicencia() {

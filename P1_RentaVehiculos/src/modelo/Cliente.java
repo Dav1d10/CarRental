@@ -13,7 +13,18 @@ public class Cliente extends Persona {
 		this.datosLicencia = datosLicencia;
 	}
 	
-	}
+	
+	public String toString() {
+		return "Cliente[" +
+		           "nombre='" + nombre + '\'' +
+		           ", telefono=" + telefono +
+		           ", fechadeNacimiento=" + fechadeNacimiento +
+		           ", nacionalidad=" + nacionalidad +
+		           ", documentodeIdentidad=" + documentodeIdentidad +
+		           ", datosLicencia=" + datosLicencia + 
+		           "]";
+		}
+}
 	
 	
 	

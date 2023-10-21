@@ -62,14 +62,16 @@ public class RentaVehiculos {
 		while(scan.hasNextLine()) {
 			String linea = scan.nextLine();
 			String[] partes = linea.split(";");
-			String nombreSede = partes[0];
-			String direccionSede = partes[1];
-			String horarioSede = partes[2];
-			sedes.add(nombreSede);
-			sedes.add(direccionSede);
-			sedes.add(horarioSede);
+			if (partes.length == 3) {
+				String nombreSede = partes[0];
+				String direccionSede = partes[1];
+				String horarioSede = partes[2];
+				String informacionSede = nombreSede + " - " + direccionSede + " - " + horarioSede;
+				sedes.add(informacionSede);
+			}
 		}
 		scan.close();
+		//System.out.println(sedes);
 		return sedes;
 	}
 	
@@ -121,7 +123,9 @@ public class RentaVehiculos {
 			Sedes sedeDevolucion, int dias, String seguro) {
 			Alquiler alquiler = new Alquiler(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro );
 			alquileres.add(alquiler);
-			//System.out.println(alquileres.add(alquiler));
+			for (Alquiler info : alquileres) {
+				System.out.println(info);
+			}
 	}		
 	
 

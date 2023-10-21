@@ -12,6 +12,15 @@ public class Sedes {
 		this.ubicacion = ubicacion;
 		this.horariosAtencion = horariosAtencion;
 	}
+	
+	
+	public String toString() {
+		return "Sede[" +
+		           "nombreSede='" + nombreSede + '\'' +
+		           ", ubicacion=" + ubicacion +
+		           ", horariosAtencion=" + horariosAtencion +
+		           "]";
+	}
 
 
 	public String getNombreSede() {

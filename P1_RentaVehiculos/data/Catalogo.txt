@@ -2,7 +2,13 @@
 
 ---------CATALOGO---------
 
-Sedes de la empresa: Prado, Colina, Mazuren, Aguas, Chapinero
+Sedes de la empresa: 
+
+Prado; Ubicacion: CLL127, Horario de Atencion: 8:00-18:00 
+Colina; Ubicacion: CLL134, Horario de Atencion: 8:00-18:00
+Mazuren; Ubicacion: CLL154, Horario de Atencion: 8:00-18:00
+Aguas; Ubicacion: CLL2, Horario de Atencion: 8:00-18:00
+Chapinero; Ubicacion: CLL57, Horario de Atencion: 8:00-18:00
 
 Carros Disponibles
 
