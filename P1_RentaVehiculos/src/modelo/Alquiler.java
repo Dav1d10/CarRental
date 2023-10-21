@@ -10,20 +10,19 @@ public class Alquiler {
 	private Sedes sedeEntrega;
 	private Cliente cliente;
 	private Cliente conductorAdicional;
-	private AdministradorGeneral admin;
 	private Categoria categoria;
 	private Sedes sedeDevolucion;
 	private int dias;
 	private String seguro;
+	private AdministradorGeneral admin;
 	
-	public Alquiler(String tipodeCarro, Sedes sedeEntrega, Cliente conductorAdicional, Cliente cliente, AdministradorGeneral admin,
+	public Alquiler(String tipodeCarro, Sedes sedeEntrega, Cliente conductorAdicional, Cliente cliente,
 			Sedes sedeDevolucion, int dias, String seguro) {
 		super();
 		this.tipodeCarro = tipodeCarro;
 		this.sedeEntrega = sedeEntrega;
 		this.cliente = cliente;
 		this.conductorAdicional = conductorAdicional;
-		this.admin = admin;
 		this.sedeDevolucion = sedeDevolucion;
 		this.dias = dias;
 		this.seguro = seguro;
@@ -60,15 +59,6 @@ public class Alquiler {
 		this.conductorAdicional = conductorAdicional;
 	}
 	
-	public AdministradorGeneral getAdmin() {
-		return admin;
-	}
-
-
-	public void setAdmin(AdministradorGeneral admin) {
-		this.admin = admin;
-	}
-
 
 
 	

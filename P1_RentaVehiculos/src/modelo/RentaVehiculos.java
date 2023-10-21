@@ -111,9 +111,9 @@ public class RentaVehiculos {
 	}
 	
 	
-	public void generarAlquiler(String tipodeCarro, Sedes sedeEntrega, Cliente conductorAdicional, Cliente cliente, AdministradorGeneral admin,
+	public void generarAlquiler(String tipodeCarro, Sedes sedeEntrega, Cliente conductorAdicional, Cliente cliente,
 			Sedes sedeDevolucion, int dias, String seguro) {
-			Alquiler alquiler = new Alquiler(tipodeCarro, sedeEntrega, conductorAdicional, cliente, admin, sedeDevolucion, dias, seguro );
+			Alquiler alquiler = new Alquiler(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro );
 			alquileres.add(alquiler);
 	}
 	

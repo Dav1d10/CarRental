@@ -9,6 +9,7 @@ import java.util.Scanner;
 import modelo.AdministradorGeneral;
 import modelo.Categoria;
 import modelo.Cliente;
+import modelo.DatosLicencia;
 import modelo.RentaVehiculos;
 import modelo.Sedes;
 import java.io.Console;
@@ -81,19 +82,42 @@ public class Aplicacion {
 	    }
 	    return null;
 	}
-
-	private static void mostrarSeguros() {
-        System.out.println("1. Responsabilidad Civil Suplementaria (SLI o LIS)");
-        System.out.println("2. Protección de Responsabilidad del Arrendatario (TP/PLI)");
-        System.out.println("3. Colisión/Daños (CDW o LDW)");
-        System.out.println("4. Cobertura de Pérdida por Daños (LDW/CDW con Franquicia)");
-        System.out.println("5. Seguro Personal de Accidentes (PAI/PEC)");
-        System.out.println("Ingrese la opcion(es) de seguro(s) que desea");
-    }
 	
 	
-	private static void iniciarAlquiler(Cliente conductorAdicional, AdministradorGeneral admin) {
-		System.out.println("Iniciando Alquiler...");
+	private static Cliente quiereConductorAdicional() {
+		System.out.println("Tiene un conductor adicional? ");
+		String tieneConductorAdicional = scanner.next();
+		if (tieneConductorAdicional.equals("Si")) {
+			System.out.println("Ingrese el nombre del conductor: ");
+			String nombreConductor = scanner.next();
+			System.out.println("Ingrese el telefono del conductor: ");
+			String telefonoConductor = scanner.next();
+			System.out.println("Ingrese la fecha de nacimiento del conductor: ");
+			String fechadeNacimientoConductor = scanner.next();
+			System.out.println("Ingrese la nacionalidad del conductor: ");
+			String nacionalidadConductor = scanner.next();
+			System.out.println("Ingrese la direccion del documento de identidad del conductor: ");
+			String documentodeIdentidadConductor = scanner.next();
+			File documentoIdentidadConductor = new File(documentodeIdentidadConductor);
+			System.out.println("Ingrese el numero de licencia del conductor: ");
+			String numeroLicenciaConductor = scanner.next();
+			System.out.println("Ingrese el pais de expedicion de la licencia del conductor: ");
+			String paisExpConductor = scanner.next();
+			System.out.println("Ingrese la direccion de la licencia del conductor: ");
+			String licenciadeConductor = scanner.next();
+			File licenciaConductor = new File(licenciadeConductor);
+			System.out.println("Ingrese la fecha de vencimiento de la licencia del conductor: ");
+			String fechadeVencimientoLicenciaConductor = scanner.next();
+			return new Cliente(nombreConductor, telefonoConductor, fechadeNacimientoConductor, nacionalidadConductor, 
+					documentoIdentidadConductor, new DatosLicencia(numeroLicenciaConductor, paisExpConductor, licenciaConductor, 
+							fechadeVencimientoLicenciaConductor));
+		} else {
+			return null;
+		}
+	}
+	
+	
+	private static Cliente nuevoCliente() {
 		System.out.println("Ingrese su nombre: ");
 		String nombre = scanner.next();
 		System.out.println("Ingrese su telefono: ");
@@ -105,7 +129,32 @@ public class Aplicacion {
 		System.out.println("Ingrese la direccion de su documento de identidad: ");
 		String documentodeIdentidad = scanner.next();
 		File documentoIdentidad = new File(documentodeIdentidad);
-		Cliente cliente = new Cliente(nombre, telefono, fechadeNacimiento, nacionalidad, documentoIdentidad);
+		System.out.println("Ingrese el numero de su licencia: ");
+		String numeroLicencia = scanner.next();
+		System.out.println("Ingrese el pais de expedicion de la licencia: ");
+		String paisExp = scanner.next();
+		System.out.println("Ingrese la direccion de la licencia: ");
+		String licencia = scanner.next();
+		File licenciaCliente = new File(licencia);
+		System.out.println("Ingrese la fecha de vencimiento de la licencia: ");
+		String fechadeVencimientoLicencia = scanner.next();
+		return new Cliente(nombre, telefono, fechadeNacimiento, nacionalidad, documentoIdentidad, 
+				new DatosLicencia(numeroLicencia, paisExp, licenciaCliente, fechadeVencimientoLicencia));
+	}
+
+	private static void mostrarSeguros() {
+        System.out.println("1. Responsabilidad Civil Suplementaria (SLI o LIS)");
+        System.out.println("2. Protección de Responsabilidad del Arrendatario (TP/PLI)");
+        System.out.println("3. Colisión/Daños (CDW o LDW)");
+        System.out.println("4. Cobertura de Pérdida por Daños (LDW/CDW con Franquicia)");
+        System.out.println("5. Seguro Personal de Accidentes (PAI/PEC)");
+        System.out.println("Ingrese la opcion(es) de seguro(s) que desea");
+    }
+	
+	
+	private static void iniciarAlquiler() {
+		System.out.println("Iniciando Alquiler...");
+		Cliente cliente = nuevoCliente();
 		System.out.println("Ingrese el tipo de carro que desea alquilar: ");
 		String tipodeCarro = scanner.next();
 		Sedes sedeEntrega = elegirSedeEntrega();
@@ -114,15 +163,8 @@ public class Aplicacion {
         int dias = Integer.parseInt(diasString);
         mostrarSeguros();
         String seguro = scanner.next();
-        System.out.println("Ingrese el numero de su licencia: ");
-        String numeroLicencia = scanner.next();
-        System.out.println("Ingrese el pais donde se expidio su licencia: ");
-        String paisExp = scanner.next();
-        System.out.println("Ingrese la ruta donde se encuentra la imagen de su licencia: ");
-        String imagenLicencia = scanner.next();
-        System.out.println("Ingrese la fecha de vencimiento de su licencia: ");
-        String fechaVencimiento = scanner.next();
-		rentaVehiculos.generarAlquiler(tipodeCarro, sedeEntrega, conductorAdicional, cliente, admin, sedeDevolucion, dias, seguro);
+        Cliente conductorAdicional = quiereConductorAdicional();
+		rentaVehiculos.generarAlquiler(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro);
 	}
 	
 	
