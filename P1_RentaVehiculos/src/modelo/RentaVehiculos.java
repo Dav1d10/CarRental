@@ -23,7 +23,7 @@ public class RentaVehiculos {
 	private AdministradorGeneral admin;
 	private Empleado empleado;
 	private List<Reserva> reservas;
-	private static ArchivoInventario archivoInventario;
+	private ArchivoInventario archivoInventario;
 	
 	
 	
@@ -35,7 +35,7 @@ public class RentaVehiculos {
 		this.admin = null;
 		this.empleado = new Empleado();
 		this.reservas = new ArrayList<>();
-		
+		this.archivoInventario = new ArchivoInventario();
 	}
 
 	public AdministradorGeneral setAdministradorGeneral(String temporada) {

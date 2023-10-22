@@ -368,51 +368,51 @@ public class Aplicacion {
 
 	
 	public static void main(String[] args) throws FileNotFoundException {
-		try {
-			cargarDatos();
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		int opcion = 1;
-		do {
-			System.out.println("Ya es usuario de DGA Rental? ");
-			System.out.println("1. Si \n2. No");
-			String r = scanner.nextLine();
-			
-			if (r.equals("1")) {
-				System.out.println("-------------Ingreso De Usuarios-------------");
-				System.out.println("Ingrese su usuario ");
-				String user = scanner.nextLine();
-				System.out.println("Ingrese su contraseña");
-				String pass = scanner.nextLine();
-				boolean s = ingresoUsuario.autenticarUsuario(user, pass);
-				if (s==true){
-					System.out.println("ola");
-					if (ingresoUsuario.esAdmin(pass)) {
-						System.out.println("SI ENTRA");
-						mostrarCatalogoAdmin();
-						opcion = scanner.nextInt();
-						ejecutarOpcionAdmin(opcion);
-					}
-					else {
-						mostrarCatalogo();
-						opcion = scanner.nextInt();
-						ejecutarOpcion(opcion);
-					}
-				}
-			} else if (r.equals("2")){
-				System.out.println("-------------Registro De Usuarios-------------");
-				System.out.println("Ingrese el usuario: ");
-				String user = scanner.nextLine();
-				System.out.println("Ingrese su contraseña");
-				String pass = scanner.nextLine();
-				registroUsuario.registrarUsuario(user, pass);
-			}
-			else {
-				System.out.println("Opcion no valida");
-			}
-		} while (opcion != 0);
-	}
+        Scanner scanner = new Scanner(System.in); // Mover la creación del scanner al método main
 
+        try {
+            cargarDatos();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        int opcion = 1;
+        do {
+            System.out.println("Ya es usuario de DGA Rental? ");
+            System.out.println("1. Si \n2. No");
+            String r = scanner.nextLine();
+            
+            if (r.equals("1")) {
+                System.out.println("-------------Ingreso De Usuarios-------------");
+                System.out.println("Ingrese su usuario ");
+                String user = scanner.nextLine();
+                System.out.println("Ingrese su contraseña");
+                String pass = scanner.nextLine();
+                boolean s = ingresoUsuario.autenticarUsuario(user, pass);
+                if (s == true) {
+                    if (ingresoUsuario.esAdmin(pass)) {
+                        mostrarCatalogoAdmin();
+                        opcion = scanner.nextInt();
+                        scanner.nextLine(); // Consumir la nueva línea pendiente
+                        ejecutarOpcionAdmin(opcion);
+                    } else {
+                        mostrarCatalogo();
+                        opcion = scanner.nextInt();
+                        scanner.nextLine(); // Consumir la nueva línea pendiente
+                        ejecutarOpcion(opcion);
+                    }
+                }
+            } else if (r.equals("2")) {
+                System.out.println("-------------Registro De Usuarios-------------");
+                System.out.println("Ingrese el usuario: ");
+                String user = scanner.nextLine();
+                System.out.println("Ingrese su contraseña");
+                String pass = scanner.nextLine();
+                registroUsuario.registrarUsuario(user, pass);
+            } else {
+                System.out.println("Opcion no valida");
+            }
+        } while (opcion != 0);
+        
+        scanner.close(); // Cerrar el scanner al final del método main
+    }
 }
