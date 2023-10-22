@@ -188,6 +188,12 @@ public class RentaVehiculos {
 		return empleado.asignarVehiculo(tipodeCarro);
 	}
 	
+	public String lineaString(Vehiculo vehiculo) {
+		return empleado.lineaDeCarro(vehiculo);
+	}
+	public void eliminarLinea(String linea) {
+		archivoInventario.eliminarLinea(linea);
+	}
 	
 	public void agregarArchivo(String placa, String marca, String modelo, String color, String transmision,
 			String capacidad, String tipo, String sede) {

@@ -61,11 +61,7 @@ public class Aplicacion {
 	}
 	
 	
-	
-	private static List<String> prueba() throws FileNotFoundException {
-		File archivo = new File("data/sedes.txt");
-		return rentaVehiculos.mostrarSedes(archivo);
-	}
+
  
 	  
 	        
@@ -193,12 +189,8 @@ public class Aplicacion {
         String seguro = mostrarSeguros();
         int Precio = rentaVehiculos.generarAlquiler(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro);
         Vehiculo carroAsignado = rentaVehiculos.asignarCarro(tipodeCarro);
-        List<Vehiculo> v = rentaVehiculos.getVehiculos();
-        for (int i = 0; i < v.size(); i++) {
-            Vehiculo e = v.get(i);
-            String elemento = e.getTipoCategoria();
-            System.out.println("Elemento " + (i + 1) + ": " + elemento + " " + elemento.equals(tipodeCarro));
-        }
+        String lineaAEliminar = rentaVehiculos.lineaString(carroAsignado);
+        rentaVehiculos.eliminarLinea(lineaAEliminar);
 		return "La marca del carro asignado es " + carroAsignado.getMarca() + ", de color " + carroAsignado.getColor() + ", modelo " + carroAsignado.getModelo() +
 		", con una capacidad de " + carroAsignado.getCapacidadPersonas() + " personas," +" de placa " + carroAsignado.getPlaca() + ". El precio final es: " + Precio;
 	}
@@ -222,7 +214,6 @@ public class Aplicacion {
         System.out.println("Gracias por realizar la reserva con nosotros, a continuacion se muestra el carro que se le asigna y el precio: ");
         int Precio = rentaVehiculos.generarReserva(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro, fechayhoraEntrega);
         Vehiculo carroAsignado = rentaVehiculos.asignarCarro(tipodeCarro);
-        
 		return "La marca del carro asignado es " + carroAsignado.getMarca() + ", de color " + carroAsignado.getColor() + ", modelo " + carroAsignado.getModelo() +
 		", con una capacidad de " + carroAsignado.getCapacidadPersonas() + " personas," +" de placa " + carroAsignado.getPlaca() + ". El precio final es: " + Precio;
 	}

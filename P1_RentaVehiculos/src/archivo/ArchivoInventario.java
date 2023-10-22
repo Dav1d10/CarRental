@@ -1,14 +1,17 @@
 package archivo;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import modelo.Vehiculo;
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Enumeration;
+import java.util.List;
 import java.util.Properties;
 
 public class ArchivoInventario {
@@ -81,9 +84,34 @@ public class ArchivoInventario {
         } catch (IOException e) {
             System.err.println("Error al escribir en el archivo: " + e.getMessage());
         }
-	
 	}
+		public void eliminarLinea(String lineaAEliminar) {
+	        try {
+	            List<String> lineas = new ArrayList<>();
+	            BufferedReader reader = new BufferedReader(new FileReader(nombreArchivo));
+	            String linea;
+	            while ((linea = reader.readLine()) != null) {
+	                if (!linea.equals(lineaAEliminar)) {
+	                    lineas.add(linea);
+	                }
+	            }
+	            reader.close();
+
+
+	            BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo));
+	            for (String lineaExistente : lineas) {
+	                writer.write(lineaExistente + "\n");
+	            }
+	            writer.close();
+	            
+	            System.out.println("La línea se eliminó con éxito.");
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	    }
 		
+}
+
 	
     
 	
@@ -108,4 +136,3 @@ public class ArchivoInventario {
 	
 	
 	
-}
