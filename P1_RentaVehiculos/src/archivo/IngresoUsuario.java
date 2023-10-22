@@ -39,5 +39,13 @@ public class IngresoUsuario {
         }
         return usuariosCargados;
     }
+
+	public Map<String, String> getUsuariosRegistrados() {
+		return usuariosRegistrados;
+	}
+
+	public void setUsuariosRegistrados(Map<String, String> usuariosRegistrados) {
+		this.usuariosRegistrados = usuariosRegistrados;
+	}
 }
 

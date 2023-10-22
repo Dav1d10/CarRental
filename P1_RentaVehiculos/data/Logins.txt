@@ -1,6 +1,6 @@
 GEORGEIPARRA;12345678
-administrador;@dmingr@l123456;A
 Alexis;Fido
 admin;12345
 d.carol;abcdefef
+hola;bb
 GL.MARTINEZ;1234

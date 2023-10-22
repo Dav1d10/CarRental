@@ -33,7 +33,7 @@ public class RegistroUsuario {
 	    }
 	 
 	 private void guardarUsuariosEnArchivo() {
-	        try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivoLogins))) {
+	        try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivoLogins, true))) {
 	        	//writer.newLine();
 	            for (Map.Entry<String, String> entry : usuariosRegistrados.entrySet()) {
 	                writer.write(entry.getKey() + ";" + entry.getValue());
@@ -58,5 +58,15 @@ public class RegistroUsuario {
 	            System.err.println("Error al cargar usuarios desde el archivo: " + e.getMessage());
 	        }
 	    }
+
+
+	public Map<String, String> getUsuariosRegistrados() {
+		return usuariosRegistrados;
+	}
+
+
+	public void setUsuariosRegistrados(Map<String, String> usuariosRegistrados) {
+		this.usuariosRegistrados = usuariosRegistrados;
+	}
 	
 }

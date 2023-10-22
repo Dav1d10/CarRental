@@ -336,9 +336,7 @@ public class Aplicacion {
 				System.out.println("Ingrese su contraseña");
 				String pass = scanner.next();
 				boolean s = ingresoUsuario.autenticarUsuario(user, pass);
-				System.out.print(s);
 				if (s==true){
-					System.out.println("Si entra");
 					if (ingresoUsuario.esAdmin(pass)) {
 						mostrarCatalogoAdmin();
 						opcion = scanner.nextInt();
