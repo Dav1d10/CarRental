@@ -20,6 +20,7 @@ public class RentaVehiculos {
 	private List<Alquiler> alquileres;
 	private AdministradorGeneral admin;
 	private Empleado empleado;
+	private List<Reserva> reservas;
 	
 	
 	
@@ -30,6 +31,7 @@ public class RentaVehiculos {
 		this.categoria = new Categoria();
 		this.admin = null;
 		this.empleado = new Empleado();
+		this.reservas = new ArrayList<>();
 		
 	}
 
@@ -148,6 +150,21 @@ public class RentaVehiculos {
 			admin.setTemporada(temporada);
 		System.out.println(admin.getSeguros());
 		}
+	}
+	
+	
+	public int generarReserva(String tipodeCarro, Sedes sedeEntrega, Persona conductorAdicional, Cliente cliente,
+			Sedes sedeDevolucion, int dias, String seguro, String fechayhoraEntrega) {
+		Reserva reserva = new Reserva(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro, admin, 
+				fechayhoraEntrega);
+		reservas.add(reserva);
+		int precio = reserva.cobroFinal();
+		double cobroInicial = reserva.cobroInicial();
+		System.out.println("Debe pagar " + cobroInicial + " para confirmar la reserva.");
+		for (Reserva info : reservas) {
+			System.out.println(info);
+		}
+		return precio;	
 	}
 	
 	

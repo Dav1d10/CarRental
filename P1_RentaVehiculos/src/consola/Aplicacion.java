@@ -201,6 +201,25 @@ public class Aplicacion {
 	}
 	
 	
+	private static int iniciarReserva() {
+		System.out.println("Iniciando Reserva...");
+		Cliente cliente = nuevoCliente();
+		System.out.println("Ingrese el tipo de carro que desea reservar: ");
+		String tipodeCarro = scanner.next();
+		Sedes sedeEntrega = elegirSedeEntrega();
+		Sedes sedeDevolucion = elegirSedeDevolucion();
+		Persona conductorAdicional = quiereConductorAdicional();
+		System.out.println("Ingrese la cantidad de dias por los que quiere alquilar el vehiculo: ");
+		String diasString = scanner.next();
+        int dias = Integer.parseInt(diasString);
+        String seguro = mostrarSeguros();
+        System.out.println("Ingrese la fecha y la hora a la que va a entregar el vehiculo: ");
+        String fechayhoraEntrega = scanner.next();
+        System.out.println("Gracias por realizar la reserva con nosotros, a continuacion se muestra el registro de su reserva: ");
+		return rentaVehiculos.generarReserva(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro, fechayhoraEntrega);
+	}
+	
+	
 	private static void cargarDatos() throws FileNotFoundException, IOException {
 		File archivoInventario = new File("data/inventario.txt");
 		File archivoSedes = new File("data/sedes.txt");
@@ -303,7 +322,8 @@ public class Aplicacion {
 			System.out.println("El precio del alquiler es de: " + precioF);
 			break;
 		case 3:
-			elegirSedeEntrega();
+			int precioT = iniciarReserva();
+			System.out.println("El precio total de la reserva es de: " + precioT);
 			break;
 		case 0:
 			System.out.println("Gracias por utilizar la aplicacion!");
