@@ -12,7 +12,7 @@ import java.util.Enumeration;
 import java.util.Properties;
 
 public class ArchivoInventario {
-	public ArchivoInventario(String placa, String marca, String modelo, String color, String transmision,
+	public ArchivoInventario(String placa, String marca, String modelo, String color, String transmision) {
 			
 	}
 	private String placa;
