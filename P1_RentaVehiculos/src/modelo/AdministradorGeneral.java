@@ -2,52 +2,85 @@ package modelo;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class AdministradorGeneral extends Persona {
+public class AdministradorGeneral {
 
-	
-	private Map<String, Integer> seguros;
-	private Map<String, Integer> segurosAdicionales;
-	private String temporada;
-	
-	public AdministradorGeneral(String nombre, String telefono, String fechadeNacimiento, String nacionalidad,
-			File documentodeIdentidad) {
-		super(nombre, telefono, fechadeNacimiento, nacionalidad, documentodeIdentidad);
-		this.seguros = new HashMap<>();
-		this.segurosAdicionales = new HashMap<>();
-	}
 
+
+
+
+
+
+
+
+
+
+    private String temporada;
+    private Vehiculo vehiculo;
+    private Sedes sede;
+    private Map<String, Integer> seguros;
+
+
+
+
+    public AdministradorGeneral(String temporada) {
+        this.temporada = temporada;
+        this.seguros = new HashMap<>();
+    }
+
+    public String getTemporada() {
+        return temporada;
+    }
+
+
+    public void setTemporada(String temporada) {
+        this.temporada = temporada;
+    }
+
+
+    public Vehiculo getVehiculo() {
+        return vehiculo;
+    }
+
+
+    public void setVehiculo(Vehiculo vehiculo) {
+        this.vehiculo = vehiculo;
+    }
+
+
+    public Sedes getSede() {
+        return sede;
+    }
+
+
+    public void setSede(Sedes sede) {
+        this.sede = sede;
+    }
 
 	public Map<String, Integer> getSeguros() {
 		return seguros;
 	}
 
-
 	public void setSeguros(Map<String, Integer> seguros) {
 		this.seguros = seguros;
 	}
-
-
-	public Map<String, Integer> getSegurosAdicionales() {
-		return segurosAdicionales;
+	
+	public void agregarElementoASeguros(String nombreSeguro, int precioSeguro) {
+	seguros.put(nombreSeguro, precioSeguro);
 	}
-
-
-	public void setSegurosAdicionales(Map<String, Integer> segurosAdicionales) {
-		this.segurosAdicionales = segurosAdicionales;
-	}
-
-
-	public String getTemporada() {
-		return temporada;
-	}
-
-
-	public void setTemporada(String temporada) {
-		this.temporada = temporada;
+	public void resetearMapa() {
+	seguros.clear();
 	}
 	
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
-

@@ -1,5 +1,6 @@
 package modelo;
 import java.util.regex.Pattern;
+import java.util.Map;
 import java.util.regex.Matcher;
 public class Alquiler {
 	
@@ -19,7 +20,7 @@ public class Alquiler {
 	
 	
 	public Alquiler(String tipodeCarro, Sedes sedeEntrega, Cliente conductorAdicional, Cliente cliente,
-			Sedes sedeDevolucion, int dias, String seguro) {
+			Sedes sedeDevolucion, int dias, String seguro, AdministradorGeneral admin) {
 		super();
 		this.tipodeCarro = tipodeCarro;
 		this.sedeEntrega = sedeEntrega;
@@ -28,6 +29,7 @@ public class Alquiler {
 		this.sedeDevolucion = sedeDevolucion;
 		this.dias = dias;
 		this.seguro = seguro;
+		this.admin = admin;
 	}
 	
 	
@@ -77,25 +79,13 @@ public class Alquiler {
 
 	
 	private int cobroSeguros() {
-		int total = 0;
-		if (seguro.contains("1")) {
-			total += 75;
-		}
-		else if (seguro.contains("2")) {
-			total += 150;
-		}
-		else if (seguro.contains("3")) {
-			total += 200;
-		}
-		else if (seguro.contains("4")) {
-			total += 300;
-		}
-		else if (seguro.contains("5")) {
-			total += 500;
-		}
-		return total;
+		Map<String, Integer> mapa = admin.getSeguros();
+		int precioF = 0;
+		for (Integer valor : mapa.values()) {
+            precioF += valor;
+	}	
+	return precioF;
 	}
-	
 	
 	private int cobroConductorAdicional() {
 		int precioF = 0;

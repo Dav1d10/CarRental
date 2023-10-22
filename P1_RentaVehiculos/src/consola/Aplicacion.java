@@ -152,12 +152,13 @@ public class Aplicacion {
 	
 
 	private static String mostrarSeguros() {
-		System.out.println("Estos son los seguros disponibles: ");
-        System.out.println("1. Responsabilidad Civil Suplementaria (SLI o LIS)");
-        System.out.println("2. Proteccion de Responsabilidad del Arrendatario (TP/PLI)");
-        System.out.println("3. Colision/Danos (CDW o LDW)");
-        System.out.println("4. Cobertura de Perdida por Danos (LDW/CDW con Franquicia)");
-        System.out.println("5. Seguro Personal de Accidentes (PAI/PEC)");
+		Map<String, Integer> mapa = rentaVehiculos.getSeguros();
+		int numero = 1;
+		for (Map.Entry<String, Integer> entrada : mapa.entrySet()) {
+            String clave = entrada.getKey();
+            Integer valor = entrada.getValue();
+            System.out.println(numero +" " + clave + " El precio es: " + valor);
+		}
         System.out.println("Ingrese la(s) opcion(es) de seguro(s) que desea: ");
         String seguro = scanner.next();
         return seguro;
@@ -176,6 +177,7 @@ public class Aplicacion {
 		String diasString = scanner.next();
         int dias = Integer.parseInt(diasString);
         String seguro = mostrarSeguros();
+        System.out.println("Gracias por realizar el alquiler con nosotros, a continuacion se muestra el registro de su alquiler: ");
 		rentaVehiculos.generarAlquiler(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro);
 	}
 	
@@ -186,8 +188,44 @@ public class Aplicacion {
 		rentaVehiculos.cargarInformacionInventario(archivoInventario, archivoSedes);
 	}
 	
-
+	private static void manejarSeguros() {
+		System.out.println("Ingrese el numero de los seguros que va a agregar: ");
+		String numeroIteraciones = scanner.next();
+		short numIteraciones = Short.parseShort(numeroIteraciones);
+		for (int i = 1; i <= numIteraciones; i++) {
+			System.out.println("Ingrese el nombre del Seguro");
+			String nombreSeguro = scanner.next();
+			System.out.println("Ingrese el valor de Seguro");
+			String valorSeguroS = scanner.next();
+			int valorSeguro = Integer.parseInt(valorSeguroS);
+		    rentaVehiculos.cambiarPropiedadesCarro(nombreSeguro, valorSeguro, null);
+		}
+	}
+	private static void resetearSeguros() {
+		rentaVehiculos.resetearMapa();
+	}
 	
+	private static void manejarTemporada() {
+		System.out.println("Ingrese la temporada nueva");
+		System.out.println("1. Alta");
+		System.out.println("2. Media");
+		System.out.println("3. Baja");
+		String valor = scanner.next();
+		short valorT = Short.parseShort(valor);
+		if (valorT == 1) {
+			rentaVehiculos.cambiarPropiedadesCarro(null, 0, "ALTA");
+		
+		}
+		else if (valorT == 2) {
+			rentaVehiculos.cambiarPropiedadesCarro(null, 0, "MEDIA");
+		}
+		else if (valorT == 3) {
+			rentaVehiculos.cambiarPropiedadesCarro(null, 0, "BAJA");
+		}
+		else {
+			System.out.println("Opcion no valida!");
+		}
+	}
 	private static void mostrarCatalogo() {
 		System.out.println("------Opciones de la aplicacion------");
 		System.out.println("1. Cargar el catalogo");
@@ -196,6 +234,40 @@ public class Aplicacion {
 		System.out.println("4. Mostrar informacion de las sedes de la empresa");
 		System.out.println("0. Salir ");
 		System.out.println("Seleccione una opcion: ");
+	}
+	
+	
+	
+	private static void mostrarCatalogoAdmin() {
+		System.out.println("------Opciones de administrador------");
+		System.out.println("1. Manejar Seguros");
+		System.out.println("2. Elegir temporada");
+		System.out.println("3. Cambiar ambos");
+		System.out.println("0. Salir");
+		System.out.println("Seleccione una opcion: ");
+	}
+	
+	
+	
+	private static void ejecutarOpcionAdmin(int opcion) throws FileNotFoundException {
+		switch (opcion) {
+		case 1:
+			resetearSeguros();
+			manejarSeguros();
+			break;
+		case 2:
+			manejarTemporada();
+			break;
+		case 3:
+			manejarSeguros();
+			manejarTemporada();
+		case 0:
+			System.out.println("Los cambios fueron realizados.");
+			break;
+		default:
+			System.out.println("Opcion invalida, intentelo de nuevo.");
+			break;
+		}
 	}
 	
 	
@@ -222,18 +294,28 @@ public class Aplicacion {
 	
 
 	
-	
 	public static void main(String[] args) throws FileNotFoundException {
 		try {
 			cargarDatos();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		int opcion;
+		int opcion = 1;
 		do {
-			mostrarCatalogo();
-			opcion = scanner.nextInt();
-			ejecutarOpcion(opcion);
+			System.out.println("Es usted cliente o administrador: ");
+			String persona = scanner.next();
+			if (persona.equals("cliente")) {
+				mostrarCatalogo();
+				opcion = scanner.nextInt();
+				ejecutarOpcion(opcion);
+			} else if (persona.equals("administrador")){
+				mostrarCatalogoAdmin();
+				opcion = scanner.nextInt();
+				ejecutarOpcionAdmin(opcion);
+			}
+			else {
+				System.out.println("Opcion no valida");
+			}
 		} while (opcion != 0);
 	}
 

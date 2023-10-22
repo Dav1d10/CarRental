@@ -18,6 +18,7 @@ public class RentaVehiculos {
 	private List<Sedes> Sedes;
 	private Categoria categoria;
 	private List<Alquiler> alquileres;
+	private AdministradorGeneral admin;
 	
 	
 	
@@ -26,9 +27,15 @@ public class RentaVehiculos {
 		this.Sedes = new ArrayList<>();
 		this.alquileres = new ArrayList<>();
 		this.categoria = new Categoria();
+		this.admin = null;
 		
 	}
 
+	public AdministradorGeneral setAdministradorGeneral(String temporada) {
+		AdministradorGeneral administrador = new AdministradorGeneral(temporada);
+        return this.admin = administrador;
+        
+	}
 	
 	public List<Vehiculo> getVehiculos() {
 		return this.Vehiculos;
@@ -113,20 +120,58 @@ public class RentaVehiculos {
 		cargarSedes(archivoSedes);
 		cargarCategoria();
 		List<Vehiculo> SUV = categoria.getSUV();
-		Vehiculo v = SUV.get(0);
-		System.out.println(v.getModelo());
-		System.out.println(v.getMarca());
 		}
 	
 	
 	public void generarAlquiler(String tipodeCarro, Sedes sedeEntrega, Cliente conductorAdicional, Cliente cliente,
 			Sedes sedeDevolucion, int dias, String seguro) {
-			Alquiler alquiler = new Alquiler(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro );
+			Alquiler alquiler = new Alquiler(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro, admin);
 			alquileres.add(alquiler);
 			for (Alquiler info : alquileres) {
 				System.out.println(info);
 			}
-	}		
+		}
 	
-
+	public void cambiarPropiedadesCarro(String nombreSeguro, int precioSeguro, String temporada) {
+		if (temporada == null) {
+		admin.agregarElementoASeguros(nombreSeguro, precioSeguro);
+		}
+		if (nombreSeguro == null) {
+			admin.setTemporada(temporada);
+		}
+		else {
+			admin.agregarElementoASeguros(nombreSeguro, precioSeguro);
+			admin.setTemporada(temporada);
+		System.out.println(admin.getSeguros());
+		}
+	}
+	
+	
+	public Map<String, Integer> getSeguros() {
+		return admin.getSeguros();
+		}
+	
+	
+	
+	
+	
+	
+	public void resetearMapa() {
+		admin.resetearMapa();
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
