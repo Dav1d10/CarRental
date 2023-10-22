@@ -368,8 +368,8 @@ public class Aplicacion {
 			cargarCatalogo();
 			break;
 		case 2:
-			String precioF = iniciarAlquiler();
-			System.out.println("El precio del alquiler es de: " + precioF);
+			String msjF = iniciarAlquiler();
+			System.out.println(msjF);
 			break;
 		case 3:
 			String precioT = iniciarReserva();
