@@ -10,7 +10,7 @@ public class Alquiler {
 	private String tipodeCarro;
 	private Sedes sedeEntrega;
 	private Cliente cliente;
-	private Cliente conductorAdicional;
+	private Persona conductorAdicional;
 	private Categoria categoria;
 	private Sedes sedeDevolucion;
 	private int dias;
@@ -19,7 +19,7 @@ public class Alquiler {
 	
 	
 	
-	public Alquiler(String tipodeCarro, Sedes sedeEntrega, Cliente conductorAdicional, Cliente cliente,
+	public Alquiler(String tipodeCarro, Sedes sedeEntrega, Persona conductorAdicional, Cliente cliente,
 			Sedes sedeDevolucion, int dias, String seguro, AdministradorGeneral admin) {
 		super();
 		this.tipodeCarro = tipodeCarro;
@@ -67,7 +67,7 @@ public class Alquiler {
 	}
 
 
-	public Cliente getConductorAdicional() {
+	public Persona getConductorAdicional() {
 		return conductorAdicional;
 	}
 

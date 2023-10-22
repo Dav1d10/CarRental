@@ -14,6 +14,16 @@ public class DatosTarjetaCredito {
 		this.cvv = cvv;
 		this.banco = banco;
 	}
+	
+	
+	public String toString() {
+		return "DatosTarjetaCredito[" +
+		           "numeroTarjeta='" + numeroTarjeta + '\'' +
+		           ", fechaVencimiento=" + fechaVencimiento +
+		           ", cvv=" + cvv +
+		           ", banco=" + banco +
+		           "]";
+		}
 
 
 	public String getNumeroTarjeta() {

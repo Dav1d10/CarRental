@@ -9,16 +9,30 @@ public class Persona {
 	protected String fechadeNacimiento;
 	protected String nacionalidad;
 	protected File documentodeIdentidad;
+	protected DatosLicencia datosLicencia;
 	
 	
 	public Persona(String nombre, String telefono, String fechadeNacimiento, String nacionalidad,
-			File documentodeIdentidad) {
+			File documentodeIdentidad, DatosLicencia datosLicencia) {
 		this.nombre = nombre;
 		this.telefono = telefono;
 		this.fechadeNacimiento = fechadeNacimiento;
 		this.nacionalidad = nacionalidad;
 		this.documentodeIdentidad = documentodeIdentidad;
+		this.datosLicencia = datosLicencia;
 	}
+	
+	
+	public String toString() {
+		return "Persona[" +
+		           "nombre='" + nombre + '\'' +
+		           ", telefono=" + telefono +
+		           ", fechadeNacimiento=" + fechadeNacimiento +
+		           ", nacionalidad=" + nacionalidad +
+		           ", documentodeIdentidad=" + documentodeIdentidad +
+		           ", datosLicencia=" + datosLicencia + 
+		           "]";
+		}
 	
 
 	public String getNombre() {

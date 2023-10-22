@@ -11,6 +11,8 @@ import modelo.AdministradorGeneral;
 import modelo.Categoria;
 import modelo.Cliente;
 import modelo.DatosLicencia;
+import modelo.DatosTarjetaCredito;
+import modelo.Persona;
 import modelo.RentaVehiculos;
 import modelo.Sedes;
 import modelo.Vehiculo;
@@ -96,7 +98,7 @@ public class Aplicacion {
 	}
 	
 	
-	private static Cliente quiereConductorAdicional() {
+	private static Persona quiereConductorAdicional() {
 		System.out.println("Tiene un conductor adicional? ");
 		String tieneConductorAdicional = scanner.next();
 		if (tieneConductorAdicional.equals("Si")) {
@@ -120,7 +122,7 @@ public class Aplicacion {
 			File licenciaConductor = new File(licenciadeConductor);
 			System.out.println("Ingrese la fecha de vencimiento de la licencia del conductor: ");
 			String fechadeVencimientoLicenciaConductor = scanner.next();
-			return new Cliente(nombreConductor, telefonoConductor, fechadeNacimientoConductor, nacionalidadConductor, 
+			return new Persona(nombreConductor, telefonoConductor, fechadeNacimientoConductor, nacionalidadConductor, 
 					documentoIdentidadConductor, new DatosLicencia(numeroLicenciaConductor, paisExpConductor, licenciaConductor, 
 							fechadeVencimientoLicenciaConductor));
 		} else {
@@ -150,8 +152,17 @@ public class Aplicacion {
 		File licenciaCliente = new File(licencia);
 		System.out.println("Ingrese la fecha de vencimiento de la licencia: ");
 		String fechadeVencimientoLicencia = scanner.next();
+		System.out.println("Ingrese el numero de su tarjeta de credito: ");
+		String numeroTarjeta = scanner.next();
+		System.out.println("Ingrese la fecha de vencimiento de su tarjeta de credito: ");
+		String fechaVencimiento = scanner.next();
+		System.out.println("Ingrese su cvv: ");
+		String cvv = scanner.next();
+		System.out.println("Ingrese su banco: ");
+		String banco = scanner.next();
 		return new Cliente(nombre, telefono, fechadeNacimiento, nacionalidad, documentoIdentidad, 
-				new DatosLicencia(numeroLicencia, paisExp, licenciaCliente, fechadeVencimientoLicencia));
+				new DatosLicencia(numeroLicencia, paisExp, licenciaCliente, fechadeVencimientoLicencia), new DatosTarjetaCredito(numeroTarjeta, 
+						fechaVencimiento, cvv, banco));
 	}
 	
 	
@@ -177,7 +188,7 @@ public class Aplicacion {
 		String tipodeCarro = scanner.next();
 		Sedes sedeEntrega = elegirSedeEntrega();
 		Sedes sedeDevolucion = elegirSedeDevolucion();
-		Cliente conductorAdicional = quiereConductorAdicional();
+		Persona conductorAdicional = quiereConductorAdicional();
 		System.out.println("Ingrese la cantidad de dias por los que quiere alquilar el vehiculo: ");
 		String diasString = scanner.next();
         int dias = Integer.parseInt(diasString);

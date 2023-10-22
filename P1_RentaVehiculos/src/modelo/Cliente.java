@@ -4,13 +4,13 @@ import java.io.File;
 
 public class Cliente extends Persona {
 	
-	private DatosLicencia datosLicencia;
+	private DatosTarjetaCredito tarjetaCredito;
 	
-
+	
 	public Cliente(String nombre, String telefono, String fechadeNacimiento, String nacionalidad,
-			File documentodeIdentidad, DatosLicencia datosLicencia) {
-		super(nombre, telefono, fechadeNacimiento, nacionalidad, documentodeIdentidad);
-		this.datosLicencia = datosLicencia;
+			File documentodeIdentidad, DatosLicencia datosLicencia, DatosTarjetaCredito tarjetaCredito) {
+		super(nombre, telefono, fechadeNacimiento, nacionalidad, documentodeIdentidad, datosLicencia);
+		this.tarjetaCredito = tarjetaCredito;
 	}
 	
 	
@@ -22,6 +22,7 @@ public class Cliente extends Persona {
 		           ", nacionalidad=" + nacionalidad +
 		           ", documentodeIdentidad=" + documentodeIdentidad +
 		           ", datosLicencia=" + datosLicencia + 
+		           ", datosTarjetaCredito=" + tarjetaCredito +
 		           "]";
 		}
 }

@@ -2,18 +2,20 @@ package modelo;
 
 public class ReservaEspecial extends Reserva {
 	
-	
+
 	private Sedes sedeOrigen;
 	
 	
-	public ReservaEspecial(String tipodeCarro, Sedes sedeDevolucion, Cliente conductorAdicional, int cobroInicial,
-			String fechayhoraEntrega, Sedes sedeEntrega, Sedes sedeOrigen) {
-		super(tipodeCarro, sedeDevolucion, conductorAdicional, cobroInicial, fechayhoraEntrega, sedeEntrega);
-		this.sedeOrigen = null;
-		
+	public ReservaEspecial(String tipodeCarro, Sedes sedeEntrega, Cliente conductorAdicional, Cliente cliente,
+			Sedes sedeDevolucion, int dias, String seguro, AdministradorGeneral admin, int cobroInicial,
+			String fechayhoraEntrega, Sedes sedeOrigen) {
+		super(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro, admin, cobroInicial,
+				fechayhoraEntrega);
+		this.sedeOrigen = sedeOrigen;
 	}
-
-
+	
+	
+	
 	public Sedes getSedeOrigen() {
 		return sedeOrigen;
 	}

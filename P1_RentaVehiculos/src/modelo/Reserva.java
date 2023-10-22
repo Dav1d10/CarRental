@@ -3,25 +3,18 @@ package modelo;
 public class Reserva extends Alquiler {
 	
 
-	private static AdministradorGeneral admin;
 	private int cobroInicial;
 	private String fechayhoraEntrega;
-	private Sedes sedeEntrega;
 	
 	
-	
-	public Reserva(String tipodeCarro, Sedes sedeEntrega, Cliente conductorAdicional, AdministradorGeneral admin,
-			Categoria categoria) {
-		super(tipodeCarro, sedeEntrega, conductorAdicional, admin, categoria);
-		// TODO Auto-generated constructor stub
-	
+	public Reserva(String tipodeCarro, Sedes sedeEntrega, Cliente conductorAdicional, Cliente cliente,
+			Sedes sedeDevolucion, int dias, String seguro, AdministradorGeneral admin, int cobroInicial, String fechayhoraEntrega) {
+		super(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro, admin);
 		this.cobroInicial = cobroInicial;
 		this.fechayhoraEntrega = fechayhoraEntrega;
-		this.sedeEntrega = null;
-	}   
-
-
-
+		
+	}
+	
 
 	public int getCobroInicial() {
 		return cobroInicial;
@@ -43,16 +36,5 @@ public class Reserva extends Alquiler {
 	}
 
 
-	public Sedes getSedeEntrega() {
-		return sedeEntrega;
-	}
-
-
-	public void setSedeEntrega(Sedes sedeEntrega) {
-		this.sedeEntrega = sedeEntrega;
-	}
-	
-	
-	
 
 }
