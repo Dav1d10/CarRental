@@ -1,6 +1,2 @@
-GEORGEIPARRA;12345678
-Alexis;Fido
-admin;12345
-d.carol;abcdefef
-hola;bb
-GL.MARTINEZ;1234
+administrador;admin12345:A
+d.abril;12345

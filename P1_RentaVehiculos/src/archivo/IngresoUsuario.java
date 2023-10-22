@@ -20,7 +20,7 @@ public class IngresoUsuario {
         return contrasenaAlmacenada != null && contrasenaAlmacenada.equals(contrasena);
     }
     public boolean esAdmin(String pass) {
-        return pass.endsWith(";A");
+        return pass.endsWith(":A");
     }
     
     

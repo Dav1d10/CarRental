@@ -33,7 +33,7 @@ public class RegistroUsuario {
 	    }
 	 
 	 private void guardarUsuariosEnArchivo() {
-	        try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivoLogins, true))) {
+	        try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivoLogins))) {
 	        	//writer.newLine();
 	            for (Map.Entry<String, String> entry : usuariosRegistrados.entrySet()) {
 	                writer.write(entry.getKey() + ";" + entry.getValue());
