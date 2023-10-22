@@ -19,6 +19,7 @@ public class RentaVehiculos {
 	private Categoria categoria;
 	private List<Alquiler> alquileres;
 	private AdministradorGeneral admin;
+	private Empleado empleado;
 	
 	
 	
@@ -28,6 +29,7 @@ public class RentaVehiculos {
 		this.alquileres = new ArrayList<>();
 		this.categoria = new Categoria();
 		this.admin = null;
+		this.empleado = new Empleado();
 		
 	}
 
@@ -123,13 +125,15 @@ public class RentaVehiculos {
 		}
 	
 	
-	public void generarAlquiler(String tipodeCarro, Sedes sedeEntrega, Cliente conductorAdicional, Cliente cliente,
+	public int generarAlquiler(String tipodeCarro, Sedes sedeEntrega, Cliente conductorAdicional, Cliente cliente,
 			Sedes sedeDevolucion, int dias, String seguro) {
 			Alquiler alquiler = new Alquiler(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro, admin);
 			alquileres.add(alquiler);
+			int precio = alquiler.cobroFinal();
 			for (Alquiler info : alquileres) {
 				System.out.println(info);
 			}
+			return precio;
 		}
 	
 	public void cambiarPropiedadesCarro(String nombreSeguro, int precioSeguro, String temporada) {

@@ -30,6 +30,7 @@ public class Alquiler {
 		this.dias = dias;
 		this.seguro = seguro;
 		this.admin = admin;
+		this.categoria = new Categoria();
 	}
 	
 	
@@ -134,9 +135,7 @@ public class Alquiler {
 		
 		return precioF;
 	}
-	public Vehiculo vehiculoAlquilar(String tipoDeCarro, Categoria categoria) {
-		return categoria.vehiculoAlquilar(tipoDeCarro, categoria);
-	}
+
 	
 	
 	private int cobroPorDias() {

@@ -83,7 +83,7 @@ public class Categoria {
     }
 
 
-	public Vehiculo vehiculoAlquilar(String tipoDeCarro, Categoria categoria) {
+	public Vehiculo vehiculoAlquilar(String tipoDeCarro) {
 		int indiceAEliminar = 0;
 		Vehiculo vehiculo = null;
 		if (tipoDeCarro.equals("PEQUEÑO")) {

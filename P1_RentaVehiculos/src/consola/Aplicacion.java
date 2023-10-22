@@ -13,6 +13,10 @@ import modelo.Cliente;
 import modelo.DatosLicencia;
 import modelo.RentaVehiculos;
 import modelo.Sedes;
+import modelo.Vehiculo;
+import archivo.IngresoUsuario;
+import archivo.RegistroUsuario;
+
 import java.io.Console;
 
 public class Aplicacion {
@@ -26,6 +30,7 @@ public class Aplicacion {
 		System.out.println("Cargando el catalogo...");
 		File archivoCatalogo = new File("data/Catalogo.txt");
 		rentaVehiculos.cargarCatalogo(archivoCatalogo);
+		rentaVehiculos.setAdministradorGeneral("BAJA");
 	}
 	
 	
@@ -165,7 +170,7 @@ public class Aplicacion {
     }
 	
 	
-	private static void iniciarAlquiler() {
+	private static int iniciarAlquiler() {
 		System.out.println("Iniciando Alquiler...");
 		Cliente cliente = nuevoCliente();
 		System.out.println("Ingrese el tipo de carro que desea alquilar: ");
@@ -178,7 +183,7 @@ public class Aplicacion {
         int dias = Integer.parseInt(diasString);
         String seguro = mostrarSeguros();
         System.out.println("Gracias por realizar el alquiler con nosotros, a continuacion se muestra el registro de su alquiler: ");
-		rentaVehiculos.generarAlquiler(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro);
+		return rentaVehiculos.generarAlquiler(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro);
 	}
 	
 	
@@ -186,6 +191,7 @@ public class Aplicacion {
 		File archivoInventario = new File("data/inventario.txt");
 		File archivoSedes = new File("data/sedes.txt");
 		rentaVehiculos.cargarInformacionInventario(archivoInventario, archivoSedes);
+		rentaVehiculos.setAdministradorGeneral("BAJA");
 	}
 	
 	private static void manejarSeguros() {
@@ -278,7 +284,8 @@ public class Aplicacion {
 			cargarCatalogo();
 			break;
 		case 2:
-			iniciarAlquiler();
+			int precioF = iniciarAlquiler();
+			System.out.println("El precio del alquiler es de: " + precioF);
 			break;
 		case 3:
 			elegirSedeEntrega();
@@ -302,16 +309,24 @@ public class Aplicacion {
 		}
 		int opcion = 1;
 		do {
-			System.out.println("Es usted cliente o administrador: ");
-			String persona = scanner.next();
-			if (persona.equals("cliente")) {
-				mostrarCatalogo();
-				opcion = scanner.nextInt();
-				ejecutarOpcion(opcion);
-			} else if (persona.equals("administrador")){
-				mostrarCatalogoAdmin();
-				opcion = scanner.nextInt();
-				ejecutarOpcionAdmin(opcion);
+			System.out.println("Ya es usuario de DGA Rental? ");
+			System.out.println("1. Si \n 2. No");
+			String r = scanner.next();
+			
+			if (r.equals("1")) {
+				System.out.println("-------------Ingreso De Usuarios-------------");
+				System.out.println("Ingrese su usuario ");
+				String user = scanner.next();
+				System.out.println("Ingrese su contraseña");
+				String pass = scanner.next();
+				IngresoUsuario.autenticarUsuario(user, pass);
+			} else if (r.equals("2")){
+				System.out.println("-------------Registro De Usuarios-------------");
+				System.out.println("Ingrese el usuario: ");
+				String user = scanner.next();
+				System.out.println("Ingrese su contraseña");
+				String pass = scanner.next();
+				RegistroUsuario.registrarUsuario(user, pass);
 			}
 			else {
 				System.out.println("Opcion no valida");
