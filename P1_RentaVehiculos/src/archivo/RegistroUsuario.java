@@ -11,8 +11,8 @@ import java.util.Map;
 public class RegistroUsuario {
 
 	
-	private static Map<String, String> usuariosRegistrados;
-	private static String archivoLogins = "data/logins.txt";
+	private Map<String, String> usuariosRegistrados;
+	private String archivoLogins = "data/logins.txt";
 	
 	 public RegistroUsuario() {
 		    usuariosRegistrados = new HashMap<>();
@@ -20,7 +20,7 @@ public class RegistroUsuario {
 	    }
 	
 	 
-	 public static boolean registrarUsuario(String nombreUsuario, String contrasena) {
+	 public boolean registrarUsuario(String nombreUsuario, String contrasena) {
 	        if (usuariosRegistrados.containsKey(nombreUsuario)) {
 	            System.out.println("El nombre de usuario ya está registrado.");
 	            return false;
@@ -32,8 +32,9 @@ public class RegistroUsuario {
 	        }
 	    }
 	 
-	 private static void guardarUsuariosEnArchivo() {
+	 private void guardarUsuariosEnArchivo() {
 	        try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivoLogins))) {
+	        	//writer.newLine();
 	            for (Map.Entry<String, String> entry : usuariosRegistrados.entrySet()) {
 	                writer.write(entry.getKey() + ";" + entry.getValue());
 	                writer.newLine();

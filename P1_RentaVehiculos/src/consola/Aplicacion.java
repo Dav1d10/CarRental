@@ -18,13 +18,16 @@ import modelo.Sedes;
 import modelo.Vehiculo;
 import archivo.IngresoUsuario;
 import archivo.RegistroUsuario;
+import archivo.IngresoUsuario;
 
 import java.io.Console;
 
 public class Aplicacion {
 	
 	private static Scanner scanner = new Scanner(System.in);
+	private static RegistroUsuario registroUsuario = new RegistroUsuario();
 	private static RentaVehiculos rentaVehiculos = new RentaVehiculos();
+	private static IngresoUsuario ingresoUsuario = new IngresoUsuario();
 	
 	
 	
@@ -202,7 +205,7 @@ public class Aplicacion {
 		File archivoInventario = new File("data/inventario.txt");
 		File archivoSedes = new File("data/sedes.txt");
 		rentaVehiculos.cargarInformacionInventario(archivoInventario, archivoSedes);
-		rentaVehiculos.setAdministradorGeneral("BAJA");
+		rentaVehiculos.setAdministradorGeneral("BAJA");;
 	}
 	
 	private static void manejarSeguros() {
@@ -271,6 +274,7 @@ public class Aplicacion {
 		case 1:
 			resetearSeguros();
 			manejarSeguros();
+			
 			break;
 		case 2:
 			manejarTemporada();
@@ -315,6 +319,7 @@ public class Aplicacion {
 	public static void main(String[] args) throws FileNotFoundException {
 		try {
 			cargarDatos();
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -330,9 +335,11 @@ public class Aplicacion {
 				String user = scanner.next();
 				System.out.println("Ingrese su contraseña");
 				String pass = scanner.next();
-				boolean s = IngresoUsuario.autenticarUsuario(user, pass);
+				boolean s = ingresoUsuario.autenticarUsuario(user, pass);
+				System.out.print(s);
 				if (s==true){
-					if (pass.endsWith(";ADMINISTRADORGENERALLLLLL1233321233123321")) {
+					System.out.println("Si entra");
+					if (ingresoUsuario.esAdmin(pass)) {
 						mostrarCatalogoAdmin();
 						opcion = scanner.nextInt();
 						ejecutarOpcionAdmin(opcion);
@@ -349,7 +356,7 @@ public class Aplicacion {
 				String user = scanner.next();
 				System.out.println("Ingrese su contraseña");
 				String pass = scanner.next();
-				RegistroUsuario.registrarUsuario(user, pass);
+				registroUsuario.registrarUsuario(user, pass);
 			}
 			else {
 				System.out.println("Opcion no valida");
