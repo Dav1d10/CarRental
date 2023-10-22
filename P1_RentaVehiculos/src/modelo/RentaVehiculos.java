@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+import archivo.ArchivoInventario;
+
 public class RentaVehiculos {
 	
 	
@@ -21,6 +23,7 @@ public class RentaVehiculos {
 	private AdministradorGeneral admin;
 	private Empleado empleado;
 	private List<Reserva> reservas;
+	private static ArchivoInventario archivoInventario;
 	
 	
 	
@@ -173,9 +176,14 @@ public class RentaVehiculos {
 		}
 	
 	
+	public Vehiculo asignarCarro(String tipodeCarro) {
+		return empleado.asignarVehiculo(tipodeCarro);
+	}
 	
-	
-	
+	public void agregarArchivo(String placa, String marca, String modelo, String color, String transmision,
+			String capacidad, String tipo, String sede) {
+		archivoInventario.agregarArchivo(placa, marca, modelo, color, transmision, capacidad, tipo, sede);
+	}
 	
 	public void resetearMapa() {
 		admin.resetearMapa();

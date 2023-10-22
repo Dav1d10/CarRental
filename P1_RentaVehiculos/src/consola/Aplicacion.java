@@ -44,7 +44,7 @@ public class Aplicacion {
 	    try {
 	        List<String> sedesInfo = rentaVehiculos.mostrarSedes(archivoSedes);
 	        System.out.print("Ingrese el nombre de la sede en la que desea recoger el vehiculo: ");
-	        String nombreSedeBuscada = scanner.next();
+	        String nombreSedeBuscada = scanner.nextLine();
 	        for (String info : sedesInfo) {
 	            String[] partes = info.split(" - ");
 	            if (partes.length == 3) {
@@ -79,7 +79,7 @@ public class Aplicacion {
 	    try {
 	        List<String> sedesInfo = rentaVehiculos.mostrarSedes(archivoSedes);
 	        System.out.print("Ingrese el nombre de la sede en la que desea devolver el vehiculo: ");
-	        String nombreSedeBuscada = scanner.next();
+	        String nombreSedeBuscada = scanner.nextLine();
 	        for (String info : sedesInfo) {
 	            String[] partes = info.split(" - ");
 	            if (partes.length == 3) {
@@ -103,28 +103,28 @@ public class Aplicacion {
 	
 	private static Persona quiereConductorAdicional() {
 		System.out.println("Tiene un conductor adicional? ");
-		String tieneConductorAdicional = scanner.next();
+		String tieneConductorAdicional = scanner.nextLine();
 		if (tieneConductorAdicional.equals("Si")) {
 			System.out.println("Ingrese el nombre del conductor: ");
-			String nombreConductor = scanner.next();
+			String nombreConductor = scanner.nextLine();
 			System.out.println("Ingrese el telefono del conductor: ");
-			String telefonoConductor = scanner.next();
+			String telefonoConductor = scanner.nextLine();
 			System.out.println("Ingrese la fecha de nacimiento del conductor: ");
-			String fechadeNacimientoConductor = scanner.next();
+			String fechadeNacimientoConductor = scanner.nextLine();
 			System.out.println("Ingrese la nacionalidad del conductor: ");
-			String nacionalidadConductor = scanner.next();
+			String nacionalidadConductor = scanner.nextLine();
 			System.out.println("Ingrese la direccion del documento de identidad del conductor: ");
-			String documentodeIdentidadConductor = scanner.next();
+			String documentodeIdentidadConductor = scanner.nextLine();
 			File documentoIdentidadConductor = new File(documentodeIdentidadConductor);
 			System.out.println("Ingrese el numero de licencia del conductor: ");
-			String numeroLicenciaConductor = scanner.next();
+			String numeroLicenciaConductor = scanner.nextLine();
 			System.out.println("Ingrese el pais de expedicion de la licencia del conductor: ");
-			String paisExpConductor = scanner.next();
+			String paisExpConductor = scanner.nextLine();
 			System.out.println("Ingrese la direccion de la licencia del conductor: ");
-			String licenciadeConductor = scanner.next();
+			String licenciadeConductor = scanner.nextLine();
 			File licenciaConductor = new File(licenciadeConductor);
 			System.out.println("Ingrese la fecha de vencimiento de la licencia del conductor: ");
-			String fechadeVencimientoLicenciaConductor = scanner.next();
+			String fechadeVencimientoLicenciaConductor = scanner.nextLine();
 			return new Persona(nombreConductor, telefonoConductor, fechadeNacimientoConductor, nacionalidadConductor, 
 					documentoIdentidadConductor, new DatosLicencia(numeroLicenciaConductor, paisExpConductor, licenciaConductor, 
 							fechadeVencimientoLicenciaConductor));
@@ -136,33 +136,33 @@ public class Aplicacion {
 	
 	private static Cliente nuevoCliente() {
 		System.out.println("Ingrese su nombre: ");
-		String nombre = scanner.next();
+		String nombre = scanner.nextLine();
 		System.out.println("Ingrese su telefono: ");
-		String telefono = scanner.next();
+		String telefono = scanner.nextLine();
 		System.out.println("Ingrese su fecha de nacimiento: ");
-		String fechadeNacimiento = scanner.next();
+		String fechadeNacimiento = scanner.nextLine();
 		System.out.println("Ingrese su nacionalidad: ");
-		String nacionalidad = scanner.next();
+		String nacionalidad = scanner.nextLine();
 		System.out.println("Ingrese la direccion de su documento de identidad: ");
-		String documentodeIdentidad = scanner.next();
+		String documentodeIdentidad = scanner.nextLine();
 		File documentoIdentidad = new File(documentodeIdentidad);
 		System.out.println("Ingrese el numero de su licencia: ");
-		String numeroLicencia = scanner.next();
+		String numeroLicencia = scanner.nextLine();
 		System.out.println("Ingrese el pais de expedicion de la licencia: ");
-		String paisExp = scanner.next();
+		String paisExp = scanner.nextLine();
 		System.out.println("Ingrese la direccion de la licencia: ");
-		String licencia = scanner.next();
+		String licencia = scanner.nextLine();
 		File licenciaCliente = new File(licencia);
 		System.out.println("Ingrese la fecha de vencimiento de la licencia: ");
-		String fechadeVencimientoLicencia = scanner.next();
+		String fechadeVencimientoLicencia = scanner.nextLine();
 		System.out.println("Ingrese el numero de su tarjeta de credito: ");
-		String numeroTarjeta = scanner.next();
+		String numeroTarjeta = scanner.nextLine();
 		System.out.println("Ingrese la fecha de vencimiento de su tarjeta de credito: ");
-		String fechaVencimiento = scanner.next();
+		String fechaVencimiento = scanner.nextLine();
 		System.out.println("Ingrese su cvv: ");
-		String cvv = scanner.next();
+		String cvv = scanner.nextLine();
 		System.out.println("Ingrese su banco: ");
-		String banco = scanner.next();
+		String banco = scanner.nextLine();
 		return new Cliente(nombre, telefono, fechadeNacimiento, nacionalidad, documentoIdentidad, 
 				new DatosLicencia(numeroLicencia, paisExp, licenciaCliente, fechadeVencimientoLicencia), new DatosTarjetaCredito(numeroTarjeta, 
 						fechaVencimiento, cvv, banco));
@@ -179,44 +179,52 @@ public class Aplicacion {
             System.out.println(numero +" " + clave + " El precio es: " + valor);
 		}
         System.out.println("Ingrese la(s) opcion(es) de seguro(s) que desea: ");
-        String seguro = scanner.next();
+        String seguro = scanner.nextLine();
         return seguro;
     }
 	
 	
-	private static int iniciarAlquiler() {
+	private static String iniciarAlquiler() {
 		System.out.println("Iniciando Alquiler...");
 		Cliente cliente = nuevoCliente();
 		System.out.println("Ingrese el tipo de carro que desea alquilar: ");
-		String tipodeCarro = scanner.next();
+		String tipodeCarro = scanner.nextLine();
 		Sedes sedeEntrega = elegirSedeEntrega();
 		Sedes sedeDevolucion = elegirSedeDevolucion();
 		Persona conductorAdicional = quiereConductorAdicional();
 		System.out.println("Ingrese la cantidad de dias por los que quiere alquilar el vehiculo: ");
-		String diasString = scanner.next();
+		String diasString = scanner.nextLine();
         int dias = Integer.parseInt(diasString);
         String seguro = mostrarSeguros();
-        System.out.println("Gracias por realizar el alquiler con nosotros, a continuacion se muestra el registro de su alquiler: ");
-		return rentaVehiculos.generarAlquiler(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro);
+        int Precio = rentaVehiculos.generarAlquiler(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro);
+        Vehiculo carroAsignado = rentaVehiculos.asignarCarro(tipodeCarro);
+        
+		return "La marca del carro asignado es " + carroAsignado.getMarca() + ", de color " + carroAsignado.getColor() + ", modelo " + carroAsignado.getModelo() +
+		", con una capacidad de " + carroAsignado.getCapacidadPersonas() + " personas," +" de placa " + carroAsignado.getPlaca() + ". El precio final es: " + Precio;
 	}
 	
 	
-	private static int iniciarReserva() {
+	
+	private static String iniciarReserva() {
 		System.out.println("Iniciando Reserva...");
 		Cliente cliente = nuevoCliente();
 		System.out.println("Ingrese el tipo de carro que desea reservar: ");
-		String tipodeCarro = scanner.next();
+		String tipodeCarro = scanner.nextLine();
 		Sedes sedeEntrega = elegirSedeEntrega();
 		Sedes sedeDevolucion = elegirSedeDevolucion();
 		Persona conductorAdicional = quiereConductorAdicional();
 		System.out.println("Ingrese la cantidad de dias por los que quiere alquilar el vehiculo: ");
-		String diasString = scanner.next();
+		String diasString = scanner.nextLine();
         int dias = Integer.parseInt(diasString);
         String seguro = mostrarSeguros();
         System.out.println("Ingrese la fecha y la hora a la que va a entregar el vehiculo: ");
-        String fechayhoraEntrega = scanner.next();
-        System.out.println("Gracias por realizar la reserva con nosotros, a continuacion se muestra el registro de su reserva: ");
-		return rentaVehiculos.generarReserva(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro, fechayhoraEntrega);
+        String fechayhoraEntrega = scanner.nextLine();
+        System.out.println("Gracias por realizar la reserva con nosotros, a continuacion se muestra el carro que se le asigna y el precio: ");
+        int Precio = rentaVehiculos.generarReserva(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro, fechayhoraEntrega);
+        Vehiculo carroAsignado = rentaVehiculos.asignarCarro(tipodeCarro);
+        
+		return "La marca del carro asignado es " + carroAsignado.getMarca() + ", de color " + carroAsignado.getColor() + ", modelo " + carroAsignado.getModelo() +
+		", con una capacidad de " + carroAsignado.getCapacidadPersonas() + " personas," +" de placa " + carroAsignado.getPlaca() + ". El precio final es: " + Precio;
 	}
 	
 	
@@ -229,13 +237,12 @@ public class Aplicacion {
 	
 	private static void manejarSeguros() {
 		System.out.println("Ingrese el numero de los seguros que va a agregar: ");
-		String numeroIteraciones = scanner.next();
-		short numIteraciones = Short.parseShort(numeroIteraciones);
+		short numIteraciones = scanner.nextShort();
 		for (int i = 1; i <= numIteraciones; i++) {
 			System.out.println("Ingrese el nombre del Seguro");
-			String nombreSeguro = scanner.next();
+			String nombreSeguro = scanner.nextLine();
 			System.out.println("Ingrese el valor de Seguro");
-			String valorSeguroS = scanner.next();
+			String valorSeguroS = scanner.nextLine();
 			int valorSeguro = Integer.parseInt(valorSeguroS);
 		    rentaVehiculos.cambiarPropiedadesCarro(nombreSeguro, valorSeguro, null);
 		}
@@ -249,7 +256,7 @@ public class Aplicacion {
 		System.out.println("1. Alta");
 		System.out.println("2. Media");
 		System.out.println("3. Baja");
-		String valor = scanner.next();
+		String valor = scanner.nextLine();
 		short valorT = Short.parseShort(valor);
 		if (valorT == 1) {
 			rentaVehiculos.cambiarPropiedadesCarro(null, 0, "ALTA");
@@ -264,6 +271,27 @@ public class Aplicacion {
 		else {
 			System.out.println("Opcion no valida!");
 		}
+	}
+	
+	
+	private static void agregarCarroNuevo(){
+		System.out.println("Ingrese la placa ");
+		String placa = scanner.nextLine();
+		System.out.println("Ingrese la marca ");
+		String marca = scanner.nextLine();
+		System.out.println("Ingrese el modelo ");
+		String modelo = scanner.nextLine();
+		System.out.println("Ingrese el color ");
+		String color = scanner.nextLine();
+		System.out.println("Ingrese el tipo de transmicion ");
+		String tipoTransmicion = scanner.nextLine();
+		System.out.println("Ingrese la capacidad de personas ");
+		String capacidad = scanner.nextLine();
+		System.out.println("Ingrese el tipo de carro ");
+		String tipoDeCarro = scanner.nextLine();
+		System.out.println("Ingrese la sede ");
+		String sede = scanner.nextLine();
+		rentaVehiculos.agregarArchivo(placa, marca, modelo, color, tipoTransmicion, capacidad, tipoDeCarro, sede);
 	}
 	private static void mostrarCatalogo() {
 		System.out.println("------Opciones de la aplicacion------");
@@ -282,6 +310,7 @@ public class Aplicacion {
 		System.out.println("1. Manejar Seguros");
 		System.out.println("2. Elegir temporada");
 		System.out.println("3. Cambiar ambos");
+		System.out.println("4. Agregar Carro Nuevo");
 		System.out.println("0. Salir");
 		System.out.println("Seleccione una opcion: ");
 	}
@@ -301,6 +330,8 @@ public class Aplicacion {
 		case 3:
 			manejarSeguros();
 			manejarTemporada();
+		case 4:
+			agregarCarroNuevo();
 		case 0:
 			System.out.println("Los cambios fueron realizados.");
 			break;
@@ -318,11 +349,11 @@ public class Aplicacion {
 			cargarCatalogo();
 			break;
 		case 2:
-			int precioF = iniciarAlquiler();
+			String precioF = iniciarAlquiler();
 			System.out.println("El precio del alquiler es de: " + precioF);
 			break;
 		case 3:
-			int precioT = iniciarReserva();
+			String precioT = iniciarReserva();
 			System.out.println("El precio total de la reserva es de: " + precioT);
 			break;
 		case 0:
@@ -346,15 +377,15 @@ public class Aplicacion {
 		int opcion = 1;
 		do {
 			System.out.println("Ya es usuario de DGA Rental? ");
-			System.out.println("1. Si \n 2. No");
-			String r = scanner.next();
+			System.out.println("1. Si \n2. No");
+			String r = scanner.nextLine();
 			
 			if (r.equals("1")) {
 				System.out.println("-------------Ingreso De Usuarios-------------");
 				System.out.println("Ingrese su usuario ");
-				String user = scanner.next();
+				String user = scanner.nextLine();
 				System.out.println("Ingrese su contraseña");
-				String pass = scanner.next();
+				String pass = scanner.nextLine();
 				boolean s = ingresoUsuario.autenticarUsuario(user, pass);
 				if (s==true){
 					System.out.println("ola");
@@ -373,9 +404,9 @@ public class Aplicacion {
 			} else if (r.equals("2")){
 				System.out.println("-------------Registro De Usuarios-------------");
 				System.out.println("Ingrese el usuario: ");
-				String user = scanner.next();
+				String user = scanner.nextLine();
 				System.out.println("Ingrese su contraseña");
-				String pass = scanner.next();
+				String pass = scanner.nextLine();
 				registroUsuario.registrarUsuario(user, pass);
 			}
 			else {
