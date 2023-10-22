@@ -7,14 +7,14 @@ public class Alquiler {
 	
 
 	
-	private String tipodeCarro;
-	private Sedes sedeEntrega;
-	private Cliente cliente;
-	private Persona conductorAdicional;
+	protected String tipodeCarro;
+	protected Sedes sedeEntrega;
+	protected Cliente cliente;
+	protected Persona conductorAdicional;
 	private Categoria categoria;
-	private Sedes sedeDevolucion;
-	private int dias;
-	private String seguro;
+	protected Sedes sedeDevolucion;
+	protected int dias;
+	protected String seguro;
 	private AdministradorGeneral admin;
 	
 	

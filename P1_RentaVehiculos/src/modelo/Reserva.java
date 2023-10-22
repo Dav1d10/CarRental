@@ -13,6 +13,18 @@ public class Reserva extends Alquiler {
 		
 	}
 	
+	public String toString() {
+		return "Reserva[" +
+		           "tipodeCarro='" + tipodeCarro + '\'' +
+		           ", sedeEntrega=" + sedeEntrega +
+		           ", cliente=" + cliente +
+		           ", conductorAdicional=" + conductorAdicional +
+		           ", sedeDevolucion=" + sedeDevolucion +
+		           ", dias=" + dias +
+		           ", seguro='" + seguro + '\'' +
+		           "]";
+	}
+	
 
 	
 	public String getFechayhoraEntrega() {
