@@ -1,52 +1,70 @@
 package archivo;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class ArchivoSedes {
-    private String administradorGeneral;
+   
+	
     private String nombreSede;
     private String Ubicacion;
     private String horarioAtencion;
-
-    public ArchivoSedes(String administradorGeneral, String nombreSede, String Ubicacion, String horarioAtencion) {
-        this.administradorGeneral = administradorGeneral;
-        this.nombreSede = nombreSede;
-        this.horarioAtencion = horarioAtencion;
-        this.Ubicacion = Ubicacion;
-
-    }
-
-    public String getadministradorGeneral() {
-        return this.administradorGeneral;
-    }
+    private String nombreArchivo = "data/sedes.txt";
+    
+    
+	public ArchivoSedes() {
+		
+	}
 
 
-    public String getnombreSede() {
-        return this.nombreSede;
-    }
+	public String getNombreSede() {
+		return nombreSede;
+	}
 
 
-    public String getUbicacion() {
-        return this.Ubicacion;
-    }
-
-    public String getHorarioAtencion() {
-        return this.horarioAtencion;
-    }
-
-    public void setAdministradorGeneral(String administradorGeneral) {
-        this.administradorGeneral = administradorGeneral;
-    }
+	public void setNombreSede(String nombreSede) {
+		this.nombreSede = nombreSede;
+	}
 
 
-    public void setNombreSede(String nombreSede) {
-        this.nombreSede = nombreSede;
-    }
+	public String getUbicacion() {
+		return Ubicacion;
+	}
 
-    public void setUbicacion( String Ubicacion) {
-        this.Ubicacion = Ubicacion;
-    }
 
-    public void setHorarioAtencion( String horarioAtencion) {
-        this.horarioAtencion = horarioAtencion;
-    }
+	public void setUbicacion(String ubicacion) {
+		Ubicacion = ubicacion;
+	}
 
+
+	public String getHorarioAtencion() {
+		return horarioAtencion;
+	}
+
+
+	public void setHorarioAtencion(String horarioAtencion) {
+		this.horarioAtencion = horarioAtencion;
+	}
+
+
+	public String getNombreArchivo() {
+		return nombreArchivo;
+	}
+
+
+	public void setNombreArchivo(String nombreArchivo) {
+		this.nombreArchivo = nombreArchivo;
+	}
+	
+	
+	public void agregarArchivo(String nombreSede, String ubicacion, String horarioAtencion) {
+		String datos = nombreSede + ";" + ubicacion + ";" + horarioAtencion;
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo, true))) {
+            writer.write(datos);
+            writer.newLine(); 
+        } catch (IOException e) {
+            System.err.println("Error al escribir en el archivo: " + e.getMessage());
+        }
+	}
 }

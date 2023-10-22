@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 import archivo.ArchivoInventario;
+import archivo.ArchivoSedes;
 
 public class RentaVehiculos {
 	
@@ -24,6 +25,7 @@ public class RentaVehiculos {
 	private Empleado empleado;
 	private List<Reserva> reservas;
 	private ArchivoInventario archivoInventario;
+	private ArchivoSedes archivoSedes;
 	
 	
 	
@@ -36,6 +38,7 @@ public class RentaVehiculos {
 		this.empleado = new Empleado();
 		this.reservas = new ArrayList<>();
 		this.archivoInventario = new ArchivoInventario();
+		this.archivoSedes = new ArchivoSedes();
 	}
 
 	public AdministradorGeneral setAdministradorGeneral(String temporada) {
@@ -180,10 +183,17 @@ public class RentaVehiculos {
 		return empleado.asignarVehiculo(tipodeCarro);
 	}
 	
+	
 	public void agregarArchivo(String placa, String marca, String modelo, String color, String transmision,
 			String capacidad, String tipo, String sede) {
 		archivoInventario.agregarArchivo(placa, marca, modelo, color, transmision, capacidad, tipo, sede);
 	}
+	
+	
+	public void agregarSede(String nombreSede, String ubicacion, String horarioAtencion) {
+		archivoSedes.agregarArchivo(nombreSede, ubicacion, horarioAtencion);
+	}
+	
 	
 	public void resetearMapa() {
 		admin.resetearMapa();

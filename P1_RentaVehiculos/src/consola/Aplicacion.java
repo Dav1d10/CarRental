@@ -293,6 +293,19 @@ public class Aplicacion {
 		String sede = scanner.nextLine();
 		rentaVehiculos.agregarArchivo(placa, marca, modelo, color, tipoTransmicion, capacidad, tipoDeCarro, sede);
 	}
+	
+	
+	private static void agregarSedeNueva(){
+		System.out.println("Ingrese el nombre: ");
+		String nombreSede = scanner.nextLine();
+		System.out.println("Ingrese la ubicacion: ");
+		String ubicacion = scanner.nextLine();
+		System.out.println("Ingrese los horarios de atencion: ");
+		String horariosAtencion = scanner.nextLine();
+		rentaVehiculos.agregarSede(nombreSede, ubicacion, horariosAtencion);
+	}
+	
+	
 	private static void mostrarCatalogo() {
 		System.out.println("------Opciones de la aplicacion------");
 		System.out.println("1. Cargar el catalogo");
@@ -311,6 +324,7 @@ public class Aplicacion {
 		System.out.println("2. Elegir temporada");
 		System.out.println("3. Cambiar ambos");
 		System.out.println("4. Agregar Carro Nuevo");
+		System.out.println("5. Agregar Sede Nueva");
 		System.out.println("0. Salir");
 		System.out.println("Seleccione una opcion: ");
 	}
@@ -332,6 +346,8 @@ public class Aplicacion {
 			manejarTemporada();
 		case 4:
 			agregarCarroNuevo();
+		case 5:
+			agregarSedeNueva();
 		case 0:
 			System.out.println("Los cambios fueron realizados.");
 			break;
