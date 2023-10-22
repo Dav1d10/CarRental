@@ -81,6 +81,7 @@ public class ArchivoInventario {
         } catch (IOException e) {
             System.err.println("Error al escribir en el archivo: " + e.getMessage());
         }
+	
 	}
 		
 	

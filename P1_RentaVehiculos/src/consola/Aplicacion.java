@@ -16,18 +16,13 @@ import modelo.Persona;
 import modelo.RentaVehiculos;
 import modelo.Sedes;
 import modelo.Vehiculo;
-import archivo.IngresoUsuario;
-import archivo.RegistroUsuario;
-import archivo.IngresoUsuario;
 
 import java.io.Console;
 
 public class Aplicacion {
 	
 	private static Scanner scanner = new Scanner(System.in);
-	private static RegistroUsuario registroUsuario = new RegistroUsuario();
 	private static RentaVehiculos rentaVehiculos = new RentaVehiculos();
-	private static IngresoUsuario ingresoUsuario = new IngresoUsuario();
 	
 	
 	
@@ -198,7 +193,12 @@ public class Aplicacion {
         String seguro = mostrarSeguros();
         int Precio = rentaVehiculos.generarAlquiler(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro);
         Vehiculo carroAsignado = rentaVehiculos.asignarCarro(tipodeCarro);
-        
+        List<Vehiculo> v = rentaVehiculos.getVehiculos();
+        for (int i = 0; i < v.size(); i++) {
+            Vehiculo e = v.get(i);
+            String elemento = e.getTipoCategoria();
+            System.out.println("Elemento " + (i + 1) + ": " + elemento + " " + elemento.equals(tipodeCarro));
+        }
 		return "La marca del carro asignado es " + carroAsignado.getMarca() + ", de color " + carroAsignado.getColor() + ", modelo " + carroAsignado.getModelo() +
 		", con una capacidad de " + carroAsignado.getCapacidadPersonas() + " personas," +" de placa " + carroAsignado.getPlaca() + ". El precio final es: " + Precio;
 	}
@@ -344,10 +344,13 @@ public class Aplicacion {
 		case 3:
 			manejarSeguros();
 			manejarTemporada();
+			break;
 		case 4:
 			agregarCarroNuevo();
+			break;
 		case 5:
 			agregarSedeNueva();
+			break;
 		case 0:
 			System.out.println("Los cambios fueron realizados.");
 			break;
@@ -403,9 +406,9 @@ public class Aplicacion {
                 String user = scanner.nextLine();
                 System.out.println("Ingrese su contraseña");
                 String pass = scanner.nextLine();
-                boolean s = ingresoUsuario.autenticarUsuario(user, pass);
+                boolean s = rentaVehiculos.autenticarUsuario(user, pass);
                 if (s == true) {
-                    if (ingresoUsuario.esAdmin(pass)) {
+                    if (rentaVehiculos.esAdmin(pass)) {
                         mostrarCatalogoAdmin();
                         opcion = scanner.nextInt();
                         scanner.nextLine(); // Consumir la nueva línea pendiente
@@ -423,7 +426,7 @@ public class Aplicacion {
                 String user = scanner.nextLine();
                 System.out.println("Ingrese su contraseña");
                 String pass = scanner.nextLine();
-                registroUsuario.registrarUsuario(user, pass);
+                rentaVehiculos.registrarUsuario(user, pass);
             } else {
                 System.out.println("Opcion no valida");
             }

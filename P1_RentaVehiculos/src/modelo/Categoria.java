@@ -5,11 +5,11 @@ import java.util.List;
 
 public class Categoria {
 	
-	private List<Vehiculo> pequeños;
-	private List<Vehiculo> SUV;
-	private List<Vehiculo> Vans;
-	private List<Vehiculo> Lujo;
-	private List<Vehiculo> electricos;
+	private static List<Vehiculo> pequeños;
+	private static List<Vehiculo> SUV;
+	private static List<Vehiculo> Vans;
+	private static List<Vehiculo> Lujo;
+	private static List<Vehiculo> electricos;
 	private int tarifaPequeños = 200;
 	private int tarifaSUV = 300;
 	private int tarifaVans = 350;
@@ -68,17 +68,18 @@ public class Categoria {
 
 
 
-	public static void agregarVehiculoaCategoria(Categoria categoria, Vehiculo vehiculo, String categoriaNombre) {
+	public static void agregarVehiculoaCategoria(Vehiculo vehiculo, String categoriaNombre) {
         if (categoriaNombre.equals("PEQUEÑO")) {
-            categoria.pequeños.add(vehiculo);
+            pequeños.add(vehiculo);
         } else if (categoriaNombre.equals("SUV")) {
-            categoria.SUV.add(vehiculo);
+            SUV.add(vehiculo);
         } else if (categoriaNombre.equals("VAN")) {
-            categoria.Vans.add(vehiculo);
+        	System.out.println("ENTRA");
+            System.out.println(Vans);
         } else if (categoriaNombre.equals("LUJO")) {
-            categoria.Lujo.add(vehiculo);
+            Lujo.add(vehiculo);
         } else if (categoriaNombre.equals("ELECTRICO")) {
-            categoria.electricos.add(vehiculo);
+            electricos.add(vehiculo);
         }
     }
 
@@ -86,30 +87,62 @@ public class Categoria {
 	public Vehiculo vehiculoAlquilar(String tipoDeCarro) {
 		int indiceAEliminar = 0;
 		Vehiculo vehiculo = null;
+		System.out.println(tipoDeCarro.equals("SUV"));
+		System.out.println(getSUV());
+		System.out.println(getLujo());
+		System.out.println(getSUV());
+		System.out.println(getSUV());
 		if (tipoDeCarro.equals("PEQUEÑO")) {
 			List<Vehiculo> vehiculos = getPequeños();
-            vehiculo = vehiculos.get(indiceAEliminar);
-            vehiculos.remove(indiceAEliminar);
+			
+			if (!vehiculos.isEmpty()) {
+	            vehiculo = vehiculos.get(indiceAEliminar);
+	            vehiculos.remove(indiceAEliminar);
+			}
+			else {
+				System.out.println("No quedan vehiculos de este tipo. ");
+			}
         } else if (tipoDeCarro.equals("SUV")) {
         	List<Vehiculo> vehiculos = getSUV();
-        	vehiculo = vehiculos.get(indiceAEliminar);
-            vehiculos.remove(indiceAEliminar);
+            if (!vehiculos.isEmpty()) {
+	            vehiculo = vehiculos.get(indiceAEliminar);
+	            vehiculos.remove(indiceAEliminar);
+			}
+			else {
+				System.out.println("No quedan vehiculos de este tipo. ");
+			}
         } else if (tipoDeCarro.equals("VAN")) {
         	List<Vehiculo> vehiculos = getVans();
-        	vehiculo = vehiculos.get(indiceAEliminar);
-            vehiculos.remove(indiceAEliminar);
+            if (!vehiculos.isEmpty()) {
+	            vehiculo = vehiculos.get(indiceAEliminar);
+	            vehiculos.remove(indiceAEliminar);
+			}
+			else {
+				System.out.println("No quedan vehiculos de este tipo. ");
+			}
         } else if (tipoDeCarro.equals("LUJO")) {
         	List<Vehiculo> vehiculos = getLujo();
-        	vehiculo = vehiculos.get(indiceAEliminar);
-            vehiculos.remove(indiceAEliminar);
+            if (!vehiculos.isEmpty()) {
+	            vehiculo = vehiculos.get(indiceAEliminar);
+	            vehiculos.remove(indiceAEliminar);
+			}
+			else {
+				System.out.println("No quedan vehiculos de este tipo. ");
+			}
         } else if (tipoDeCarro.equals("ELECTRICO")) {
         	List<Vehiculo> vehiculos = getElectricos();
-        	vehiculo = vehiculos.get(indiceAEliminar);
-            vehiculos.remove(indiceAEliminar);
-     
+            if (!vehiculos.isEmpty()) {
+	            vehiculo = vehiculos.get(indiceAEliminar);
+	            vehiculos.remove(indiceAEliminar);
+			}
+			else {
+				System.out.println("No quedan vehiculos de este tipo. ");
+			}
         }
+		
+		
 	return vehiculo;
-    }
+	}
 	
 
 

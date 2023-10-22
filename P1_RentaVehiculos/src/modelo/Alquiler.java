@@ -20,7 +20,7 @@ public class Alquiler {
 	
 	
 	public Alquiler(String tipodeCarro, Sedes sedeEntrega, Persona conductorAdicional, Cliente cliente,
-			Sedes sedeDevolucion, int dias, String seguro, AdministradorGeneral admin) {
+			Sedes sedeDevolucion, int dias, String seguro, AdministradorGeneral admin, Categoria categoria) {
 		super();
 		this.tipodeCarro = tipodeCarro;
 		this.sedeEntrega = sedeEntrega;
@@ -30,8 +30,8 @@ public class Alquiler {
 		this.dias = dias;
 		this.seguro = seguro;
 		this.admin = admin;
-		this.categoria = new Categoria();
-	}
+		this.categoria = categoria;
+				}
 	
 	
 	public String toString() {

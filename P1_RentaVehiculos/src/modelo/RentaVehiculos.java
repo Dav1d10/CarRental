@@ -13,6 +13,8 @@ import java.util.Scanner;
 
 import archivo.ArchivoInventario;
 import archivo.ArchivoSedes;
+import administradorLocal.IngresoUsuario;
+import administradorLocal.RegistroUsuario;
 
 public class RentaVehiculos {
 	
@@ -26,6 +28,8 @@ public class RentaVehiculos {
 	private List<Reserva> reservas;
 	private ArchivoInventario archivoInventario;
 	private ArchivoSedes archivoSedes;
+	private static RegistroUsuario registroUsuario = new RegistroUsuario();
+	private static IngresoUsuario ingresoUsuario = new IngresoUsuario();
 	
 	
 	
@@ -33,12 +37,12 @@ public class RentaVehiculos {
 		this.Vehiculos = new ArrayList<>();
 		this.Sedes = new ArrayList<>();
 		this.alquileres = new ArrayList<>();
-		this.categoria = new Categoria();
 		this.admin = null;
 		this.empleado = new Empleado();
 		this.reservas = new ArrayList<>();
 		this.archivoInventario = new ArchivoInventario();
 		this.archivoSedes = new ArchivoSedes();
+		this.categoria = new Categoria();
 	}
 
 	public AdministradorGeneral setAdministradorGeneral(String temporada) {
@@ -120,7 +124,8 @@ public class RentaVehiculos {
 	private void cargarCategoria() {
         for (Vehiculo vehiculo2 : Vehiculos) {
             String cate = vehiculo2.getTipoCategoria();
-            Categoria.agregarVehiculoaCategoria(categoria, vehiculo2,cate);
+            Categoria.agregarVehiculoaCategoria(vehiculo2,cate);
+            System.out.println(vehiculo2.getTipoCategoria());
         }
     }
 	
@@ -135,7 +140,7 @@ public class RentaVehiculos {
 	
 	public int generarAlquiler(String tipodeCarro, Sedes sedeEntrega, Persona conductorAdicional, Cliente cliente,
 			Sedes sedeDevolucion, int dias, String seguro) {
-			Alquiler alquiler = new Alquiler(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro, admin);
+			Alquiler alquiler = new Alquiler(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro, admin, categoria);
 			alquileres.add(alquiler);
 			int precio = alquiler.cobroFinal();
 			for (Alquiler info : alquileres) {
@@ -198,8 +203,16 @@ public class RentaVehiculos {
 	public void resetearMapa() {
 		admin.resetearMapa();
 	}
+	public boolean autenticarUsuario(String nombreUsuario, String pass) {
+	return ingresoUsuario.autenticarUsuario(nombreUsuario, pass);
 }
-
+	public boolean esAdmin(String pass) {
+		return ingresoUsuario.esAdmin(pass);
+	}
+	public boolean registrarUsuario(String user, String pass) {
+		return registroUsuario.registrarUsuario(user, pass);
+	}
+}
 
 
 
