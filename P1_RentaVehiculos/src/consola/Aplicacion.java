@@ -319,7 +319,19 @@ public class Aplicacion {
 				String user = scanner.next();
 				System.out.println("Ingrese su contraseña");
 				String pass = scanner.next();
-				IngresoUsuario.autenticarUsuario(user, pass);
+				boolean s = IngresoUsuario.autenticarUsuario(user, pass);
+				if (s==true){
+					if (pass.endsWith(";ADMINISTRADORGENERALLLLLL1233321233123321")) {
+						mostrarCatalogoAdmin();
+						opcion = scanner.nextInt();
+						ejecutarOpcionAdmin(opcion);
+					}
+					else {
+						mostrarCatalogo();
+						opcion = scanner.nextInt();
+						ejecutarOpcion(opcion);
+					}
+				}
 			} else if (r.equals("2")){
 				System.out.println("-------------Registro De Usuarios-------------");
 				System.out.println("Ingrese el usuario: ");

@@ -14,12 +14,16 @@ public class IngresoUsuario {
     public IngresoUsuario() {
         usuariosRegistrados = cargarUsuariosDesdeArchivo();
     }
-
+    
     public static boolean autenticarUsuario(String nombreUsuario, String contrasena) {
         String contrasenaAlmacenada = usuariosRegistrados.get(nombreUsuario);
         return contrasenaAlmacenada != null && contrasenaAlmacenada.equals(contrasena);
     }
-
+    public boolean esAdmin(String pass) {
+        return pass.endsWith(";A");
+    }
+    
+    
     private Map<String, String> cargarUsuariosDesdeArchivo() {
         Map<String, String> usuariosCargados = new HashMap<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(archivoUsuarios))) {
