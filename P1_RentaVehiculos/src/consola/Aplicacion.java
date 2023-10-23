@@ -295,7 +295,25 @@ public class Aplicacion {
 		rentaVehiculos.agregarArchivo(placa, marca, modelo, color, tipoTransmicion, capacidad, tipoDeCarro, sede);
 	}
 	
-	
+	private static void devolverVehiculo() {
+		System.out.println("Ingrese la placa ");
+		String placa = scanner.nextLine();
+		System.out.println("Ingrese la marca ");
+		String marca = scanner.nextLine();
+		System.out.println("Ingrese el modelo ");
+		String modelo = scanner.nextLine();
+		System.out.println("Ingrese el color ");
+		String color = scanner.nextLine();
+		System.out.println("Ingrese el tipo de transmicion ");
+		String tipoTransmicion = scanner.nextLine();
+		System.out.println("Ingrese la capacidad de personas ");
+		String capacidad = scanner.nextLine();
+		System.out.println("Ingrese el tipo de carro ");
+		String tipoDeCarro = scanner.nextLine();
+		System.out.println("Ingrese la sede ");
+		String sede = scanner.nextLine();
+		rentaVehiculos.agregarArchivo(placa, marca, modelo, color, tipoTransmicion, capacidad, tipoDeCarro, sede);
+	}
 	private static void agregarSedeNueva(){
 		System.out.println("Ingrese el nombre: ");
 		String nombreSede = scanner.nextLine();
@@ -330,7 +348,10 @@ public class Aplicacion {
 		System.out.println("Seleccione una opcion: ");
 	}
 	
-	
+	private static void mostrarCatalogoEmpleado() {
+		System.out.println("------Opciones de Empleado------");
+		System.out.println("1. Manejar Seguros");
+	}
 	
 	private static void ejecutarOpcionAdmin(int opcion) throws FileNotFoundException {
 		switch (opcion) {
@@ -362,7 +383,20 @@ public class Aplicacion {
 		}
 	}
 	
-	
+	private static void ejecutarOpcionEmpleado(int opcion) throws FileNotFoundException {
+		switch (opcion) {
+		case 1:
+			devolverVehiculo();
+			break;
+		case 0:
+			System.out.println("Los cambios fueron realizados.");
+			break;
+		default:
+			System.out.println("Opcion invalida, intentelo de nuevo.");
+			break;
+			
+		}
+	}
 	
 	private static void ejecutarOpcion(int opcion) throws IOException {
 		switch (opcion) {
@@ -415,6 +449,10 @@ public class Aplicacion {
                         opcion = scanner.nextInt();
                         scanner.nextLine(); 
                         ejecutarOpcionAdmin(opcion);
+                    } else if (rentaVehiculos.esEmpleado(pass)){
+                    	mostrarCatalogoEmpleado();
+                    	
+                    }
                     } else {
                         mostrarCatalogo();
                         opcion = scanner.nextInt();
@@ -422,7 +460,7 @@ public class Aplicacion {
                         ejecutarOpcion(opcion);
                     }
                 }
-            } else if (r.equals("2")) {
+             else if (r.equals("2")) {
                 System.out.println("-------------Registro De Usuarios-------------");
                 System.out.println("Ingrese el usuario: ");
                 String user = scanner.nextLine();

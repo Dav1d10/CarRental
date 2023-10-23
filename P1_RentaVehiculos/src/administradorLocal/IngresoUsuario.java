@@ -47,4 +47,8 @@ public class IngresoUsuario {
 	public void setUsuariosRegistrados(Map<String, String> usuariosRegistrados) {
 		this.usuariosRegistrados = usuariosRegistrados;
 	}
+
+	public boolean esEmpleado(String pass) {
+		return pass.endsWith(":E");
+	}
 }

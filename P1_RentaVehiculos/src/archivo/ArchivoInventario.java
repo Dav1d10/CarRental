@@ -79,6 +79,7 @@ public class ArchivoInventario {
 			String capacidad, String tipo, String sede) {
 		String datos = placa + ";" + marca + ";" + modelo + ";" + color + ";" + transmision + ";" + capacidad + ";" + tipo + ";" + sede;
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo, true))) {
+			writer.newLine();
             writer.write(datos);
             writer.newLine(); 
         } catch (IOException e) {

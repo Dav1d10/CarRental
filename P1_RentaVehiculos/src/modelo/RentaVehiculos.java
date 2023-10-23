@@ -238,6 +238,9 @@ public class RentaVehiculos {
 	public boolean esAdmin(String pass) {
 		return ingresoUsuario.esAdmin(pass);
 	}
+	public boolean esEmpleado(String pass) {
+		return ingresoUsuario.esEmpleado(pass);
+	}
 	public boolean registrarUsuario(String user, String pass) {
 		return registroUsuario.registrarUsuario(user, pass);
 	}
