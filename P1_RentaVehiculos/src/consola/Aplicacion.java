@@ -48,8 +48,6 @@ public class Aplicacion {
 	            if (partes.length == 3) {
 	            	String nombreSede = partes[0];
 	            	if (nombreSede.equals(nombreSedeBuscada)) {
-	            		//System.out.println("entra");
-	            		//System.out.println(nombreSede + " - " + partes[1] + " - " + partes[2]);
 	            		String ubicacionSede = partes[1];
 	            		String horariosSede = partes[2];
 	            		return new Sedes(nombreSede, ubicacionSede, horariosSede);
@@ -79,8 +77,6 @@ public class Aplicacion {
 	            if (partes.length == 3) {
 	            	String nombreSede = partes[0];
 	            	if (nombreSede.equals(nombreSedeBuscada)) {
-	            		//System.out.println("entra");
-	            		//System.out.println(nombreSede + " - " + partes[1] + " - " + partes[2]);
 	            		String ubicacionSede = partes[1];
 	            		String horariosSede = partes[2];
 	            		return new Sedes(nombreSede, ubicacionSede, horariosSede);
@@ -173,6 +169,7 @@ public class Aplicacion {
             String clave = entrada.getKey();
             Integer valor = entrada.getValue();
             System.out.println(numero +" " + clave + " El precio es: " + valor);
+            numero += 1;
 		}
         System.out.println("Ingrese la(s) opcion(es) de seguro(s) que desea: ");
         String seguro = scanner.nextLine();
@@ -227,10 +224,10 @@ public class Aplicacion {
 	
 	
 	private static void cargarDatos() throws FileNotFoundException, IOException {
+		rentaVehiculos.setAdministradorGeneral();;
 		File archivoInventario = new File("data/inventario.txt");
 		File archivoSedes = new File("data/sedes.txt");
 		rentaVehiculos.cargarInformacionInventario(archivoInventario, archivoSedes);
-		rentaVehiculos.setAdministradorGeneral();;
 	}
 	
 	private static void manejarSeguros() {
@@ -249,7 +246,7 @@ public class Aplicacion {
 	}
 	private static void resetearSeguros() {
 		rentaVehiculos.resetearMapa();
-		scanner.close();
+	
 	}
 	
 	private static void manejarTemporada() {

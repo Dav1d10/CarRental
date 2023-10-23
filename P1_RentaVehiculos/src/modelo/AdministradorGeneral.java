@@ -68,7 +68,6 @@ public class AdministradorGeneral {
             FileWriter fileWriter = new FileWriter(nombreArchivo, false);
             fileWriter.write(""); 
             fileWriter.close();
-            System.out.println("Contenido del archivo '" + nombreArchivo + "' eliminado.");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -87,7 +86,6 @@ public class AdministradorGeneral {
             }
 
             bufferedWriter.close();
-            System.out.println("Mapa de seguros guardado en archivo '" + nombreArchivo + "'.");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -108,7 +106,6 @@ public class AdministradorGeneral {
             }
 
             bufferedReader.close();
-            System.out.println("Mapa de seguros cargado desde archivo '" + nombreArchivo + "'.");
         } catch (IOException e) {
             e.printStackTrace();
         }

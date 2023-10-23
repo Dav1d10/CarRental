@@ -49,7 +49,7 @@ public class RentaVehiculos {
 	}
 
 	public AdministradorGeneral setAdministradorGeneral() {
-		String temporada = "polla";
+		String temporada = "BAJA";
 		AdministradorGeneral administrador = new AdministradorGeneral(temporada);
         return this.admin = administrador;
         
@@ -134,10 +134,12 @@ public class RentaVehiculos {
     }
 	
 	
+	
 	public void cargarInformacionInventario(File archivoInventario, File archivoSedes) throws FileNotFoundException, IOException {
 		cargarInventario(archivoInventario);
 		cargarSedes(archivoSedes);
 		cargarCategoria();
+		admin.cargarMapaDesdeArchivo();
 		List<Vehiculo> SUV = categoria.getSUV();
 		}
 	

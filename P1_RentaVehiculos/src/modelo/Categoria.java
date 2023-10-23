@@ -74,8 +74,7 @@ public class Categoria {
         } else if (categoriaNombre.equals("SUV")) {
             SUV.add(vehiculo);
         } else if (categoriaNombre.equals("VAN")) {
-        	System.out.println("ENTRA");
-            System.out.println(Vans);
+        	Vans.add(vehiculo);
         } else if (categoriaNombre.equals("LUJO")) {
             Lujo.add(vehiculo);
         } else if (categoriaNombre.equals("ELECTRICO")) {
