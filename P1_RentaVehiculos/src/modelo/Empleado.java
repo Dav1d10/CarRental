@@ -26,5 +26,8 @@ public class Empleado  {
 		String sede = vehiculo.getUbicacion();
 		return (placa + ";" + marca + ";" + modelo + ";" + color + ";" + transmision + ";" + capacidad + ";" + tipo + ";" + sede);
 	}
+	public Vehiculo devolverVehiculo(String placaDeCarro) {
+		return categoria.agregarVehiculoaCategoria(null, placaDeCarro);
+	}
 }
 

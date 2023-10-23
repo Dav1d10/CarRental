@@ -48,7 +48,8 @@ public class RentaVehiculos {
 		this.categoria = new Categoria();
 	}
 
-	public AdministradorGeneral setAdministradorGeneral(String temporada) {
+	public AdministradorGeneral setAdministradorGeneral() {
+		String temporada = "polla";
 		AdministradorGeneral administrador = new AdministradorGeneral(temporada);
         return this.admin = administrador;
         
@@ -198,6 +199,7 @@ public class RentaVehiculos {
 	
 	
 	public Map<String, Integer> getSeguros() {
+		
 		return admin.getSeguros();
 		}
 	
@@ -223,10 +225,13 @@ public class RentaVehiculos {
 		archivoSedes.agregarArchivo(nombreSede, ubicacion, horarioAtencion);
 	}
 	
-	
+	public void guardarArchivoEnMapa() {
+		admin.guardarArchivoEnMapa();
+	}
 	public void resetearMapa() {
 		admin.resetearMapa();
 	}
+	
 	public boolean autenticarUsuario(String nombreUsuario, String pass) {
 	return ingresoUsuario.autenticarUsuario(nombreUsuario, pass);
 }

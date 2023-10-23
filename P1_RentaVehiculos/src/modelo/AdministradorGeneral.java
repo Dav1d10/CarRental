@@ -1,6 +1,15 @@
 package modelo;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,7 +25,7 @@ public class AdministradorGeneral {
 
 
 
-
+	private String nombreArchivo = "data/adminGral.txt";
     private String temporada;
     private Vehiculo vehiculo;
     private Sedes sede;
@@ -53,7 +62,57 @@ public class AdministradorGeneral {
     public Sedes getSede() {
         return sede;
     }
+    
+    public void eliminarContenidoArchivo() {
+        try {
+            FileWriter fileWriter = new FileWriter(nombreArchivo, false);
+            fileWriter.write(""); 
+            fileWriter.close();
+            System.out.println("Contenido del archivo '" + nombreArchivo + "' eliminado.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    
+    public void guardarArchivoEnMapa() {
+        try {
+            FileWriter fileWriter = new FileWriter(nombreArchivo);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
+            for (Map.Entry<String, Integer> entry : seguros.entrySet()) {
+                String linea = entry.getKey() + ";" + entry.getValue();
+                bufferedWriter.write(linea);
+                bufferedWriter.newLine();
+            }
+
+            bufferedWriter.close();
+            System.out.println("Mapa de seguros guardado en archivo '" + nombreArchivo + "'.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void cargarMapaDesdeArchivo() {
+        try {
+            FileReader fileReader = new FileReader(nombreArchivo);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+            String linea;
+            while ((linea = bufferedReader.readLine()) != null) {
+                String[] partes = linea.split(",");
+                if (partes.length == 2) {
+                    String nombreSeguro = partes[0];
+                    int precio = Integer.parseInt(partes[1]);
+                    seguros.put(nombreSeguro, precio);
+                }
+            }
+
+            bufferedReader.close();
+            System.out.println("Mapa de seguros cargado desde archivo '" + nombreArchivo + "'.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void setSede(Sedes sede) {
         this.sede = sede;
@@ -69,13 +128,15 @@ public class AdministradorGeneral {
 	
 	public void agregarElementoASeguros(String nombreSeguro, int precioSeguro) {
 	seguros.put(nombreSeguro, precioSeguro);
+	
 	}
 	public void resetearMapa() {
 	seguros.clear();
+	eliminarContenidoArchivo();
 	}
 	
 	
-	
+          	
 	
 	
 	

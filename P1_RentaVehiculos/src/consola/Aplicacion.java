@@ -32,7 +32,7 @@ public class Aplicacion {
 		System.out.println("Cargando el catalogo...");
 		File archivoCatalogo = new File("data/Catalogo.txt");
 		rentaVehiculos.cargarCatalogo(archivoCatalogo);
-		rentaVehiculos.setAdministradorGeneral("BAJA");
+		rentaVehiculos.setAdministradorGeneral();
 	}
 	
 	
@@ -228,7 +228,7 @@ public class Aplicacion {
 		File archivoInventario = new File("data/inventario.txt");
 		File archivoSedes = new File("data/sedes.txt");
 		rentaVehiculos.cargarInformacionInventario(archivoInventario, archivoSedes);
-		rentaVehiculos.setAdministradorGeneral("BAJA");;
+		rentaVehiculos.setAdministradorGeneral();;
 	}
 	
 	private static void manejarSeguros() {
@@ -241,10 +241,13 @@ public class Aplicacion {
 			String valorSeguroS = scanner.nextLine();
 			int valorSeguro = Integer.parseInt(valorSeguroS);
 		    rentaVehiculos.cambiarPropiedadesCarro(nombreSeguro, valorSeguro, null);
+		    
 		}
+		rentaVehiculos.guardarArchivoEnMapa();
 	}
 	private static void resetearSeguros() {
 		rentaVehiculos.resetearMapa();
+		scanner.close();
 	}
 	
 	private static void manejarTemporada() {
@@ -353,6 +356,7 @@ public class Aplicacion {
 		default:
 			System.out.println("Opcion invalida, intentelo de nuevo.");
 			break;
+			
 		}
 	}
 	

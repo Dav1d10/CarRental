@@ -15,7 +15,8 @@ public class ArchivoLog {
 	        this.fechasMantenimiento = fechasMantenimiento;
 
 	    }
-
+	    
+	    
 	    public String getVehiculo() {
 	        return this.Vehiculo;
 	    }
