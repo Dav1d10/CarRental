@@ -14,6 +14,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 import archivo.ArchivoInventario;
+import archivo.ArchivoPagos;
 import archivo.ArchivoSedes;
 import administradorLocal.IngresoUsuario;
 import administradorLocal.RegistroUsuario;
@@ -149,6 +150,7 @@ public class RentaVehiculos {
 			for (Alquiler info : alquileres) {
 				System.out.println(info);
 			}
+			ArchivoPagos.agregarPrecio(precio);
 			return alquileres;
 		}
 	

@@ -1,1 +1,3 @@
 El numero de la tarjeta es 12345 , la fecha de vencimiento es 2021 , el cvv es 388 , el banco es bancolombia
+El numero de la tarjeta es 12345 , la fecha de vencimiento es 2027 , el cvv es 543 , el banco es Nequi
+El precio que se debe pagar con esa tarjeta es:  1200
