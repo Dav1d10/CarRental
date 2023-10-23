@@ -1,55 +1,31 @@
 package archivo;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+import modelo.Cliente;
+import modelo.Vehiculo;
+
 public class ArchivoLog {
 
-
-	    private String Vehiculo;
-	    private String fechaCompra;
-	    private String fechaAlquiler;
-	    private String fechasMantenimiento;
-
-	    public ArchivoLog(String Vehiculo, String fechaCompra, String fechaAlquiler, String fechasMantenimiento) {
-	        this.Vehiculo = Vehiculo;
-	        this.fechaCompra = fechaCompra;
-	        this.fechaAlquiler = fechaAlquiler;
-	        this.fechasMantenimiento = fechasMantenimiento;
-
-	    }
-	    
-	    
-	    public String getVehiculo() {
-	        return this.Vehiculo;
-	    }
+    private static String nombreArchivo = "data/log.txt";
 
 
-	    public String getFechaCompra() {
-	        return this.fechaCompra;
-	    }
+
+    public ArchivoLog() {
+
+    }
 
 
-	    public String getFechaAlquiler() {
-	        return this.fechaAlquiler;
-	    }
+    public static void agregarLog(Cliente cliente, Vehiculo vehiculo) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo, true))) {
+            String datos = "El cliente " + cliente.getNombre() + " alquilo el vehiculo con placa " + vehiculo.getPlaca();
+            writer.write(datos);
+            writer.newLine(); 
+        } catch (IOException e) {
+            System.err.println("Error al escribir en el archivo: " + e.getMessage());
+        }
+    }
 
-	    public String getfechasMantenimiento() {
-	        return this.fechasMantenimiento;
-	    }
-
-	    public void setVehiculo(String Vehiculo) {
-	        this.Vehiculo = Vehiculo;
-	    }
-
-
-	    public void setFechaCompra(String fechaCompra) {
-	        this.fechaCompra = fechaCompra;
-	    }
-
-	    public void setfechaAlquiler( String fechaAlquiler) {
-	        this.fechaAlquiler = fechaAlquiler;
-	    }
-
-	    public void setFechasMantenimiento( String fechasMantenimiento) {
-	        this.fechasMantenimiento = fechasMantenimiento;
-	    }
-	
-}
+  }

@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+import archivo.ArchivoLog;
 import archivo.ArchivoPagos;
 import modelo.AdministradorGeneral;
 import modelo.Alquiler;
@@ -196,6 +197,7 @@ public class Aplicacion {
         Vehiculo carroAsignado = rentaVehiculos.asignarCarro(tipodeCarro);
         String lineaAEliminar = rentaVehiculos.lineaString(carroAsignado);
         rentaVehiculos.eliminarLinea(lineaAEliminar);
+        ArchivoLog.agregarLog(cliente, carroAsignado);
 		return "La marca del carro asignado es " + carroAsignado.getMarca() + ", de color " + carroAsignado.getColor() + ", modelo " + carroAsignado.getModelo() +
 		", con una capacidad de " + carroAsignado.getCapacidadPersonas() + " personas," +" de placa " + carroAsignado.getPlaca();
 	}
