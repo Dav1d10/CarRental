@@ -452,7 +452,7 @@ public class Aplicacion {
                     } else if (rentaVehiculos.esEmpleado(pass)){
                     	mostrarCatalogoEmpleado();
                     	
-                    }
+                    
                     } else {
                         mostrarCatalogo();
                         opcion = scanner.nextInt();
@@ -460,7 +460,7 @@ public class Aplicacion {
                         ejecutarOpcion(opcion);
                     }
                 }
-             else if (r.equals("2")) {
+            }else if (r.equals("2")) {
                 System.out.println("-------------Registro De Usuarios-------------");
                 System.out.println("Ingrese el usuario: ");
                 String user = scanner.nextLine();

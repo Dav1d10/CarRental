@@ -205,6 +205,7 @@ public class RentaVehiculos {
 	
 	
 	public Vehiculo asignarCarro(String tipodeCarro) {
+		
 		return empleado.asignarVehiculo(tipodeCarro);
 	}
 	

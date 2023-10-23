@@ -87,14 +87,8 @@ public class Categoria {
 	public Vehiculo vehiculoAlquilar(String tipoDeCarro) {
 		int indiceAEliminar = 0;
 		Vehiculo vehiculo = null;
-		System.out.println(tipoDeCarro.equals("SUV"));
-		System.out.println(getSUV());
-		System.out.println(getLujo());
-		System.out.println(getSUV());
-		System.out.println(getSUV());
 		if (tipoDeCarro.equals("PEQUEÑO")) {
 			List<Vehiculo> vehiculos = getPequeños();
-			
 			if (!vehiculos.isEmpty()) {
 	            vehiculo = vehiculos.get(indiceAEliminar);
 	            vehiculos.remove(indiceAEliminar);
