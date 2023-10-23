@@ -1,71 +1,67 @@
 package archivo;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+
+import modelo.DatosTarjetaCredito;
+
 public class ArchivoPagos {
-	 	private String duracionAlquiler;
-	    private String Seguros;
-	    private String sedeEntrega;
-	    private String sedeDevolucion;
-	    private String conductorAdicional;
-	    private String cobroFinal;
 
-	    public ArchivoPagos(String duracionAlquiler, String Seguros, String sedeEntrega, String sedeDevolucion, String condutorAdicional, String cobroFinal) {
-	        this.duracionAlquiler = duracionAlquiler;
-	        this.Seguros = Seguros;
-	        this.sedeEntrega = sedeEntrega;
-	        this.sedeDevolucion = sedeDevolucion;
-	        this.conductorAdicional = condutorAdicional;
-	        this.cobroFinal = cobroFinal;
+    private String numeroTarjeta;
+    private String fechaVencimiento;
+    private String cvv;
+    private String banco;
+    private static String nombreArchivo = "data/pagos.txt";
 
-	    }
+    public ArchivoPagos() {
 
-	    public String getDuracionAlquiler() {
-	        return this.duracionAlquiler;
-	    }
+    }
+
+    public String getNumeroTarjeta() {
+        return numeroTarjeta;
+    }
+
+    public void setNumeroTarjeta(String numeroTarjeta) {
+        this.numeroTarjeta = numeroTarjeta;
+    }
+
+    public String getFechaVencimiento() {
+        return fechaVencimiento;
+    }
+
+    public void setFechaVencimiento(String fechaVencimiento) {
+        this.fechaVencimiento = fechaVencimiento;
+    }
+
+    public String getCvv() {
+        return cvv;
+    }
+
+    public void setCvv(String cvv) {
+        this.cvv = cvv;
+    }
+
+    public String getBanco() {
+        return banco;
+    }
+
+    public void setBanco(String banco) {
+        this.banco = banco;
+    }
 
 
-	    public String getSeguros() {
-	        return this.Seguros;
-	    }
+    public static void agregarArchivo(DatosTarjetaCredito tarjeta) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo, true))) {
+            String datos = "El numero de la tarjeta es " + tarjeta.getNumeroTarjeta() + " , la fecha de vencimiento es " 
+        + tarjeta.getFechaVencimiento() + " , el cvv es " + tarjeta.getCvv() + " , el banco es " + tarjeta.getBanco();
+            writer.write(datos);
+            writer.newLine(); 
+        } catch (IOException e) {
+            System.err.println("Error al escribir en el archivo: " + e.getMessage());
+        }
+    }
 
-
-	    public String getSedeEntrega() {
-	        return this.sedeEntrega;
-	    }
-
-	    public String getSedeDevolucion() {
-	        return this.sedeDevolucion;
-	    }
-
-	    public String getConductorAdicional() {
-	        return this.conductorAdicional;
-	    }
-
-	    public String getCobroFinal() {
-	        return this.cobroFinal;
-	    }
-
-	    public void setDuracionAlquiler(String duracionAlquiler) {
-	        this.duracionAlquiler = duracionAlquiler;
-	    }
-
-	    public void setSeguros(String Seguros) {
-	        this.Seguros = Seguros;
-	    }
-
-	    public void setSedeEntrega( String sedeEntrega) {
-	        this.sedeEntrega = sedeEntrega;
-	    }
-
-	    public void setSedeDevolucion( String sedeDevolucion) {
-	        this.sedeDevolucion = sedeDevolucion;
-	    }
-
-	    public void setConductorAdicional( String conductorAdicional) {
-	        this.conductorAdicional = conductorAdicional;
-	    }
-
-	    public void setCobroFinal( String cobroFinal) {
-	        this.cobroFinal = cobroFinal;
-	    }
 }
 

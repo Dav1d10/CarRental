@@ -7,7 +7,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+import archivo.ArchivoPagos;
 import modelo.AdministradorGeneral;
+import modelo.Alquiler;
 import modelo.Categoria;
 import modelo.Cliente;
 import modelo.DatosLicencia;
@@ -126,38 +128,40 @@ public class Aplicacion {
 	
 	
 	private static Cliente nuevoCliente() {
-		System.out.println("Ingrese su nombre: ");
-		String nombre = scanner.nextLine();
-		System.out.println("Ingrese su telefono: ");
-		String telefono = scanner.nextLine();
-		System.out.println("Ingrese su fecha de nacimiento: ");
-		String fechadeNacimiento = scanner.nextLine();
-		System.out.println("Ingrese su nacionalidad: ");
-		String nacionalidad = scanner.nextLine();
-		System.out.println("Ingrese la direccion de su documento de identidad: ");
-		String documentodeIdentidad = scanner.nextLine();
-		File documentoIdentidad = new File(documentodeIdentidad);
-		System.out.println("Ingrese el numero de su licencia: ");
-		String numeroLicencia = scanner.nextLine();
-		System.out.println("Ingrese el pais de expedicion de la licencia: ");
-		String paisExp = scanner.nextLine();
-		System.out.println("Ingrese la direccion de la licencia: ");
-		String licencia = scanner.nextLine();
-		File licenciaCliente = new File(licencia);
-		System.out.println("Ingrese la fecha de vencimiento de la licencia: ");
-		String fechadeVencimientoLicencia = scanner.nextLine();
-		System.out.println("Ingrese el numero de su tarjeta de credito: ");
-		String numeroTarjeta = scanner.nextLine();
-		System.out.println("Ingrese la fecha de vencimiento de su tarjeta de credito: ");
-		String fechaVencimiento = scanner.nextLine();
-		System.out.println("Ingrese su cvv: ");
-		String cvv = scanner.nextLine();
-		System.out.println("Ingrese su banco: ");
-		String banco = scanner.nextLine();
-		return new Cliente(nombre, telefono, fechadeNacimiento, nacionalidad, documentoIdentidad, 
-				new DatosLicencia(numeroLicencia, paisExp, licenciaCliente, fechadeVencimientoLicencia), new DatosTarjetaCredito(numeroTarjeta, 
-						fechaVencimiento, cvv, banco));
-	}
+        System.out.println("Ingrese su nombre: ");
+        String nombre = scanner.nextLine();
+        System.out.println("Ingrese su telefono: ");
+        String telefono = scanner.nextLine();
+        System.out.println("Ingrese su fecha de nacimiento: ");
+        String fechadeNacimiento = scanner.nextLine();
+        System.out.println("Ingrese su nacionalidad: ");
+        String nacionalidad = scanner.nextLine();
+        System.out.println("Ingrese la direccion de su documento de identidad: ");
+        String documentodeIdentidad = scanner.nextLine();
+        File documentoIdentidad = new File(documentodeIdentidad);
+        System.out.println("Ingrese el numero de su licencia: ");
+        String numeroLicencia = scanner.nextLine();
+        System.out.println("Ingrese el pais de expedicion de la licencia: ");
+        String paisExp = scanner.nextLine();
+        System.out.println("Ingrese la direccion de la licencia: ");
+        String licencia = scanner.nextLine();
+        File licenciaCliente = new File(licencia);
+        System.out.println("Ingrese la fecha de vencimiento de la licencia: ");
+        String fechadeVencimientoLicencia = scanner.nextLine();
+        System.out.println("Ingrese el numero de su tarjeta de credito: ");
+        String numeroTarjeta = scanner.nextLine();
+        System.out.println("Ingrese la fecha de vencimiento de su tarjeta de credito: ");
+        String fechaVencimiento = scanner.nextLine();
+        System.out.println("Ingrese su cvv: ");
+        String cvv = scanner.nextLine();
+        System.out.println("Ingrese su banco: ");
+        String banco = scanner.nextLine();
+        DatosLicencia datosLicencia = new DatosLicencia(numeroLicencia, paisExp, licenciaCliente, fechadeVencimientoLicencia);
+        DatosTarjetaCredito tarjetaCredito = new DatosTarjetaCredito(numeroTarjeta, fechaVencimiento, cvv, banco);
+        Cliente cliente = new Cliente(nombre, telefono, fechadeNacimiento, nacionalidad, documentoIdentidad, datosLicencia, tarjetaCredito);
+        ArchivoPagos.agregarArchivo(tarjetaCredito);
+        return cliente;
+    }
 	
 	
 
@@ -175,7 +179,7 @@ public class Aplicacion {
     }
 	
 	
-	private static String iniciarAlquiler() {
+	private static String iniciarAlquiler() throws FileNotFoundException, IOException {
 		System.out.println("Iniciando Alquiler...");
 		Cliente cliente = nuevoCliente();
 		System.out.println("Ingrese el tipo de carro que desea alquilar: ");
@@ -187,12 +191,13 @@ public class Aplicacion {
 		String diasString = scanner.nextLine();
         int dias = Integer.parseInt(diasString);
         String seguro = mostrarSeguros();
-        int Precio = rentaVehiculos.generarAlquiler(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro);
+        List <Alquiler> alquileres = rentaVehiculos.generarAlquiler(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro);
+        rentaVehiculos.guardarAlquileres(alquileres);
         Vehiculo carroAsignado = rentaVehiculos.asignarCarro(tipodeCarro);
         String lineaAEliminar = rentaVehiculos.lineaString(carroAsignado);
         rentaVehiculos.eliminarLinea(lineaAEliminar);
 		return "La marca del carro asignado es " + carroAsignado.getMarca() + ", de color " + carroAsignado.getColor() + ", modelo " + carroAsignado.getModelo() +
-		", con una capacidad de " + carroAsignado.getCapacidadPersonas() + " personas," +" de placa " + carroAsignado.getPlaca() + ". El precio final es: " + Precio;
+		", con una capacidad de " + carroAsignado.getCapacidadPersonas() + " personas," +" de placa " + carroAsignado.getPlaca();
 	}
 	
 	
@@ -353,7 +358,7 @@ public class Aplicacion {
 	
 	
 	
-	private static void ejecutarOpcion(int opcion) throws FileNotFoundException {
+	private static void ejecutarOpcion(int opcion) throws IOException {
 		switch (opcion) {
 		case 1:
 			cargarCatalogo();
@@ -377,8 +382,8 @@ public class Aplicacion {
 	
 
 	
-	public static void main(String[] args) throws FileNotFoundException {
-        Scanner scanner = new Scanner(System.in); // Mover la creación del scanner al método main
+	public static void main(String[] args) throws IOException {
+        Scanner scanner = new Scanner(System.in); 
 
         try {
             cargarDatos();
@@ -402,12 +407,12 @@ public class Aplicacion {
                     if (rentaVehiculos.esAdmin(pass)) {
                         mostrarCatalogoAdmin();
                         opcion = scanner.nextInt();
-                        scanner.nextLine(); // Consumir la nueva línea pendiente
+                        scanner.nextLine(); 
                         ejecutarOpcionAdmin(opcion);
                     } else {
                         mostrarCatalogo();
                         opcion = scanner.nextInt();
-                        scanner.nextLine(); // Consumir la nueva línea pendiente
+                        scanner.nextLine(); 
                         ejecutarOpcion(opcion);
                     }
                 }
@@ -423,6 +428,6 @@ public class Aplicacion {
             }
         } while (opcion != 0);
         
-        scanner.close(); // Cerrar el scanner al final del método main
+        scanner.close(); 
     }
 }

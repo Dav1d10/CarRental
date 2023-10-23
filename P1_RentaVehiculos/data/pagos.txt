@@ -1,0 +1,1 @@
+El numero de la tarjeta es 12345 , la fecha de vencimiento es 2021 , el cvv es 388 , el banco es bancolombia

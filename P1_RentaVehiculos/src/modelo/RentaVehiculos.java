@@ -1,9 +1,11 @@
 package modelo;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -138,15 +140,16 @@ public class RentaVehiculos {
 		}
 	
 	
-	public int generarAlquiler(String tipodeCarro, Sedes sedeEntrega, Persona conductorAdicional, Cliente cliente,
+	public List<Alquiler> generarAlquiler(String tipodeCarro, Sedes sedeEntrega, Persona conductorAdicional, Cliente cliente,
 			Sedes sedeDevolucion, int dias, String seguro) {
 			Alquiler alquiler = new Alquiler(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro, admin, categoria);
 			alquileres.add(alquiler);
 			int precio = alquiler.cobroFinal();
+			System.out.println("El precio total del alquiler es " + precio);
 			for (Alquiler info : alquileres) {
 				System.out.println(info);
 			}
-			return precio;
+			return alquileres;
 		}
 	
 	public void cambiarPropiedadesCarro(String nombreSeguro, int precioSeguro, String temporada) {
@@ -177,6 +180,19 @@ public class RentaVehiculos {
 		}
 		return precio;	
 	}
+	
+	
+	public void guardarAlquileres(List<Alquiler> alquileres) throws FileNotFoundException, IOException {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("data/historialAlquileres.txt", true))){
+            for (Alquiler alquiler : alquileres) {
+                String alquilerString = alquiler.toString();
+                writer.write(alquilerString);
+                writer.newLine();
+            }
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 	
 	
 	public Map<String, Integer> getSeguros() {
