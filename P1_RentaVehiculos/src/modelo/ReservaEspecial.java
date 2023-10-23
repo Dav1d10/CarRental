@@ -7,9 +7,8 @@ public class ReservaEspecial extends Reserva {
 	
 	
 	public ReservaEspecial(String tipodeCarro, Sedes sedeEntrega, Cliente conductorAdicional, Cliente cliente,
-			Sedes sedeDevolucion, int dias, String seguro, AdministradorGeneral admin, String fechayhoraEntrega, Sedes sedeOrigen) {
-		super(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro, admin,
-				fechayhoraEntrega);
+			Sedes sedeDevolucion, int dias, String seguro, String fechayhoraEntrega, Sedes sedeOrigen, AdministradorGeneral admin, Categoria categoria) {
+		super(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro, fechayhoraEntrega, admin, categoria);
 		this.sedeOrigen = sedeOrigen;
 	}
 	

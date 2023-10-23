@@ -8,3 +8,9 @@ El numero de la tarjeta es 1 , la fecha de vencimiento es 1 , el cvv es 1 , el b
 El precio que se debe pagar con esa tarjeta es:  325
 El numero de la tarjeta es 1 , la fecha de vencimiento es 1 , el cvv es 123 , el banco es nequiii
 El precio que se debe pagar con esa tarjeta es:  200
+El numero de la tarjeta es 21312312 , la fecha de vencimiento es 2030 , el cvv es 355 , el banco es bancolombia
+El precio que se debe pagar con esa tarjeta es:  1400
+El numero de la tarjeta es 1231212312 , la fecha de vencimiento es 2030 , el cvv es 455 , el banco es bancolombia
+El precio que se debe pagar con esa tarjeta es:  1600
+El numero de la tarjeta es dadas , la fecha de vencimiento es dads , el cvv es dassd , el banco es dasd
+El precio que se debe pagar con esa tarjeta es:  1200

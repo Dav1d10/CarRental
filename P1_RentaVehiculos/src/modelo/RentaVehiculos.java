@@ -64,15 +64,6 @@ public class RentaVehiculos {
 	}
 	
 	
-	public void cargarCatalogo(File archivoCatalogo) throws FileNotFoundException {
-		Scanner scan = new Scanner(archivoCatalogo);
-		while(scan.hasNextLine()) {
-			String linea = scan.nextLine();
-			System.out.println(linea);
-		}
-		scan.close();
-	}
-	
 	
 	public void elegirSede(int indice, String input) {
 		if (input.equals("1")) {
@@ -172,18 +163,19 @@ public class RentaVehiculos {
 	}
 	
 	
-	public int generarReserva(String tipodeCarro, Sedes sedeEntrega, Persona conductorAdicional, Cliente cliente,
+	public List<Reserva> generarReserva(String tipodeCarro, Sedes sedeEntrega, Persona conductorAdicional, Cliente cliente,
 			Sedes sedeDevolucion, int dias, String seguro, String fechayhoraEntrega) {
-		Reserva reserva = new Reserva(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro, admin, 
-				fechayhoraEntrega);
+		Reserva reserva = new Reserva(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro, fechayhoraEntrega, admin, categoria);
 		reservas.add(reserva);
 		int precio = reserva.cobroFinal();
 		double cobroInicial = reserva.cobroInicial();
 		System.out.println("Debe pagar " + cobroInicial + " para confirmar la reserva.");
+		System.out.println("El precio total del alquiler es " + precio);
 		for (Reserva info : reservas) {
 			System.out.println(info);
 		}
-		return precio;	
+		ArchivoPagos.agregarPrecio(precio);
+		return reservas;	
 	}
 	
 	
@@ -192,6 +184,19 @@ public class RentaVehiculos {
             for (Alquiler alquiler : alquileres) {
                 String alquilerString = alquiler.toString();
                 writer.write(alquilerString);
+                writer.newLine();
+            }
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+	
+	
+	public void guardarReservas(List<Reserva> reservas) throws FileNotFoundException, IOException {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("data/historialReservas.txt", true))){
+            for (Reserva reserva : reservas) {
+                String reservaString = reserva.toString();
+                writer.write(reservaString);
                 writer.newLine();
             }
         } catch (IOException e){

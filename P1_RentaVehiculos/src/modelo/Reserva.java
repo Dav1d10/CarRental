@@ -2,16 +2,15 @@ package modelo;
 
 public class Reserva extends Alquiler {
 	
-
+	
 	private String fechayhoraEntrega;
 	
 	
 	public Reserva(String tipodeCarro, Sedes sedeEntrega, Persona conductorAdicional, Cliente cliente,
-			Sedes sedeDevolucion, int dias, String seguro, AdministradorGeneral admin, String fechayhoraEntrega) {
-		super(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro, admin);
-		this.fechayhoraEntrega = fechayhoraEntrega;
-		
+			Sedes sedeDevolucion, int dias, String seguro, String fechayhoraEntrega, AdministradorGeneral admin, Categoria categoria) {
+		super(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro, admin, categoria);
 	}
+
 	
 	public String toString() {
 		return "Reserva[" +
@@ -22,6 +21,7 @@ public class Reserva extends Alquiler {
 		           ", sedeDevolucion=" + sedeDevolucion +
 		           ", dias=" + dias +
 		           ", seguro='" + seguro + '\'' +
+		           ", fechayhoraEntrega=" + fechayhoraEntrega + '\'' +
 		           "]";
 	}
 	

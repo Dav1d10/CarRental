@@ -17,6 +17,7 @@ import modelo.DatosLicencia;
 import modelo.DatosTarjetaCredito;
 import modelo.Persona;
 import modelo.RentaVehiculos;
+import modelo.Reserva;
 import modelo.Sedes;
 import modelo.Vehiculo;
 
@@ -27,14 +28,6 @@ public class Aplicacion {
 	private static Scanner scanner = new Scanner(System.in);
 	private static RentaVehiculos rentaVehiculos = new RentaVehiculos();
 	
-	
-	
-	private static void cargarCatalogo() throws FileNotFoundException {
-		System.out.println("Cargando el catalogo...");
-		File archivoCatalogo = new File("data/Catalogo.txt");
-		rentaVehiculos.cargarCatalogo(archivoCatalogo);
-		rentaVehiculos.setAdministradorGeneral();
-	}
 	
 	
 	private static Sedes elegirSedeEntrega() {
@@ -201,7 +194,7 @@ public class Aplicacion {
 	
 	
 	
-	private static String iniciarReserva() {
+	private static String iniciarReserva() throws FileNotFoundException, IOException {
 		System.out.println("Iniciando Reserva...");
 		Cliente cliente = nuevoCliente();
 		System.out.println("Ingrese el tipo de carro que desea reservar: ");
@@ -216,15 +209,19 @@ public class Aplicacion {
         System.out.println("Ingrese la fecha y la hora a la que va a entregar el vehiculo: ");
         String fechayhoraEntrega = scanner.nextLine();
         System.out.println("Gracias por realizar la reserva con nosotros, a continuacion se muestra el carro que se le asigna y el precio: ");
-        int Precio = rentaVehiculos.generarReserva(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro, fechayhoraEntrega);
+        List <Reserva> reservas = rentaVehiculos.generarReserva(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro, fechayhoraEntrega);
+        rentaVehiculos.guardarReservas(reservas);
         Vehiculo carroAsignado = rentaVehiculos.asignarCarro(tipodeCarro);
+        String lineaAEliminar = rentaVehiculos.lineaString(carroAsignado);
+        rentaVehiculos.eliminarLinea(lineaAEliminar);
+        ArchivoLog.agregarLog(cliente, carroAsignado);
 		return "La marca del carro asignado es " + carroAsignado.getMarca() + ", de color " + carroAsignado.getColor() + ", modelo " + carroAsignado.getModelo() +
-		", con una capacidad de " + carroAsignado.getCapacidadPersonas() + " personas," +" de placa " + carroAsignado.getPlaca() + ". El precio final es: " + Precio;
+		", con una capacidad de " + carroAsignado.getCapacidadPersonas() + " personas," +" de placa " + carroAsignado.getPlaca();
 	}
 	
 	
 	private static void cargarDatos() throws FileNotFoundException, IOException {
-		rentaVehiculos.setAdministradorGeneral();;
+		rentaVehiculos.setAdministradorGeneral();
 		File archivoInventario = new File("data/inventario.txt");
 		File archivoSedes = new File("data/sedes.txt");
 		rentaVehiculos.cargarInformacionInventario(archivoInventario, archivoSedes);
@@ -311,6 +308,8 @@ public class Aplicacion {
 		String sede = scanner.nextLine();
 		rentaVehiculos.agregarArchivo(placa, marca, modelo, color, tipoTransmicion, capacidad, tipoDeCarro, sede);
 	}
+	
+	
 	private static void agregarSedeNueva(){
 		System.out.println("Ingrese el nombre: ");
 		String nombreSede = scanner.nextLine();
@@ -324,10 +323,8 @@ public class Aplicacion {
 	
 	private static void mostrarCatalogo() {
 		System.out.println("------Opciones de la aplicacion------");
-		System.out.println("1. Cargar el catalogo");
-		System.out.println("2. Realizar Alquiler");
-		System.out.println("3. Realizar Reserva");
-		System.out.println("4. Mostrar informacion de las sedes de la empresa");
+		System.out.println("1. Realizar Alquiler");
+		System.out.println("2. Realizar Reserva");
 		System.out.println("0. Salir ");
 		System.out.println("Seleccione una opcion: ");
 	}
@@ -398,15 +395,12 @@ public class Aplicacion {
 	private static void ejecutarOpcion(int opcion) throws IOException {
 		switch (opcion) {
 		case 1:
-			cargarCatalogo();
-			break;
-		case 2:
 			String msjF = iniciarAlquiler();
 			System.out.println(msjF);
 			break;
-		case 3:
-			String precioT = iniciarReserva();
-			System.out.println("El precio total de la reserva es de: " + precioT);
+		case 2:
+			String msj = iniciarReserva();
+			System.out.println(msj);
 			break;
 		case 0:
 			System.out.println("Gracias por utilizar la aplicacion!");
