@@ -69,7 +69,7 @@ public class Categoria {
 
 
 	public static void agregarVehiculoaCategoria(Vehiculo vehiculo, String categoriaNombre) {
-        if (categoriaNombre.equals("PEQUEÑO")) {
+        if (categoriaNombre.equals("PEQUENO")) {
             pequeños.add(vehiculo);
         } else if (categoriaNombre.equals("SUV")) {
             SUV.add(vehiculo);
@@ -86,7 +86,7 @@ public class Categoria {
 	public Vehiculo vehiculoAlquilar(String tipoDeCarro) {
 		int indiceAEliminar = 0;
 		Vehiculo vehiculo = null;
-		if (tipoDeCarro.equals("PEQUEÑO")) {
+		if (tipoDeCarro.equals("PEQUENO")) {
 			List<Vehiculo> vehiculos = getPequeños();
 			if (!vehiculos.isEmpty()) {
 	            vehiculo = vehiculos.get(indiceAEliminar);

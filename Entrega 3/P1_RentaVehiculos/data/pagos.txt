@@ -14,3 +14,11 @@ El numero de la tarjeta es 1231212312 , la fecha de vencimiento es 2030 , el cvv
 El precio que se debe pagar con esa tarjeta es:  1600
 El numero de la tarjeta es dadas , la fecha de vencimiento es dads , el cvv es dassd , el banco es dasd
 El precio que se debe pagar con esa tarjeta es:  1200
+El numero de la tarjeta es dsadas , la fecha de vencimiento es asdasd , el cvv es dasdas , el banco es dasdsa
+El precio que se debe pagar con esa tarjeta es:  1200
+El numero de la tarjeta es dasdas , la fecha de vencimiento es das , el cvv es dasd , el banco es sada
+El precio que se debe pagar con esa tarjeta es:  1600
+El numero de la tarjeta es dads , la fecha de vencimiento es dsadas , el cvv es dasd , el banco es dads
+El precio que se debe pagar con esa tarjeta es:  1200
+El numero de la tarjeta es dads , la fecha de vencimiento es sadasd , el cvv es dasdas , el banco es dasda
+El precio que se debe pagar con esa tarjeta es:  1200
