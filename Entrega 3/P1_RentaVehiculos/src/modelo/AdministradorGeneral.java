@@ -17,14 +17,6 @@ import java.util.Map;
 public class AdministradorGeneral {
 
 
-
-
-
-
-
-
-
-
 	private String nombreArchivo = "data/adminGral.txt";
     private String temporada;
     private Vehiculo vehiculo;
@@ -32,8 +24,7 @@ public class AdministradorGeneral {
     private Map<String, Integer> seguros;
 
 
-
-
+    
     public AdministradorGeneral(String temporada) {
         this.temporada = temporada;
         this.seguros = new HashMap<>();
@@ -63,6 +54,8 @@ public class AdministradorGeneral {
         return sede;
     }
     
+    
+    
     public void eliminarContenidoArchivo() {
         try {
             FileWriter fileWriter = new FileWriter(nombreArchivo, false);
@@ -90,6 +83,8 @@ public class AdministradorGeneral {
             e.printStackTrace();
         }
     }
+    
+    
     public void cargarMapaDesdeArchivo() {
         try {
             FileReader fileReader = new FileReader(nombreArchivo);
@@ -110,6 +105,7 @@ public class AdministradorGeneral {
             e.printStackTrace();
         }
     }
+    
 
     public void setSede(Sedes sede) {
         this.sede = sede;

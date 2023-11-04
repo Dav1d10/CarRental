@@ -35,7 +35,7 @@ public class Aplicacion {
 	    try {
 	        List<String> sedesInfo = rentaVehiculos.mostrarSedes(archivoSedes);
 	        System.out.print("Ingrese el nombre de la sede en la que desea recoger el vehiculo: ");
-	        String nombreSedeBuscada = scanner.nextLine();
+	        String nombreSedeBuscada = scanner.nextLine().toUpperCase();
 	        for (String info : sedesInfo) {
 	            String[] partes = info.split(" - ");
 	            if (partes.length == 3) {
@@ -64,7 +64,7 @@ public class Aplicacion {
 	    try {
 	        List<String> sedesInfo = rentaVehiculos.mostrarSedes(archivoSedes);
 	        System.out.print("Ingrese el nombre de la sede en la que desea devolver el vehiculo: ");
-	        String nombreSedeBuscada = scanner.nextLine();
+	        String nombreSedeBuscada = scanner.nextLine().toUpperCase();
 	        for (String info : sedesInfo) {
 	            String[] partes = info.split(" - ");
 	            if (partes.length == 3) {
