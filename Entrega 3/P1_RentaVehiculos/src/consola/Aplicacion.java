@@ -173,8 +173,8 @@ public class Aplicacion {
 	private static String iniciarAlquiler() throws FileNotFoundException, IOException {
 		System.out.println("Iniciando Alquiler...");
 		Cliente cliente = nuevoCliente();
-		System.out.println("Ingrese el tipo de carro que desea alquilar: ");
-		String tipodeCarro = scanner.nextLine();
+		System.out.println("Ingrese el tipo de carro que desea alquilar (PEQUENO, SUV, VAN, LUJO, ELECTRICO): ");
+		String tipodeCarro = scanner.nextLine().toUpperCase();
 		Sedes sedeEntrega = elegirSedeEntrega();
 		Sedes sedeDevolucion = elegirSedeDevolucion();
 		Persona conductorAdicional = quiereConductorAdicional();
@@ -197,8 +197,8 @@ public class Aplicacion {
 	private static String iniciarReserva() throws FileNotFoundException, IOException {
 		System.out.println("Iniciando Reserva...");
 		Cliente cliente = nuevoCliente();
-		System.out.println("Ingrese el tipo de carro que desea reservar: ");
-		String tipodeCarro = scanner.nextLine();
+		System.out.println("Ingrese el tipo de carro que desea reservar (PEQUENO, SUV, VAN, LUJO, ELECTRICO): ");
+		String tipodeCarro = scanner.nextLine().toUpperCase();
 		Sedes sedeEntrega = elegirSedeEntrega();
 		Sedes sedeDevolucion = elegirSedeDevolucion();
 		Persona conductorAdicional = quiereConductorAdicional();
