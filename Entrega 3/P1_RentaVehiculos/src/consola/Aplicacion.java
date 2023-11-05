@@ -3,6 +3,7 @@ package consola;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -81,6 +82,7 @@ public class Aplicacion {
 	}
 	
 	
+	
 	private static Persona quiereConductorAdicional() {
 		System.out.println("Tiene un conductor adicional? ");
 		String tieneConductorAdicional = scanner.nextLine();
@@ -112,6 +114,7 @@ public class Aplicacion {
 			return null;
 		}
 	}
+	
 	
 	
 	private static Cliente nuevoCliente() {
@@ -152,20 +155,33 @@ public class Aplicacion {
 	
 	
 
-	private static String mostrarSeguros() {
+	private static List<String> mostrarSeguros() {
 		Map<String, Integer> mapa = rentaVehiculos.getSeguros();
-		int numero = 1;
+		int contador = 1;
+		List<String> segurosElegidos = new ArrayList<>();
+		System.out.println("Estos son los seguros disponibles: ");
 		for (Map.Entry<String, Integer> entrada : mapa.entrySet()) {
             String clave = entrada.getKey();
             Integer valor = entrada.getValue();
-            System.out.println(numero + "." + " " + clave + " con un costo de: " + valor);
-            numero ++;
+            System.out.println(contador + "." + " " + clave + " con un costo de: " + valor);
+            contador ++;
 		}
-        System.out.println("Ingrese el numero del seguro que desee: ");
-        String seguro = scanner.nextLine();
-        
-        return seguro;
+		while (true) {
+			System.out.println("Ingrese el numero de los seguros que desea (0 para finalizar la seleccion) : ");
+			int seguro = Integer.parseInt(scanner.nextLine());
+			if (seguro == 0) {
+				break;
+			}
+			if (seguro >= 1 && seguro <= mapa.size()) {
+	        	segurosElegidos.add((String) mapa.keySet().toArray()[seguro - 1]);
+		} else {
+			System.out.println("Numero de seguro no valido.");
+		}
+			
+	}
+    return segurosElegidos;  
     }
+	
 	
 	
 	private static String iniciarAlquiler() throws FileNotFoundException, IOException {
@@ -179,7 +195,7 @@ public class Aplicacion {
 		System.out.println("Ingrese la cantidad de dias por los que quiere alquilar el vehiculo: ");
 		String diasString = scanner.nextLine();
         int dias = Integer.parseInt(diasString);
-        String seguro = mostrarSeguros();
+        List<String> seguro = mostrarSeguros();
         List <Alquiler> alquileres = rentaVehiculos.generarAlquiler(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro);
         rentaVehiculos.guardarAlquileres(alquileres);
         Vehiculo carroAsignado = rentaVehiculos.asignarCarro(tipodeCarro);
@@ -203,7 +219,7 @@ public class Aplicacion {
 		System.out.println("Ingrese la cantidad de dias por los que quiere alquilar el vehiculo: ");
 		String diasString = scanner.nextLine();
         int dias = Integer.parseInt(diasString);
-        String seguro = mostrarSeguros();
+        List<String> seguro = mostrarSeguros();
         System.out.println("Ingrese la fecha y la hora a la que va a entregar el vehiculo: ");
         String fechayhoraEntrega = scanner.nextLine();
         System.out.println("Gracias por realizar la reserva con nosotros, a continuacion se muestra el carro que se le asigna y el precio: ");
@@ -216,6 +232,7 @@ public class Aplicacion {
 		return "La marca del carro asignado es " + carroAsignado.getMarca() + ", de color " + carroAsignado.getColor() + ", modelo " + carroAsignado.getModelo() +
 		", con una capacidad de " + carroAsignado.getCapacidadPersonas() + " personas," +" de placa " + carroAsignado.getPlaca();
 	}
+	
 	
 	
 	private static void cargarDatos() throws FileNotFoundException, IOException {
@@ -256,9 +273,11 @@ public class Aplicacion {
 	}
 	
 	
+	
 	private static void resetearSeguros() {
 		rentaVehiculos.resetearMapa();
 	}
+	
 	
 	
 	private static void manejarTemporada() {
@@ -284,6 +303,7 @@ public class Aplicacion {
 	}
 	
 	
+	
 	private static void agregarCarroNuevo(){
 		System.out.println("Ingrese la placa ");
 		String placa = scanner.nextLine();
@@ -303,6 +323,8 @@ public class Aplicacion {
 		String sede = scanner.nextLine();
 		rentaVehiculos.agregarArchivo(placa, marca, modelo, color, tipoTransmicion, capacidad, tipoDeCarro, sede);
 	}
+	
+	
 	
 	private static void devolverVehiculo() {
 		System.out.println("Ingrese la placa ");
@@ -325,6 +347,7 @@ public class Aplicacion {
 	}
 	
 	
+	
 	private static void agregarSedeNueva(){
 		System.out.println("Ingrese el nombre: ");
 		String nombreSede = scanner.nextLine();
@@ -334,6 +357,7 @@ public class Aplicacion {
 		String horariosAtencion = scanner.nextLine();
 		rentaVehiculos.agregarSede(nombreSede, ubicacion, horariosAtencion);
 	}
+	
 	
 	
 	private static void mostrarCatalogo() {
@@ -357,10 +381,14 @@ public class Aplicacion {
 		System.out.println("Seleccione una opcion: ");
 	}
 	
+	
+	
 	private static void mostrarCatalogoEmpleado() {
 		System.out.println("------Opciones de Empleado------");
 		System.out.println("1. Manejar Seguros");
 	}
+	
+	
 	
 	private static void ejecutarOpcionAdmin(int opcion) throws FileNotFoundException {
 		switch (opcion) {
@@ -386,9 +414,10 @@ public class Aplicacion {
 		default:
 			System.out.println("Opcion invalida, intentelo de nuevo.");
 			break;
-			
 		}
 	}
+	
+	
 	
 	private static void ejecutarOpcionEmpleado(int opcion) throws FileNotFoundException {
 		switch (opcion) {
@@ -404,6 +433,8 @@ public class Aplicacion {
 			
 		}
 	}
+	
+	
 	
 	private static void ejecutarOpcion(int opcion) throws IOException {
 		switch (opcion) {

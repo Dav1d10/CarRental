@@ -47,7 +47,9 @@ public class RentaVehiculos {
 		this.archivoSedes = new ArchivoSedes();
 		this.categoria = new Categoria();
 	}
+	
 
+	
 	public AdministradorGeneral setAdministradorGeneral() {
 		String temporada = "BAJA";
 		AdministradorGeneral administrador = new AdministradorGeneral(temporada);
@@ -55,10 +57,14 @@ public class RentaVehiculos {
         
 	}
 	
+	
+	
 	public List<Vehiculo> getVehiculos() {
 		return this.Vehiculos;
 	}
 
+	
+	
 	public List<Sedes> getSedes() {
 		return this.Sedes;
 	}
@@ -67,9 +73,9 @@ public class RentaVehiculos {
 	
 	public void elegirSede(int indice, String input) {
 		if (input.equals("1")) {
-			
 		}
 	}
+	
 	
 	
 	public List<String> mostrarSedes(File archivoSedes) throws FileNotFoundException {
@@ -92,6 +98,7 @@ public class RentaVehiculos {
 	}
 	
 	
+	
 	private void cargarInventario(File archivoInventario) throws FileNotFoundException, IOException {
 		try (BufferedReader reader = new BufferedReader(new FileReader(archivoInventario))){
 			String linea;
@@ -102,6 +109,7 @@ public class RentaVehiculos {
 			}
 		}
 	}
+	
 	
 	
 	private void cargarSedes(File archivoSedes) throws FileNotFoundException, IOException {
@@ -115,6 +123,7 @@ public class RentaVehiculos {
 		}
 	}
 
+	
 	
 	private void cargarCategoria() {
         for (Vehiculo vehiculo2 : Vehiculos) {
@@ -135,8 +144,9 @@ public class RentaVehiculos {
 		}
 	
 	
+	
 	public List<Alquiler> generarAlquiler(String tipodeCarro, Sedes sedeEntrega, Persona conductorAdicional, Cliente cliente,
-			Sedes sedeDevolucion, int dias, String seguro) {
+			Sedes sedeDevolucion, int dias, List<String> seguro) {
 			Alquiler alquiler = new Alquiler(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro, admin, categoria);
 			alquileres.add(alquiler);
 			int precio = alquiler.cobroFinal(seguro);
@@ -147,6 +157,7 @@ public class RentaVehiculos {
 			ArchivoPagos.agregarPrecio(precio);
 			return alquileres;
 		}
+	
 	
 	
 	public void cambiarPropiedadesCarro(String nombreSeguro, int precioSeguro, String temporada) {
@@ -164,8 +175,9 @@ public class RentaVehiculos {
 	}
 	
 	
+	
 	public List<Reserva> generarReserva(String tipodeCarro, Sedes sedeEntrega, Persona conductorAdicional, Cliente cliente,
-			Sedes sedeDevolucion, int dias, String seguro, String fechayhoraEntrega) {
+			Sedes sedeDevolucion, int dias, List<String> seguro, String fechayhoraEntrega) {
 		Reserva reserva = new Reserva(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro, fechayhoraEntrega, admin, categoria);
 		reservas.add(reserva);
 		int precio = reserva.cobroFinal(seguro);
@@ -178,6 +190,7 @@ public class RentaVehiculos {
 		ArchivoPagos.agregarPrecio(precio);
 		return reservas;	
 	}
+	
 	
 	
 	public void guardarAlquileres(List<Alquiler> alquileres) throws FileNotFoundException, IOException {
@@ -193,6 +206,7 @@ public class RentaVehiculos {
     }
 	
 	
+	
 	public void guardarReservas(List<Reserva> reservas) throws FileNotFoundException, IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("data/historialReservas.txt", true))){
             for (Reserva reserva : reservas) {
@@ -206,23 +220,30 @@ public class RentaVehiculos {
     }
 	
 	
+	
 	public Map<String, Integer> getSeguros() {
-		
 		return admin.getSeguros();
-		}
+	}
+	
 	
 	
 	public Vehiculo asignarCarro(String tipodeCarro) {
-		
 		return empleado.asignarVehiculo(tipodeCarro);
 	}
+	
+	
 	
 	public String lineaString(Vehiculo vehiculo) {
 		return empleado.lineaDeCarro(vehiculo);
 	}
+	
+	
+	
 	public void eliminarLinea(String linea) {
 		archivoInventario.eliminarLinea(linea);
 	}
+	
+	
 	
 	public void agregarArchivo(String placa, String marca, String modelo, String color, String transmision,
 			String capacidad, String tipo, String sede) {
@@ -230,33 +251,54 @@ public class RentaVehiculos {
 	}
 	
 	
+	
 	public void agregarSede(String nombreSede, String ubicacion, String horarioAtencion) {
 		archivoSedes.agregarArchivo(nombreSede, ubicacion, horarioAtencion);
 	}
 	
+	
+	
 	public void guardarArchivoEnMapa() {
 		admin.guardarArchivoEnMapa();
 	}
+	
+	
+	
 	public void resetearMapa() {
 		admin.resetearMapa();
 	}
 	
+	
+	
 	public boolean autenticarUsuario(String nombreUsuario, String pass) {
 	return ingresoUsuario.autenticarUsuario(nombreUsuario, pass);
-}
+	}
+	
+	
+	
 	public boolean esAdmin(String pass) {
 		return ingresoUsuario.esAdmin(pass);
 	}
+	
+	
+	
 	public boolean esEmpleado(String pass) {
 		return ingresoUsuario.esEmpleado(pass);
 	}
+	
+	
+	
 	public boolean registrarUsuario(String user, String pass) {
 		return registroUsuario.registrarUsuario(user, pass);
 	}
 	
+	
+	
 	public void AgregarSeguro(String nombre, int precio) {
 		admin.agregarSeguro(nombre, precio);
 	}
+	
+	
 	
 	public void AgregarSeguroaMapa() {
 		admin.cargarMapaDesdeArchivo();

@@ -1,5 +1,6 @@
 package modelo;
 import java.util.regex.Pattern;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 public class Alquiler {
@@ -14,13 +15,13 @@ public class Alquiler {
 	private Categoria categoria;
 	protected Sedes sedeDevolucion;
 	protected int dias;
-	protected String seguro;
+	protected List<String> seguro;
 	private AdministradorGeneral admin;
 	
 	
 	
 	public Alquiler(String tipodeCarro, Sedes sedeEntrega, Persona conductorAdicional, Cliente cliente,
-			Sedes sedeDevolucion, int dias, String seguro, AdministradorGeneral admin, Categoria categoria) {
+			Sedes sedeDevolucion, int dias, List<String> seguro, AdministradorGeneral admin, Categoria categoria) {
 		super();
 		this.tipodeCarro = tipodeCarro;
 		this.sedeEntrega = sedeEntrega;
@@ -32,6 +33,7 @@ public class Alquiler {
 		this.admin = admin;
 		this.categoria = categoria;
 				}
+	
 	
 	
 	public String toString() {
@@ -47,46 +49,54 @@ public class Alquiler {
 	}
 	
 	
+	
 	public String getTipodeCarro() {
 		return tipodeCarro;
 	}
 
 
+	
 	public void setTipodeCarro(String tipodeCarro) {
 		this.tipodeCarro = tipodeCarro;
 	}
 
 
+	
 	public Sedes getSedeEntrega() {
 		return sedeEntrega;
 	}
 
 
+	
 	public void setSedeEntrega(Sedes sedeEntrega) {
 		this.sedeEntrega = sedeEntrega;
 	}
 
 
+	
 	public Persona getConductorAdicional() {
 		return conductorAdicional;
 	}
 
 
+	
 	public void setConductorAdicional(Cliente conductorAdicional) {
 		this.conductorAdicional = conductorAdicional;
 	}
 	
 
-
 	
-	public int cobroSeguros(String seguroElegido) {
+	public int cobroSeguros(List<String> segurosElegidos) {
 		Map<String, Integer> mapa = admin.getSeguros();
 		int precioF = 0;
-		for (Integer valor : mapa.values()) {
-            precioF += valor;
-	}	
-	return precioF;
+		for (String seguro : segurosElegidos)
+			if (mapa.containsKey(seguro)) {
+				precioF += mapa.get(seguro);
+		}
+		return precioF * dias;
 	}
+	
+	
 	
 	private int cobroConductorAdicional() {
 		int precioF = 0;
@@ -97,8 +107,9 @@ public class Alquiler {
 			precioF = 0;
 		}
 		return precioF;
-	
 	}
+	
+	
 	
 	private int tarifaTemporada() {
 		String temporada = admin.getTemporada();
@@ -115,6 +126,8 @@ public class Alquiler {
 		}
 	return precioF;
 	}
+	
+	
 	
 	private int tarifaSedeDevolucion() {
 		String nombreSedeDevolucion = sedeDevolucion.getNombreSede();
@@ -156,28 +169,14 @@ public class Alquiler {
 	}
 	
 	
-	public int cobroFinal(String seguroElegido) {
+	
+	public int cobroFinal(List<String> seguroElegido) {
 		int precioSeguros = cobroSeguros(seguroElegido);
 		int precioConductorAdicional = cobroConductorAdicional();
 		int precioTemporada = tarifaTemporada();
 		int precioSedeDevolucion = tarifaSedeDevolucion();
 		int precioPorDias = cobroPorDias();
 		return (precioSeguros + precioConductorAdicional + precioTemporada + precioSedeDevolucion + precioPorDias);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	}
 
-
-	
-
-
-	
 }

@@ -17,45 +17,54 @@ public class ArchivoSedes {
 		
 	}
 
+	
 
 	public String getNombreSede() {
 		return nombreSede;
 	}
 
+	
 
 	public void setNombreSede(String nombreSede) {
 		this.nombreSede = nombreSede;
 	}
 
+	
 
 	public String getUbicacion() {
 		return Ubicacion;
 	}
 
 
+	
 	public void setUbicacion(String ubicacion) {
 		Ubicacion = ubicacion;
 	}
 
 
+	
 	public String getHorarioAtencion() {
 		return horarioAtencion;
 	}
 
+	
 
 	public void setHorarioAtencion(String horarioAtencion) {
 		this.horarioAtencion = horarioAtencion;
 	}
 
+	
 
 	public String getNombreArchivo() {
 		return nombreArchivo;
 	}
 
+	
 
 	public void setNombreArchivo(String nombreArchivo) {
 		this.nombreArchivo = nombreArchivo;
 	}
+	
 	
 	
 	public void agregarArchivo(String nombreSede, String ubicacion, String horarioAtencion) {

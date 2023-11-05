@@ -1,13 +1,16 @@
 package modelo;
 
+import java.util.List;
+
 public class ReservaEspecial extends Reserva {
 	
 
 	private Sedes sedeOrigen;
 	
 	
+	
 	public ReservaEspecial(String tipodeCarro, Sedes sedeEntrega, Cliente conductorAdicional, Cliente cliente,
-			Sedes sedeDevolucion, int dias, String seguro, String fechayhoraEntrega, Sedes sedeOrigen, AdministradorGeneral admin, Categoria categoria) {
+			Sedes sedeDevolucion, int dias, List<String> seguro, String fechayhoraEntrega, Sedes sedeOrigen, AdministradorGeneral admin, Categoria categoria) {
 		super(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro, fechayhoraEntrega, admin, categoria);
 		this.sedeOrigen = sedeOrigen;
 	}
@@ -19,6 +22,7 @@ public class ReservaEspecial extends Reserva {
 	}
 
 
+	
 	public void setSedeOrigen(Sedes sedeOrigen) {
 		this.sedeOrigen = sedeOrigen;
 	}

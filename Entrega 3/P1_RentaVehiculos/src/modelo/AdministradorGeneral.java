@@ -30,26 +30,32 @@ public class AdministradorGeneral {
         this.seguros = new HashMap<>();
     }
 
+    
+    
     public String getTemporada() {
         return temporada;
     }
 
 
+    
     public void setTemporada(String temporada) {
         this.temporada = temporada;
     }
 
 
+    
     public Vehiculo getVehiculo() {
         return vehiculo;
     }
 
 
+    
     public void setVehiculo(Vehiculo vehiculo) {
         this.vehiculo = vehiculo;
     }
 
 
+    
     public Sedes getSede() {
         return sede;
     }
@@ -65,6 +71,7 @@ public class AdministradorGeneral {
             e.printStackTrace();
         }
     }
+    
     
     
     public void guardarArchivoEnMapa() {
@@ -83,6 +90,7 @@ public class AdministradorGeneral {
             e.printStackTrace();
         }
     }
+    
     
     
     public void cargarMapaDesdeArchivo() {
@@ -105,6 +113,7 @@ public class AdministradorGeneral {
     }
     
     
+    
     public void agregarSeguro(String nombre, int precio) {
     	String datos = nombre + ";" + precio;
     	try (BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo, true))) {
@@ -121,30 +130,28 @@ public class AdministradorGeneral {
         this.sede = sede;
     }
 
+    
+    
 	public Map<String, Integer> getSeguros() {
 		return seguros;
 	}
 
+	
+	
 	public void setSeguros(Map<String, Integer> seguros) {
 		this.seguros = seguros;
 	}
 	
+	
+	
 	public void agregarElementoASeguros(String nombreSeguro, int precioSeguro) {
 	seguros.put(nombreSeguro, precioSeguro);
-	
 	}
+	
+	
+	
 	public void resetearMapa() {
 	seguros.clear();
 	eliminarContenidoArchivo();
 	}
-	
-	
-          	
-	
-	
-	
-	
-	
-	
-	
 }

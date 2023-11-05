@@ -1,5 +1,7 @@
 package modelo;
 
+import java.util.List;
+
 public class Reserva extends Alquiler {
 	
 	
@@ -7,10 +9,11 @@ public class Reserva extends Alquiler {
 	
 	
 	public Reserva(String tipodeCarro, Sedes sedeEntrega, Persona conductorAdicional, Cliente cliente,
-			Sedes sedeDevolucion, int dias, String seguro, String fechayhoraEntrega, AdministradorGeneral admin, Categoria categoria) {
+			Sedes sedeDevolucion, int dias, List<String> seguro, String fechayhoraEntrega, AdministradorGeneral admin, Categoria categoria) {
 		super(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro, admin, categoria);
 	}
 
+	
 	
 	public String toString() {
 		return "Reserva[" +
@@ -32,12 +35,14 @@ public class Reserva extends Alquiler {
 	}
 
 
+	
 	public void setFechayhoraEntrega(String fechayhoraEntrega) {
 		this.fechayhoraEntrega = fechayhoraEntrega;
 	}
 	
 	
-	public double cobroInicial(String Seguro) {
+	
+	public double cobroInicial(List<String> Seguro) {
 		double cobro = cobroFinal(seguro) * 0.30;
 		return cobro;
 	}
