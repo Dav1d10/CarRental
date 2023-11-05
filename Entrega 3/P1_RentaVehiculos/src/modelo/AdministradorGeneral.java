@@ -18,6 +18,7 @@ public class AdministradorGeneral {
 
 
 	private String nombreArchivo = "data/adminGral.txt";
+	private String archivoTemporada = "data/temporada.txt";
     private String temporada;
     private Vehiculo vehiculo;
     private Sedes sede;
@@ -123,6 +124,35 @@ public class AdministradorGeneral {
             System.err.println("Error al escribir en el archivo: " + e.getMessage());
         }
 	}
+    
+    
+    
+    public void cambiarTemporada(String temporada) {
+    	String datos = temporada;
+    	try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivoTemporada, true))) {
+            writer.write(datos);
+            writer.newLine(); 
+        } catch (IOException e) {
+            System.err.println("Error al escribir en el archivo: " + e.getMessage());
+        }
+	}
+    
+    
+    
+    public void cargarTemporada() {
+        try {
+            FileReader fileReader = new FileReader(archivoTemporada);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String linea;
+            while ((linea = bufferedReader.readLine()) != null) {
+                String partes = linea;
+                setTemporada(partes);
+            } 
+            bufferedReader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     
     
 

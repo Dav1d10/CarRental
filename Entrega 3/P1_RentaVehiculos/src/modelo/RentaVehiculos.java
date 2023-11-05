@@ -129,7 +129,6 @@ public class RentaVehiculos {
         for (Vehiculo vehiculo2 : Vehiculos) {
             String cate = vehiculo2.getTipoCategoria();
             Categoria.agregarVehiculoaCategoria(vehiculo2,cate);
-            System.out.println(vehiculo2.getTipoCategoria());
         }
     }
 	
@@ -149,6 +148,7 @@ public class RentaVehiculos {
 			Sedes sedeDevolucion, int dias, List<String> seguro) {
 			Alquiler alquiler = new Alquiler(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro, admin, categoria);
 			alquileres.add(alquiler);
+			System.out.println("La temporada actual es: " + admin.getTemporada());
 			int precio = alquiler.cobroFinal(seguro);
 			System.out.println("El precio total del alquiler es " + precio);
 			for (Alquiler info : alquileres) {
@@ -302,6 +302,18 @@ public class RentaVehiculos {
 	
 	public void AgregarSeguroaMapa() {
 		admin.cargarMapaDesdeArchivo();
+	}
+	
+	
+	
+	public void cambiarTemporada(String temporada) {
+		admin.cambiarTemporada(temporada);
+	}
+	
+	
+	
+	public void cargarTemporada() {
+		admin.cargarTemporada();
 	}
 }
 

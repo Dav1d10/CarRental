@@ -281,6 +281,16 @@ public class Aplicacion {
 	
 	
 	private static void manejarTemporada() {
+		System.out.println("Ingrese la temporada actual: ");
+		String temporada = scanner.nextLine();
+		rentaVehiculos.cambiarTemporada(temporada);
+		rentaVehiculos.cargarTemporada();
+		System.out.println("La temporada fue cambiada exitosamente.");
+	}
+	
+	
+	/*
+	private static void manejarTemporada() {
 		System.out.println("Ingrese la temporada nueva");
 		System.out.println("1. Alta");
 		System.out.println("2. Media");
@@ -301,7 +311,7 @@ public class Aplicacion {
 			System.out.println("Opcion no valida!");
 		}
 	}
-	
+	*/
 	
 	
 	private static void agregarCarroNuevo(){
