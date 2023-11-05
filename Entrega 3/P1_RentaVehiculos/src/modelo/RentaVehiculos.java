@@ -139,7 +139,7 @@ public class RentaVehiculos {
 			Sedes sedeDevolucion, int dias, String seguro) {
 			Alquiler alquiler = new Alquiler(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro, admin, categoria);
 			alquileres.add(alquiler);
-			int precio = alquiler.cobroFinal();
+			int precio = alquiler.cobroFinal(seguro);
 			System.out.println("El precio total del alquiler es " + precio);
 			for (Alquiler info : alquileres) {
 				System.out.println(info);
@@ -147,6 +147,7 @@ public class RentaVehiculos {
 			ArchivoPagos.agregarPrecio(precio);
 			return alquileres;
 		}
+	
 	
 	public void cambiarPropiedadesCarro(String nombreSeguro, int precioSeguro, String temporada) {
 		if (temporada == null) {
@@ -167,8 +168,8 @@ public class RentaVehiculos {
 			Sedes sedeDevolucion, int dias, String seguro, String fechayhoraEntrega) {
 		Reserva reserva = new Reserva(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro, fechayhoraEntrega, admin, categoria);
 		reservas.add(reserva);
-		int precio = reserva.cobroFinal();
-		double cobroInicial = reserva.cobroInicial();
+		int precio = reserva.cobroFinal(seguro);
+		double cobroInicial = reserva.cobroInicial(seguro);
 		System.out.println("Debe pagar " + cobroInicial + " para confirmar la reserva.");
 		System.out.println("El precio total del alquiler es " + precio);
 		for (Reserva info : reservas) {
@@ -251,6 +252,14 @@ public class RentaVehiculos {
 	}
 	public boolean registrarUsuario(String user, String pass) {
 		return registroUsuario.registrarUsuario(user, pass);
+	}
+	
+	public void AgregarSeguro(String nombre, int precio) {
+		admin.agregarSeguro(nombre, precio);
+	}
+	
+	public void AgregarSeguroaMapa() {
+		admin.cargarMapaDesdeArchivo();
 	}
 }
 

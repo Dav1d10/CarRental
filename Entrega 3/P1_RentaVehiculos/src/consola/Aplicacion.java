@@ -55,10 +55,7 @@ public class Aplicacion {
 	}
 	
 	
-
- 
-	  
-	        
+	
 	private static Sedes elegirSedeDevolucion() {
 	    File archivoSedes = new File("data/sedes.txt");
 	    try {
@@ -161,11 +158,12 @@ public class Aplicacion {
 		for (Map.Entry<String, Integer> entrada : mapa.entrySet()) {
             String clave = entrada.getKey();
             Integer valor = entrada.getValue();
-            System.out.println(numero +" " + clave + " El precio es: " + valor);
-            numero += 1;
+            System.out.println(numero + "." + " " + clave + " con un costo de: " + valor);
+            numero ++;
 		}
-        System.out.println("Ingrese la(s) opcion(es) de seguro(s) que desea: ");
+        System.out.println("Ingrese el numero del seguro que desee: ");
         String seguro = scanner.nextLine();
+        
         return seguro;
     }
 	
@@ -227,6 +225,8 @@ public class Aplicacion {
 		rentaVehiculos.cargarInformacionInventario(archivoInventario, archivoSedes);
 	}
 	
+	
+	/*
 	private static void manejarSeguros() {
 		System.out.println("Ingrese el numero de los seguros que va a agregar: ");
 		short numIteraciones = scanner.nextShort();
@@ -241,10 +241,25 @@ public class Aplicacion {
 		}
 		rentaVehiculos.guardarArchivoEnMapa();
 	}
+	*/
+	
+	
+	private static void manejarSeguros() {
+		System.out.println("Ingrese el nombre del seguro: ");
+		String nombreSeguro = scanner.nextLine();
+		System.out.println("Ingrese el precio de seguro: ");
+		String valorSeguro = scanner.nextLine();
+		int valor = Integer.parseInt(valorSeguro);
+	    rentaVehiculos.AgregarSeguro(nombreSeguro, valor);
+	    rentaVehiculos.AgregarSeguroaMapa();
+	    System.out.println("El seguro fue agregado exitosamente. ");
+	}
+	
+	
 	private static void resetearSeguros() {
 		rentaVehiculos.resetearMapa();
-	
 	}
+	
 	
 	private static void manejarTemporada() {
 		System.out.println("Ingrese la temporada nueva");
@@ -350,9 +365,7 @@ public class Aplicacion {
 	private static void ejecutarOpcionAdmin(int opcion) throws FileNotFoundException {
 		switch (opcion) {
 		case 1:
-			resetearSeguros();
 			manejarSeguros();
-			
 			break;
 		case 2:
 			manejarTemporada();

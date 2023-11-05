@@ -37,8 +37,8 @@ public class Reserva extends Alquiler {
 	}
 	
 	
-	public double cobroInicial() {
-		double cobro = cobroFinal() * 0.30;
+	public double cobroInicial(String Seguro) {
+		double cobro = cobroFinal(seguro) * 0.30;
 		return cobro;
 	}
 

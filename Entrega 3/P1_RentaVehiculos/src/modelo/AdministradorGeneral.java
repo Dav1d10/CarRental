@@ -89,22 +89,32 @@ public class AdministradorGeneral {
         try {
             FileReader fileReader = new FileReader(nombreArchivo);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
-
             String linea;
             while ((linea = bufferedReader.readLine()) != null) {
-                String[] partes = linea.split(",");
+                String[] partes = linea.split(";");
                 if (partes.length == 2) {
                     String nombreSeguro = partes[0];
                     int precio = Integer.parseInt(partes[1]);
                     seguros.put(nombreSeguro, precio);
                 }
-            }
-
+            } //System.out.println(seguros);
             bufferedReader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+    
+    
+    public void agregarSeguro(String nombre, int precio) {
+    	String datos = nombre + ";" + precio;
+    	try (BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo, true))) {
+            writer.write(datos);
+            writer.newLine(); 
+        } catch (IOException e) {
+            System.err.println("Error al escribir en el archivo: " + e.getMessage());
+        }
+	}
+    
     
 
     public void setSede(Sedes sede) {

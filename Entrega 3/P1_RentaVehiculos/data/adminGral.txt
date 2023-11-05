@@ -1,3 +1,2 @@
-;123
-pololo;321
-david;123
+choque;1000
+fallamecanica;500

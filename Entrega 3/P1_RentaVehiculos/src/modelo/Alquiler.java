@@ -79,7 +79,7 @@ public class Alquiler {
 
 
 	
-	private int cobroSeguros() {
+	public int cobroSeguros(String seguroElegido) {
 		Map<String, Integer> mapa = admin.getSeguros();
 		int precioF = 0;
 		for (Integer valor : mapa.values()) {
@@ -156,8 +156,8 @@ public class Alquiler {
 	}
 	
 	
-	public int cobroFinal() {
-		int precioSeguros = cobroSeguros();
+	public int cobroFinal(String seguroElegido) {
+		int precioSeguros = cobroSeguros(seguroElegido);
 		int precioConductorAdicional = cobroConductorAdicional();
 		int precioTemporada = tarifaTemporada();
 		int precioSedeDevolucion = tarifaSedeDevolucion();
