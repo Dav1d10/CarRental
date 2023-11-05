@@ -167,7 +167,7 @@ public class Aplicacion {
             contador ++;
 		}
 		while (true) {
-			System.out.println("Ingrese el numero de los seguros que desea (0 para finalizar la seleccion) : ");
+			System.out.println("Ingrese el numero del seguro que desea (0 para finalizar la seleccion): ");
 			int seguro = Integer.parseInt(scanner.nextLine());
 			if (seguro == 0) {
 				break;
@@ -377,6 +377,7 @@ public class Aplicacion {
 		System.out.println("3. Cambiar ambos");
 		System.out.println("4. Agregar Carro Nuevo");
 		System.out.println("5. Agregar Sede Nueva");
+		System.out.println("6. Eliminar Seguros");
 		System.out.println("0. Salir");
 		System.out.println("Seleccione una opcion: ");
 	}
@@ -407,6 +408,9 @@ public class Aplicacion {
 			break;
 		case 5:
 			agregarSedeNueva();
+			break;
+		case 6:
+			resetearSeguros();
 			break;
 		case 0:
 			System.out.println("Los cambios fueron realizados.");

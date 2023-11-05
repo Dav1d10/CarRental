@@ -2,9 +2,14 @@ package modelo;
 
 import java.io.File;
 import archivo.ArchivoInventario;
+
+
 public class Empleado  {
+	
+	
 	private Categoria categoria;
 	private static ArchivoInventario archivoInventario;
+	
 	
 	
 	public Empleado() {
@@ -12,9 +17,12 @@ public class Empleado  {
 	}
 		
 	
+	
 	public Vehiculo asignarVehiculo(String tipoDeCarro) {
         return categoria.vehiculoAlquilar(tipoDeCarro);
     }
+	
+	
 	
 	public String lineaDeCarro(Vehiculo vehiculo){
 		String placa = vehiculo.getPlaca();

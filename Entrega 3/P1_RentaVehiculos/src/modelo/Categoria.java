@@ -28,8 +28,6 @@ public class Categoria {
 	
 	
 	
-	
-	
 	public int getTarifaPequeños() {
 		return tarifaPequeños;
 	}
@@ -83,6 +81,7 @@ public class Categoria {
     }
 
 
+	
 	public Vehiculo vehiculoAlquilar(String tipoDeCarro) {
 		int indiceAEliminar = 0;
 		Vehiculo vehiculo = null;
@@ -153,13 +152,9 @@ public class Categoria {
 
 
 
-
-
 	public List<Vehiculo> getSUV() {
 		return SUV;
 	}
-
-
 
 
 
@@ -169,13 +164,9 @@ public class Categoria {
 
 
 
-
-
 	public List<Vehiculo> getVans() {
 		return Vans;
 	}
-
-
 
 
 
@@ -185,13 +176,9 @@ public class Categoria {
 
 
 
-
-
 	public List<Vehiculo> getLujo() {
 		return Lujo;
 	}
-
-
 
 
 
@@ -201,13 +188,9 @@ public class Categoria {
 
 
 
-
-
 	public List<Vehiculo> getElectricos() {
 		return electricos;
 	}
-
-
 
 
 
@@ -217,13 +200,9 @@ public class Categoria {
 
 
 
-
-
 	public void setTarifaPequeños(int tarifaPequeños) {
 		this.tarifaPequeños = tarifaPequeños;
 	}
-
-
 
 
 
@@ -233,21 +212,15 @@ public class Categoria {
 
 
 
-
-
 	public void setTarifaVans(int tarifaVans) {
 		this.tarifaVans = tarifaVans;
 	}
 
 
 
-
-
 	public void setTarifaLujo(int tarifaLujo) {
 		this.tarifaLujo = tarifaLujo;
 	}
-
-
 
 
 

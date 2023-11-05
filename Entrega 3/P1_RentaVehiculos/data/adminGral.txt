@@ -1,2 +1,5 @@
-choque;1000
-fallamecanica;500
+Dano por choque, robo o accidente (CDW y LDW);30
+Danos provocados a terceros (LIS, EP, y SLI);15
+Seguro de accidente personal (PAI);20
+Perdida o robo de las pertenencias (PEC);10
+Servicio de auxilio mecanico (RP);5
