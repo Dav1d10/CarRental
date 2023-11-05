@@ -86,7 +86,7 @@ public class Aplicacion {
 	private static Persona quiereConductorAdicional() {
 		System.out.println("Tiene un conductor adicional? ");
 		String tieneConductorAdicional = scanner.nextLine();
-		if (tieneConductorAdicional.equals("Si")) {
+		if (tieneConductorAdicional.equals("si")) {
 			System.out.println("Ingrese el nombre del conductor: ");
 			String nombreConductor = scanner.nextLine();
 			System.out.println("Ingrese el telefono del conductor: ");
