@@ -139,6 +139,24 @@ public class AdministradorGeneral {
     
     
     
+    public String cargarTemporada() {
+    	StringBuilder partes = new StringBuilder();
+        try {
+            FileReader fileReader = new FileReader(archivoTemporada);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String linea;
+            while ((linea = bufferedReader.readLine()) != null) {
+                partes.append(linea);
+            } 
+            bufferedReader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return partes.toString();
+    }
+    
+    
+    /*
     public void cargarTemporada() {
         try {
             FileReader fileReader = new FileReader(archivoTemporada);
@@ -153,7 +171,7 @@ public class AdministradorGeneral {
             e.printStackTrace();
         }
     }
-    
+    */
     
 
     public void setSede(Sedes sede) {

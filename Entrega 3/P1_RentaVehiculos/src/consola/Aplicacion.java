@@ -236,7 +236,7 @@ public class Aplicacion {
 	
 	
 	private static void cargarDatos() throws FileNotFoundException, IOException {
-		rentaVehiculos.setAdministradorGeneral();
+		cargarTemporada();
 		File archivoInventario = new File("data/inventario.txt");
 		File archivoSedes = new File("data/sedes.txt");
 		rentaVehiculos.cargarInformacionInventario(archivoInventario, archivoSedes);
@@ -284,9 +284,15 @@ public class Aplicacion {
 		System.out.println("Ingrese la temporada actual: ");
 		String temporada = scanner.nextLine();
 		rentaVehiculos.cambiarTemporada(temporada);
-		rentaVehiculos.cargarTemporada();
 		System.out.println("La temporada fue cambiada exitosamente.");
 	}
+	
+	
+	
+	private static void cargarTemporada() {
+		rentaVehiculos.setAdministradorGeneral();
+	}
+	
 	
 	
 	/*

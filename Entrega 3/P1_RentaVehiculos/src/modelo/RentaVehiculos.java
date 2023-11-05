@@ -51,7 +51,7 @@ public class RentaVehiculos {
 
 	
 	public AdministradorGeneral setAdministradorGeneral() {
-		String temporada = "BAJA";
+		String temporada = admin.cargarTemporada();
 		AdministradorGeneral administrador = new AdministradorGeneral(temporada);
         return this.admin = administrador;
         
