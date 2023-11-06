@@ -51,8 +51,7 @@ public class RentaVehiculos {
 
 	
 	public AdministradorGeneral setAdministradorGeneral() {
-		String temporada = admin.cargarTemporada();
-		AdministradorGeneral administrador = new AdministradorGeneral(temporada);
+		AdministradorGeneral administrador = new AdministradorGeneral();
         return this.admin = administrador;
         
 	}
@@ -141,6 +140,12 @@ public class RentaVehiculos {
 		admin.cargarMapaDesdeArchivo();
 		List<Vehiculo> SUV = categoria.getSUV();
 		}
+	
+	
+	
+	public void cargarTemporada() {
+		admin.cargarTemporada();
+	}
 	
 	
 	
@@ -311,10 +316,6 @@ public class RentaVehiculos {
 	}
 	
 	
-	
-	public void cargarTemporada() {
-		admin.cargarTemporada();
-	}
 }
 
 

@@ -26,8 +26,7 @@ public class AdministradorGeneral {
 
 
     
-    public AdministradorGeneral(String temporada) {
-        this.temporada = temporada;
+    public AdministradorGeneral() {
         this.seguros = new HashMap<>();
     }
 
@@ -152,7 +151,8 @@ public class AdministradorGeneral {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return partes.toString();
+        setTemporada(partes.toString());
+        return getTemporada();
     }
     
     

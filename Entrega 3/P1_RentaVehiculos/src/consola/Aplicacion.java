@@ -236,10 +236,11 @@ public class Aplicacion {
 	
 	
 	private static void cargarDatos() throws FileNotFoundException, IOException {
-		cargarTemporada();
+		rentaVehiculos.setAdministradorGeneral();
 		File archivoInventario = new File("data/inventario.txt");
 		File archivoSedes = new File("data/sedes.txt");
 		rentaVehiculos.cargarInformacionInventario(archivoInventario, archivoSedes);
+		cargarTemporada();
 	}
 	
 	
@@ -290,9 +291,8 @@ public class Aplicacion {
 	
 	
 	private static void cargarTemporada() {
-		rentaVehiculos.setAdministradorGeneral();
+		rentaVehiculos.cargarTemporada();
 	}
-	
 	
 	
 	/*
