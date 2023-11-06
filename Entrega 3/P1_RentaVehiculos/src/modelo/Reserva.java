@@ -43,7 +43,7 @@ public class Reserva extends Alquiler {
 	
 	
 	public double cobroInicial(List<String> Seguro) {
-		double cobro = cobroFinal(seguro) * 0.30;
+		double cobro = cobroFinal(Seguro) * 0.30;
 		return cobro;
 	}
 

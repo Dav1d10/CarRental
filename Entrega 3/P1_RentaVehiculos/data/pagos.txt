@@ -51,3 +51,7 @@ El numero de la tarjeta es dsadas , la fecha de vencimiento es dasdas , el cvv e
 El precio que se debe pagar con esa tarjeta es:  1370
 El numero de la tarjeta es dasdas , la fecha de vencimiento es dasads , el cvv es dsadsa , el banco es dsadas
 El precio que se debe pagar con esa tarjeta es:  1345
+El numero de la tarjeta es dsadas , la fecha de vencimiento es dsadasd , el cvv es dasdasd , el banco es dasdasdas
+El precio que se debe pagar con esa tarjeta es:  1545
+El numero de la tarjeta es dasdasdas , la fecha de vencimiento es dasdasd , el cvv es dasdasd , el banco es dsadasd
+El precio que se debe pagar con esa tarjeta es:  1805

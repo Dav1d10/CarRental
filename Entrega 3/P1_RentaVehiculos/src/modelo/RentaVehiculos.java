@@ -164,6 +164,7 @@ public class RentaVehiculos {
 		reservas.add(reserva);
 		int precio = reserva.cobroFinal(seguro);
 		double cobroInicial = reserva.cobroInicial(seguro);
+		System.out.println("La temporada actual es: " + admin.getTemporada());
 		System.out.println("Debe pagar " + cobroInicial + " para confirmar la reserva.");
 		System.out.println("El precio total del alquiler es " + precio);
 		for (Reserva info : reservas) {
