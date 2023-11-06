@@ -244,24 +244,7 @@ public class Aplicacion {
 	}
 	
 	
-	/*
-	private static void manejarSeguros() {
-		System.out.println("Ingrese el numero de los seguros que va a agregar: ");
-		short numIteraciones = scanner.nextShort();
-		for (int i = 1; i <= numIteraciones; i++) {
-			System.out.println("Ingrese el nombre del Seguro");
-			String nombreSeguro = scanner.nextLine();
-			System.out.println("Ingrese el valor de Seguro");
-			String valorSeguroS = scanner.nextLine();
-			int valorSeguro = Integer.parseInt(valorSeguroS);
-		    rentaVehiculos.cambiarPropiedadesCarro(nombreSeguro, valorSeguro, null);
-		    
-		}
-		rentaVehiculos.guardarArchivoEnMapa();
-	}
-	*/
-	
-	
+
 	private static void manejarSeguros() {
 		System.out.println("Ingrese el nombre del seguro: ");
 		String nombreSeguro = scanner.nextLine();
@@ -295,29 +278,11 @@ public class Aplicacion {
 	}
 	
 	
-	/*
-	private static void manejarTemporada() {
-		System.out.println("Ingrese la temporada nueva");
-		System.out.println("1. Alta");
-		System.out.println("2. Media");
-		System.out.println("3. Baja");
-		String valor = scanner.nextLine();
-		short valorT = Short.parseShort(valor);
-		if (valorT == 1) {
-			rentaVehiculos.cambiarPropiedadesCarro(null, 0, "ALTA");
-		
-		}
-		else if (valorT == 2) {
-			rentaVehiculos.cambiarPropiedadesCarro(null, 0, "MEDIA");
-		}
-		else if (valorT == 3) {
-			rentaVehiculos.cambiarPropiedadesCarro(null, 0, "BAJA");
-		}
-		else {
-			System.out.println("Opcion no valida!");
-		}
+	
+	private static void resetearTemporada() {
+		rentaVehiculos.resetearTemporada();
 	}
-	*/
+	
 	
 	
 	private static void agregarCarroNuevo(){
@@ -413,6 +378,7 @@ public class Aplicacion {
 			manejarSeguros();
 			break;
 		case 2:
+			resetearTemporada();
 			manejarTemporada();
 			break;
 		case 3:

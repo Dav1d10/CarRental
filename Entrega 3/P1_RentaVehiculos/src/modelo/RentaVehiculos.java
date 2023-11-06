@@ -70,13 +70,6 @@ public class RentaVehiculos {
 	
 	
 	
-	public void elegirSede(int indice, String input) {
-		if (input.equals("1")) {
-		}
-	}
-	
-	
-	
 	public List<String> mostrarSedes(File archivoSedes) throws FileNotFoundException {
 		List<String> sedes = new ArrayList<>();
 		Scanner scan = new Scanner(archivoSedes);
@@ -165,22 +158,6 @@ public class RentaVehiculos {
 	
 	
 	
-	public void cambiarPropiedadesCarro(String nombreSeguro, int precioSeguro, String temporada) {
-		if (temporada == null) {
-		admin.agregarElementoASeguros(nombreSeguro, precioSeguro);
-		}
-		if (nombreSeguro == null) {
-			admin.setTemporada(temporada);
-		}
-		else {
-			admin.agregarElementoASeguros(nombreSeguro, precioSeguro);
-			admin.setTemporada(temporada);
-		System.out.println(admin.getSeguros());
-		}
-	}
-	
-	
-	
 	public List<Reserva> generarReserva(String tipodeCarro, Sedes sedeEntrega, Persona conductorAdicional, Cliente cliente,
 			Sedes sedeDevolucion, int dias, List<String> seguro, String fechayhoraEntrega) {
 		Reserva reserva = new Reserva(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro, fechayhoraEntrega, admin, categoria);
@@ -263,12 +240,6 @@ public class RentaVehiculos {
 	
 	
 	
-	public void guardarArchivoEnMapa() {
-		admin.guardarArchivoEnMapa();
-	}
-	
-	
-	
 	public void resetearMapa() {
 		admin.resetearMapa();
 	}
@@ -315,6 +286,11 @@ public class RentaVehiculos {
 		admin.cambiarTemporada(temporada);
 	}
 	
+	
+	
+	public void resetearTemporada() {
+		admin.eliminarContenidoArchivoTemp();
+	}
 	
 }
 

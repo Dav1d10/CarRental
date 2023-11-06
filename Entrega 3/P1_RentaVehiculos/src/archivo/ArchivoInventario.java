@@ -14,10 +14,15 @@ import java.util.Enumeration;
 import java.util.List;
 import java.util.Properties;
 
+
 public class ArchivoInventario {
+	
+	
 	public ArchivoInventario() {
 			
 	}
+	
+	
 	private String placa;
 	private String marca;
 	private String modelo;
@@ -27,54 +32,104 @@ public class ArchivoInventario {
 	private String tipo;
 	private String sede;
 	private String nombreArchivo = "data/inventario.txt"; 
+	
+	
+	
 	public String getPlaca() {
 		return placa;
 	}
+	
+	
+	
 	public void setPlaca(String placa) {
 		this.placa = placa;
 	}
+	
+	
+	
 	public String getMarca() {
 		return marca;
 	}
+	
+	
+	
 	public void setMarca(String marca) {
 		this.marca = marca;
 	}
+	
+	
+	
 	public String getModelo() {
 		return modelo;
 	}
+	
+	
+	
 	public void setModelo(String modelo) {
 		this.modelo = modelo;
 	}
+	
+	
+	
 	public String getColor() {
 		return color;
 	}
+	
+	
+	
 	public void setColor(String color) {
 		this.color = color;
 	}
+	
+	
+	
 	public String getTransmision() {
 		return transmision;
 	}
+	
+	
 	public void setTransmision(String transmision) {
 		this.transmision = transmision;
 	}
+	
+	
+	
 	public String getCapacidad() {
 		return capacidad;
 	}
+	
+	
+	
 	public void setCapacidad(String capacidad) {
 		this.capacidad = capacidad;
 	}
+	
+	
+	
 	public String getTipo() {
 		return tipo;
 	}
+	
+	
+	
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
+	
+	
+	
 	public String getSede() {
 		return sede;
 	}
+	
+	
+	
 	public void setSede(String sede) {
 		this.sede = sede;
 	}
+	
+	
+	
 	public void agregarArchivo(String placa, String marca, String modelo, String color, String transmision,
 			String capacidad, String tipo, String sede) {
 		String datos = placa + ";" + marca + ";" + modelo + ";" + color + ";" + transmision + ";" + capacidad + ";" + tipo + ";" + sede;
@@ -86,31 +141,33 @@ public class ArchivoInventario {
             System.err.println("Error al escribir en el archivo: " + e.getMessage());
         }
 	}
-		public void eliminarLinea(String lineaAEliminar) {
-	        try {
-	            List<String> lineas = new ArrayList<>();
-	            BufferedReader reader = new BufferedReader(new FileReader(nombreArchivo));
-	            String linea;
-	            while ((linea = reader.readLine()) != null) {
-	                if (!linea.equals(lineaAEliminar)) {
-	                    lineas.add(linea);
-	                }
-	            }
-	            reader.close();
+	
+	
+	
+	public void eliminarLinea(String lineaAEliminar) {
+        try {
+            List<String> lineas = new ArrayList<>();
+            BufferedReader reader = new BufferedReader(new FileReader(nombreArchivo));
+            String linea;
+            while ((linea = reader.readLine()) != null) {
+                if (!linea.equals(lineaAEliminar)) {
+                    lineas.add(linea);
+                }
+            }
+            reader.close();
 
 
-	            BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo));
-	            for (String lineaExistente : lineas) {
-	                writer.write(lineaExistente + "\n");
-	            }
-	            writer.close();
-	            
-	            System.out.println("La línea se eliminó con éxito.");
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        }
-	    }
-		
+            BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo));
+            for (String lineaExistente : lineas) {
+                writer.write(lineaExistente + "\n");
+            }
+            writer.close();
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+	
 }
 
 	

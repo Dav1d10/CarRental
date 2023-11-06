@@ -74,25 +74,6 @@ public class AdministradorGeneral {
     
     
     
-    public void guardarArchivoEnMapa() {
-        try {
-            FileWriter fileWriter = new FileWriter(nombreArchivo);
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-
-            for (Map.Entry<String, Integer> entry : seguros.entrySet()) {
-                String linea = entry.getKey() + ";" + entry.getValue();
-                bufferedWriter.write(linea);
-                bufferedWriter.newLine();
-            }
-
-            bufferedWriter.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    
-    
-    
     public void cargarMapaDesdeArchivo() {
         try {
             FileReader fileReader = new FileReader(nombreArchivo);
@@ -156,24 +137,19 @@ public class AdministradorGeneral {
     }
     
     
-    /*
-    public void cargarTemporada() {
+    
+    public void eliminarContenidoArchivoTemp() {
         try {
-            FileReader fileReader = new FileReader(archivoTemporada);
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-            String linea;
-            while ((linea = bufferedReader.readLine()) != null) {
-                String partes = linea;
-                setTemporada(partes);
-            } 
-            bufferedReader.close();
+            FileWriter fileWriter = new FileWriter(archivoTemporada, false);
+            fileWriter.write(""); 
+            fileWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    */
     
-
+    
+   
     public void setSede(Sedes sede) {
         this.sede = sede;
     }
