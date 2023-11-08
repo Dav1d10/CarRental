@@ -15,3 +15,4 @@ El cliente dasdasdsa alquilo el vehiculo con placa QRS012
 El cliente dasdasd alquilo el vehiculo con placa EFG901
 El cliente dasdas alquilo el vehiculo con placa OPQ123
 El cliente dsadas alquilo el vehiculo con placa UVW345
+El cliente dasdas alquilo el vehiculo con placa BCD890
