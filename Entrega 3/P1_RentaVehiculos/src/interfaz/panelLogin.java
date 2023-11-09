@@ -1,6 +1,9 @@
 package interfaz;
 
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Insets;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,21 +21,34 @@ public class panelLogin extends JPanel {
 	private JButton registroButton;
 	
 	public panelLogin() {
-		setLayout(new GridLayout(4, 2, 10, 10));
-		JLabel usuarioLabel = new JLabel("Usuario: ");
-		usuarioField = new JTextField(20);
-		JLabel contrasenaLabel = new JLabel("Contraseña: ");
-		contrasenaField = new JPasswordField(20);
-		loginButton = new JButton("Iniciar Sesión");
-		registroButton = new JButton("Registrarse");
-		add(usuarioLabel);
-        add(usuarioField);
-        add(contrasenaLabel);
-        add(contrasenaField);
-        add(new JLabel()); 
-        add(loginButton);
-        add(new JLabel()); 
-        add(registroButton);
+		setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(5, 5, 5, 5);
+        JLabel usuarioLabel = new JLabel("Usuario:");
+        usuarioField = new JTextField(20);
+        JLabel contrasenaLabel = new JLabel("Contraseña:");
+        contrasenaField = new JPasswordField(20);
+        loginButton = new JButton("Iniciar Sesión");
+        registroButton = new JButton("Registrarse");
+        gbc.anchor = GridBagConstraints.WEST;
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        add(usuarioLabel, gbc);
+        gbc.gridx = 1;
+        gbc.anchor = GridBagConstraints.CENTER;
+        add(usuarioField, gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.anchor = GridBagConstraints.WEST;
+        add(contrasenaLabel, gbc);
+        gbc.gridx = 1;
+        gbc.anchor = GridBagConstraints.CENTER;
+        add(contrasenaField, gbc);
+        gbc.gridy = 2;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        add(loginButton, gbc);
+        gbc.gridy = 3;
+        add(registroButton, gbc);
 	}
 	
 	
