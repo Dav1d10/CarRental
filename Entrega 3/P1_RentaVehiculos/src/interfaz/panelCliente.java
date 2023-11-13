@@ -36,7 +36,13 @@ public class panelCliente extends JPanel {
         alquilerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+                PanelAlquiler panelAlquiler = new PanelAlquiler();
+                JFrame alquilerFrame = new JFrame("Alquiler");
+                alquilerFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                alquilerFrame.getContentPane().add(panelAlquiler);
+                alquilerFrame.pack();
+                alquilerFrame.setLocationRelativeTo(null);
+                alquilerFrame.setVisible(true);
             }
         });
         

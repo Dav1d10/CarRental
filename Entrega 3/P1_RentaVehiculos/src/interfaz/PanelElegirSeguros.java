@@ -55,6 +55,8 @@ public class PanelElegirSeguros extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 obtenerSegurosSeleccionados();
+                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(PanelElegirSeguros.this);
+                frame.dispose();
             }
         });
     }

@@ -3,6 +3,7 @@ package interfaz;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,10 +12,81 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+
+import modelo.AdministradorGeneral;
+import modelo.RentaVehiculos;
 
 public class panelAdmin extends JPanel {
 	
+	private JButton manejarSegurosButton;
+	private JButton elegirTemporadaButton;
+	private JButton agregarCarroNuevoButton;
+	private JButton agregarSedeNuevaButton;
+	private JButton eliminarSegurosButton;
+	private JButton salirButton;
+	
+	public JButton getManejarSegurosButton() {
+		return manejarSegurosButton;
+	}
+
+
+	public void setManejarSegurosButton(JButton manejarSegurosButton) {
+		this.manejarSegurosButton = manejarSegurosButton;
+	}
+
+
+	public JButton getElegirTemporadaButton() {
+		return elegirTemporadaButton;
+	}
+
+
+	public void setElegirTemporadaButton(JButton elegirTemporadaButton) {
+		this.elegirTemporadaButton = elegirTemporadaButton;
+	}
+
+
+	public JButton getAgregarCarroNuevoButton() {
+		return agregarCarroNuevoButton;
+	}
+
+
+	public void setAgregarCarroNuevoButton(JButton agregarCarroNuevoButton) {
+		this.agregarCarroNuevoButton = agregarCarroNuevoButton;
+	}
+
+
+	public JButton getAgregarSedeNuevaButton() {
+		return agregarSedeNuevaButton;
+	}
+
+
+	public void setAgregarSedeNuevaButton(JButton agregarSedeNuevaButton) {
+		this.agregarSedeNuevaButton = agregarSedeNuevaButton;
+	}
+
+
+	public JButton getEliminarSegurosButton() {
+		return eliminarSegurosButton;
+	}
+
+
+	public void setEliminarSegurosButton(JButton eliminarSegurosButton) {
+		this.eliminarSegurosButton = eliminarSegurosButton;
+	}
+
+
+	public JButton getSalirButton() {
+		return salirButton;
+	}
+
+
+	public void setSalirButton(JButton salirButton) {
+		this.salirButton = salirButton;
+	}
+
+
 	public panelAdmin() {
 		setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
@@ -25,6 +97,7 @@ public class panelAdmin extends JPanel {
         gbc.gridwidth = 2;
         gbc.insets = new Insets(20, 20, 20, 20);
         add(tituloLabel, gbc);
+        
         JButton manejarSegurosButton = new JButton("Manejar Seguros");
         gbc.gridx = 0;
         gbc.gridy = 1;
@@ -32,58 +105,23 @@ public class panelAdmin extends JPanel {
         gbc.insets = new Insets(10, 10, 10, 10);
         add(manejarSegurosButton, gbc);
 
-        manejarSegurosButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-               
-            }
-        });
-
         JButton elegirTemporadaButton = new JButton("Elegir Temporada");
         gbc.gridx = 1;
         add(elegirTemporadaButton, gbc);
-
-        elegirTemporadaButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-               
-            }
-        });
 
         JButton agregarCarroNuevoButton = new JButton("Agregar Carro Nuevo");
         gbc.gridx = 0;
         gbc.gridy = 2;
         add(agregarCarroNuevoButton, gbc);
 
-        agregarCarroNuevoButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-               
-            }
-        });
-
         JButton agregarSedeNuevaButton = new JButton("Agregar Sede Nueva");
         gbc.gridx = 1;
         add(agregarSedeNuevaButton, gbc);
-
-        agregarSedeNuevaButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                
-            }
-        });
 
         JButton eliminarSegurosButton = new JButton("Eliminar Seguros");
         gbc.gridx = 0;
         gbc.gridy = 3;
         add(eliminarSegurosButton, gbc);
-
-        eliminarSegurosButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                
-            }
-        });
 
         JButton salirButton = new JButton("Salir");
         gbc.gridx = 0;
@@ -95,10 +133,12 @@ public class panelAdmin extends JPanel {
         salirButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+            	JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelAdmin.this);
+                frame.dispose();
             }
         });
-    }
+	}
+		
 	
 	public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {

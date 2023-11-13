@@ -294,6 +294,12 @@ public class RentaVehiculos {
 		admin.eliminarContenidoArchivoTemp();
 	}
 	
+	
+	public void temporada() {
+		System.out.println("entra");
+		System.out.println(admin.getTemporada());
+	}
+	
 }
 
 

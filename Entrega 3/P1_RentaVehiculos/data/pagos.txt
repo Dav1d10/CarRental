@@ -63,3 +63,10 @@ El numero de la tarjeta es dasdasdsa , la fecha de vencimiento es dsadas , el cv
 El numero de la tarjeta es dasdas , la fecha de vencimiento es dasdas , el cvv es dsadas , el banco es dsadsa
 El numero de la tarjeta es dsdsds , la fecha de vencimiento es dsdsds , el cvv es dsdsds , el banco es dsdsd
 El numero de la tarjeta es dsadasd , la fecha de vencimiento es dasdasd , el cvv es dasdasdas , el banco es dsadasdsa
+El numero de la tarjeta es dsadsa , la fecha de vencimiento es dsadsa , el cvv es dsadsa , el banco es dsadas
+El precio que se debe pagar con esa tarjeta es:  1485
+El numero de la tarjeta es dsadas , la fecha de vencimiento es dsadsa , el cvv es dsadsa , el banco es dsadas
+El numero de la tarjeta es dsadas , la fecha de vencimiento es dsadsa , el cvv es dsadsa , el banco es dsadas
+El numero de la tarjeta es a , la fecha de vencimiento es a , el cvv es a , el banco es a
+El numero de la tarjeta es a , la fecha de vencimiento es a , el cvv es a , el banco es a
+El numero de la tarjeta es  , la fecha de vencimiento es  , el cvv es  , el banco es 

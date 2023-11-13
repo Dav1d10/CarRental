@@ -196,7 +196,8 @@ public class PanelAlquiler extends JPanel {
                     ArchivoLog.agregarLog(cliente, carroAsignado);
             		//return "La marca del carro asignado es " + carroAsignado.getMarca() + ", de color " + carroAsignado.getColor() + ", modelo " + carroAsignado.getModelo() +
             		//", con una capacidad de " + carroAsignado.getCapacidadPersonas() + " personas," +" de placa " + carroAsignado.getPlaca();
-                    
+                    JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(PanelAlquiler.this);
+                    frame.dispose();
 
                     // Actualiza la interfaz gráfica según sea necesario
                 } catch (Exception ex) {
@@ -296,8 +297,8 @@ public class PanelAlquiler extends JPanel {
     private void abrirPanelSeguros() {
         JFrame frame = new JFrame("Panel Elegir Seguros");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        rentaVehiculos.setAdministradorGeneral();
-        rentaVehiculos.AgregarSeguroaMapa();
+        //rentaVehiculos.setAdministradorGeneral();
+        //rentaVehiculos.AgregarSeguroaMapa();
         Map<String, Integer> seguros = rentaVehiculos.getSeguros();
         PanelElegirSeguros panelSeguros = new PanelElegirSeguros(seguros);
         frame.getContentPane().add(panelSeguros, BorderLayout.CENTER);
