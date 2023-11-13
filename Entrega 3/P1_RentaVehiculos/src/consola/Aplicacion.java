@@ -157,6 +157,7 @@ public class Aplicacion {
 
 	private static List<String> mostrarSeguros() {
 		Map<String, Integer> mapa = rentaVehiculos.getSeguros();
+		System.out.println(mapa);
 		int contador = 1;
 		List<String> segurosElegidos = new ArrayList<>();
 		System.out.println("Estos son los seguros disponibles: ");

@@ -146,12 +146,13 @@ public class RentaVehiculos {
 			Sedes sedeDevolucion, int dias, List<String> seguro) {
 			Alquiler alquiler = new Alquiler(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro, admin, categoria);
 			alquileres.add(alquiler);
-			System.out.println("La temporada actual es: " + admin.getTemporada());
-			int precio = alquiler.cobroFinal(seguro);
-			System.out.println("El precio total del alquiler es " + precio);
 			for (Alquiler info : alquileres) {
 				System.out.println(info);
 			}
+			System.out.println("La temporada actual es: " + admin.getTemporada());
+			int precio = alquiler.cobroFinal(seguro);
+			System.out.println("El precio total del alquiler es " + precio);
+			
 			ArchivoPagos.agregarPrecio(precio);
 			return alquileres;
 		}
