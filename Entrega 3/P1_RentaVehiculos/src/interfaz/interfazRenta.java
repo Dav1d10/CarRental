@@ -33,7 +33,7 @@ public class interfazRenta extends JFrame {
 
         // Inicializa los paneles
         panelLogin = new panelLogin();
-        panelCliente = new panelCliente();
+        panelCliente = new panelCliente(rentaVehiculos);
         panelAdmin = new panelAdmin();
 
         // Añade los paneles al marco con CardLayout
@@ -75,9 +75,10 @@ public class interfazRenta extends JFrame {
 		File archivoSedes = new File("data/sedes.txt");
 		rentaVehiculos.cargarInformacionInventario(archivoInventario, archivoSedes);
 		cargarTemporada();
-		rentaVehiculos.temporada();
+		//rentaVehiculos.temporada();
 	}
 
+	
     public static void main(String[] args) throws IOException{
     	try {
             cargarDatos();

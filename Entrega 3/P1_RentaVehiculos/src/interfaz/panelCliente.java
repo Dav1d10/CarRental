@@ -13,10 +13,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import modelo.RentaVehiculos;
+
 public class panelCliente extends JPanel {
 	
+	private static RentaVehiculos rentaVehiculos;
 	
-	public panelCliente() {
+	public panelCliente(RentaVehiculos rentaVehiculos) {
+		this.rentaVehiculos = rentaVehiculos;
 		setLayout(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
         JLabel tituloLabel = new JLabel("DGA Rental");
@@ -36,7 +40,7 @@ public class panelCliente extends JPanel {
         alquilerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PanelAlquiler panelAlquiler = new PanelAlquiler();
+                PanelAlquiler panelAlquiler = new PanelAlquiler(rentaVehiculos);
                 JFrame alquilerFrame = new JFrame("Alquiler");
                 alquilerFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 alquilerFrame.getContentPane().add(panelAlquiler);
@@ -67,7 +71,7 @@ public class panelCliente extends JPanel {
         add(salirButton, gbc);
 	}
 	
-	
+	/*
 	public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
@@ -81,7 +85,7 @@ public class panelCliente extends JPanel {
             }
         });
     }
-	
+	*/
 	
 
 }

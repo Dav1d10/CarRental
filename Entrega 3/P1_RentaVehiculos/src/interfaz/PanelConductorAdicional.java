@@ -27,6 +27,7 @@ public class PanelConductorAdicional extends JPanel {
 	    private JTextField paisExpedicionLicenciaField;
 	    private JTextField direccionLicenciaField;
 	    private JTextField fechaVencimientoLicenciaField;
+	    public boolean noQuiereConductorAdicional = true;
 
 	    
 	    public PanelConductorAdicional() {
@@ -85,20 +86,25 @@ public class PanelConductorAdicional extends JPanel {
 	    
 	    
 	    public Persona quiereConductorAdicional() {
-	    	String nombre = nombreField.getText();
-        	String telefono = telefonoField.getText();
-        	String fechaNacimiento = fechaNacimientoField.getText();
-        	String nacionalidad = nacionalidadField.getText();
-        	String direccionIdentidad = direccionIdentidadField.getText();
-        	File documentoIdentidad = new File(direccionIdentidad);
-        	String numeroLicencia = numeroLicenciaField.getText();
-        	String paisExp = paisExpedicionLicenciaField.getText();
-        	String direccionLicencia = direccionLicenciaField.getText();
-        	File licencia = new File(direccionLicencia);
-        	String fechaVencimiento = fechaVencimientoLicenciaField.getText();
-        	return new Persona(nombre, telefono, fechaNacimiento, nacionalidad, 
-					documentoIdentidad, new DatosLicencia(numeroLicencia, paisExp, licencia, 
-							fechaVencimiento));
+	    	if (noQuiereConductorAdicional == false) {
+	    		return null;
+	    	} else {
+	    		String nombre = nombreField.getText();
+	        	String telefono = telefonoField.getText();
+	        	String fechaNacimiento = fechaNacimientoField.getText();
+	        	String nacionalidad = nacionalidadField.getText();
+	        	String direccionIdentidad = direccionIdentidadField.getText();
+	        	File documentoIdentidad = new File(direccionIdentidad);
+	        	String numeroLicencia = numeroLicenciaField.getText();
+	        	String paisExp = paisExpedicionLicenciaField.getText();
+	        	String direccionLicencia = direccionLicenciaField.getText();
+	        	File licencia = new File(direccionLicencia);
+	        	String fechaVencimiento = fechaVencimientoLicenciaField.getText();
+	        	return new Persona(nombre, telefono, fechaNacimiento, nacionalidad, 
+						documentoIdentidad, new DatosLicencia(numeroLicencia, paisExp, licencia, 
+								fechaVencimiento));
+	    	}
+	    	
 	    }
 	
 	

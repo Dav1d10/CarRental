@@ -25,10 +25,11 @@ public class PanelElegirSeguros extends JPanel {
     private Map<String, JCheckBox> checkBoxes;
     private JButton guardarButton;
     private static List<String> segurosSeleccionados;
-    private static RentaVehiculos rentaVehiculos = new RentaVehiculos();
+    private static RentaVehiculos rentaVehiculos;
 
-    public PanelElegirSeguros(Map<String, Integer> seguros) {
+    public PanelElegirSeguros(Map<String, Integer> seguros, RentaVehiculos rentaVehiculos) {
         this.mapa = seguros;
+        this.rentaVehiculos = rentaVehiculos;
         this.segurosSeleccionados = new ArrayList<>();
         setLayout(new GridLayout(seguros.size() + 1, 1));
 
@@ -85,6 +86,8 @@ public class PanelElegirSeguros extends JPanel {
     public static List<String> getSegurosSeleccionados() {
         return new ArrayList<>(segurosSeleccionados);
     }
+    
+    /*
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
@@ -106,6 +109,7 @@ public class PanelElegirSeguros extends JPanel {
         frame.pack();
         frame.setVisible(true);
     }
+    */
 }
     
 	

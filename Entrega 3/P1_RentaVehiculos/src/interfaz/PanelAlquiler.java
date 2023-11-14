@@ -31,8 +31,8 @@ import modelo.Vehiculo;
 
 public class PanelAlquiler extends JPanel {
 	
-	private static Scanner scanner = new Scanner(System.in);
-	private static RentaVehiculos rentaVehiculos = new RentaVehiculos();
+	
+	private static RentaVehiculos rentaVehiculos;
 	private JTextField nombreField;
     private JTextField telefonoField;
     private JTextField fechadeNacimientoField;
@@ -53,10 +53,13 @@ public class PanelAlquiler extends JPanel {
     private JButton siButton;
     private JButton noButton;
     private JButton VerSeguros;
+    private PanelConductorAdicional panelConductorAdicional;
     
     // Agrega más campos según sea necesario...
 
-    public PanelAlquiler() {
+    public PanelAlquiler(RentaVehiculos rentaVehiculos) {
+    	this.rentaVehiculos = rentaVehiculos;
+    	panelConductorAdicional = new PanelConductorAdicional();
         setLayout(new BorderLayout());
         JPanel formPanel = new JPanel(new GridLayout(16, 2));
 
@@ -153,7 +156,7 @@ public class PanelAlquiler extends JPanel {
         noButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            	noQuiereConductorAdicional();
+            	panelConductorAdicional.noQuiereConductorAdicional = false;
                 // Lógica cuando el usuario selecciona "No"
                 // Puedes realizar acciones adicionales si es necesario
             }
@@ -163,7 +166,7 @@ public class PanelAlquiler extends JPanel {
         VerSeguros.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                abrirPanelSeguros();
+                abrirPanelSeguros(rentaVehiculos);
             }
         });
 
@@ -183,7 +186,6 @@ public class PanelAlquiler extends JPanel {
                     String tipodeCarro = tipoCarroField.getText().toUpperCase();
                     Sedes sedeEntrega = elegirSedeEntrega();
             		Sedes sedeDevolucion = elegirSedeDevolucion();
-            		PanelConductorAdicional panelConductorAdicional = new PanelConductorAdicional();
 					Persona conductorAdicional = panelConductorAdicional.quiereConductorAdicional();
                     String diasString = diasAlquilerField.getText();
                     int dias = Integer.parseInt(diasString);
@@ -294,24 +296,25 @@ public class PanelAlquiler extends JPanel {
     }
     
     
-    private void abrirPanelSeguros() {
+    private void abrirPanelSeguros(RentaVehiculos rentaVehiculos) {
         JFrame frame = new JFrame("Panel Elegir Seguros");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         //rentaVehiculos.setAdministradorGeneral();
         //rentaVehiculos.AgregarSeguroaMapa();
         Map<String, Integer> seguros = rentaVehiculos.getSeguros();
-        PanelElegirSeguros panelSeguros = new PanelElegirSeguros(seguros);
+        PanelElegirSeguros panelSeguros = new PanelElegirSeguros(seguros, rentaVehiculos);
         frame.getContentPane().add(panelSeguros, BorderLayout.CENTER);
         frame.pack();
         frame.setVisible(true);
     }
     
-    
+    /*
     private Persona noQuiereConductorAdicional() {
     	return null;
     }
+    */
     
-    
+    /*
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
@@ -332,7 +335,7 @@ public class PanelAlquiler extends JPanel {
         frame.pack();
         frame.setVisible(true);
     }
-    
+    */
     
     
 }

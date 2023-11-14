@@ -50,9 +50,9 @@ public class RentaVehiculos {
 	
 
 	
-	public AdministradorGeneral setAdministradorGeneral() {
+	public void setAdministradorGeneral() {
 		AdministradorGeneral administrador = new AdministradorGeneral();
-        return this.admin = administrador;
+        this.admin = administrador;
         
 	}
 	
