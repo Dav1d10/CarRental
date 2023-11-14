@@ -16,6 +16,7 @@ import java.util.Scanner;
 import archivo.ArchivoInventario;
 import archivo.ArchivoPagos;
 import archivo.ArchivoSedes;
+import interfaz.PanelInformacionAlquiler;
 import administradorLocal.IngresoUsuario;
 import administradorLocal.RegistroUsuario;
 
@@ -154,6 +155,13 @@ public class RentaVehiculos {
 			System.out.println("El precio total del alquiler es " + precio);
 			
 			ArchivoPagos.agregarPrecio(precio);
+			Vehiculo carroAsignado = empleado.asignarVehiculo(tipodeCarro);
+			String info =  "La marca del carro asignado es " + carroAsignado.getMarca() + ", de color " + carroAsignado.getColor() + ", modelo " + carroAsignado.getModelo() +
+            		", con una capacidad de " + carroAsignado.getCapacidadPersonas() + " personas," +" de placa " + carroAsignado.getPlaca() + "\n"
+            		+ "La temporada actual es: " + admin.getTemporada() + "\n" +
+            		"El precio total del alquiler es: " + precio;
+			PanelInformacionAlquiler panelInformacionAlquiler = new PanelInformacionAlquiler();
+			panelInformacionAlquiler.mostrarInformacionAlquiler(alquileres, info);
 			return alquileres;
 		}
 	
@@ -295,10 +303,11 @@ public class RentaVehiculos {
 	}
 	
 	
-	public void temporada() {
-		System.out.println("entra");
-		System.out.println(admin.getTemporada());
+	public String temporada() {
+		return "La temporada actual es: " + admin.getTemporada();
 	}
+	
+	
 	
 }
 

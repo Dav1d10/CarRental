@@ -33,7 +33,7 @@ public class PanelConductorAdicional extends JPanel {
 	    public PanelConductorAdicional() {
 	        setLayout(new GridLayout(11, 2));
 
-	        // Agrega componentes al panel
+	       
 	        add(new JLabel("Nombre:"));
 	        nombreField = new JTextField();
 	        add(nombreField);
@@ -73,13 +73,13 @@ public class PanelConductorAdicional extends JPanel {
 	        JButton guardarButton = new JButton("Guardar");
 	        add(guardarButton);
 
-	        // Asocia un controlador de eventos al botón de guardar
+	     
 	        guardarButton.addActionListener(new ActionListener() {
 	            @Override
 	            public void actionPerformed(ActionEvent e) {
 	            	quiereConductorAdicional();
 	                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(PanelConductorAdicional.this);
-	                frame.dispose();  // Cierra el panel del conductor adicional
+	                frame.dispose(); 
 	            }
 	        });
 	    }

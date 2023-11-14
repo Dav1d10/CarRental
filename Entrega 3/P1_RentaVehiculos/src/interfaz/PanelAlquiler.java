@@ -20,6 +20,7 @@ import javax.swing.SwingUtilities;
 
 import archivo.ArchivoLog;
 import archivo.ArchivoPagos;
+import modelo.AdministradorGeneral;
 import modelo.Alquiler;
 import modelo.Cliente;
 import modelo.DatosLicencia;
@@ -54,8 +55,11 @@ public class PanelAlquiler extends JPanel {
     private JButton noButton;
     private JButton VerSeguros;
     private PanelConductorAdicional panelConductorAdicional;
+   
+    private Alquiler alquiler;
     
-    // Agrega más campos según sea necesario...
+    
+   
 
     public PanelAlquiler(RentaVehiculos rentaVehiculos) {
     	this.rentaVehiculos = rentaVehiculos;
@@ -63,7 +67,7 @@ public class PanelAlquiler extends JPanel {
         setLayout(new BorderLayout());
         JPanel formPanel = new JPanel(new GridLayout(16, 2));
 
-        // Agrega componentes al panel
+        
         formPanel.add(new JLabel("Nombre:"));
         formPanel.add(nombreField = new JTextField());
         
@@ -148,7 +152,7 @@ public class PanelAlquiler extends JPanel {
         siButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Lógica cuando el usuario selecciona "Sí"
+              
                 abrirPanelConductorAdicional();
             }
         });
@@ -157,8 +161,6 @@ public class PanelAlquiler extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
             	panelConductorAdicional.noQuiereConductorAdicional = false;
-                // Lógica cuando el usuario selecciona "No"
-                // Puedes realizar acciones adicionales si es necesario
             }
         });
         
@@ -171,17 +173,17 @@ public class PanelAlquiler extends JPanel {
         });
 
      
-        // Agrega más componentes según los datos necesarios...
+ 
         JPanel buttonPanel = new JPanel();
         JButton alquilarButton = new JButton("Guardar");
         buttonPanel.add(alquilarButton);
 
-        // Asocia un controlador de eventos al botón de alquilar
+
         alquilarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    // Recopila la información del usuario
+         
                     Cliente cliente = nuevoCliente();
                     String tipodeCarro = tipoCarroField.getText().toUpperCase();
                     Sedes sedeEntrega = elegirSedeEntrega();
@@ -189,22 +191,20 @@ public class PanelAlquiler extends JPanel {
 					Persona conductorAdicional = panelConductorAdicional.quiereConductorAdicional();
                     String diasString = diasAlquilerField.getText();
                     int dias = Integer.parseInt(diasString);
-                    List<String> seguro = PanelElegirSeguros.getSegurosSeleccionados();
+                    List<String> seguro = PanelElegirSeguros.getSegurosSeleccionados();                    
                     List <Alquiler> alquileres = rentaVehiculos.generarAlquiler(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro);
                     rentaVehiculos.guardarAlquileres(alquileres);
                     Vehiculo carroAsignado = rentaVehiculos.asignarCarro(tipodeCarro);
                     String lineaAEliminar = rentaVehiculos.lineaString(carroAsignado);
                     rentaVehiculos.eliminarLinea(lineaAEliminar);
                     ArchivoLog.agregarLog(cliente, carroAsignado);
-            		//return "La marca del carro asignado es " + carroAsignado.getMarca() + ", de color " + carroAsignado.getColor() + ", modelo " + carroAsignado.getModelo() +
-            		//", con una capacidad de " + carroAsignado.getCapacidadPersonas() + " personas," +" de placa " + carroAsignado.getPlaca();
                     JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(PanelAlquiler.this);
                     frame.dispose();
 
-                    // Actualiza la interfaz gráfica según sea necesario
+                 
                 } catch (Exception ex) {
                     ex.printStackTrace();
-                    // Manejo de errores
+                   
                 }
             }
         });
@@ -285,8 +285,7 @@ public class PanelAlquiler extends JPanel {
     
     
     private void abrirPanelConductorAdicional() {
-        // Puedes abrir un nuevo JFrame o JDialog para recopilar la información
-        // del conductor adicional aquí
+       
         JFrame frame = new JFrame("Conductor Adicional");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.getContentPane().add(new PanelConductorAdicional());
@@ -299,44 +298,12 @@ public class PanelAlquiler extends JPanel {
     private void abrirPanelSeguros(RentaVehiculos rentaVehiculos) {
         JFrame frame = new JFrame("Panel Elegir Seguros");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        //rentaVehiculos.setAdministradorGeneral();
-        //rentaVehiculos.AgregarSeguroaMapa();
         Map<String, Integer> seguros = rentaVehiculos.getSeguros();
         PanelElegirSeguros panelSeguros = new PanelElegirSeguros(seguros, rentaVehiculos);
         frame.getContentPane().add(panelSeguros, BorderLayout.CENTER);
         frame.pack();
         frame.setVisible(true);
     }
-    
-    /*
-    private Persona noQuiereConductorAdicional() {
-    	return null;
-    }
-    */
-    
-    /*
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                createAndShowGUI();
-            }
-        });
-    }
-
-    
-    private static void createAndShowGUI() {
-        JFrame frame = new JFrame("Panel Alquiler");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        PanelAlquiler panelAlquiler = new PanelAlquiler();
-        frame.getContentPane().add(panelAlquiler);
-
-        frame.pack();
-        frame.setVisible(true);
-    }
-    */
-    
     
 }
 

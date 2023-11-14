@@ -47,7 +47,7 @@ public class panelEliminarSeguros extends JPanel {
         btnNo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Cerrar la ventana actual al presionar el botón "No"
+             
                 JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelEliminarSeguros.this);
                 frame.dispose();
             }

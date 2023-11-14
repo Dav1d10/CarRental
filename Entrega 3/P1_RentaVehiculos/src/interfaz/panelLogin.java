@@ -67,14 +67,14 @@ public class panelLogin extends JPanel {
 
                 if (ingresoUsuario.autenticarUsuario(usuario, contrasena)) {
                     if (ingresoUsuario.esAdmin(contrasena)) {
-                        // Lógica para admin
+                        
                         System.out.println("Inicio de sesión como admin");
                     } else {
-                        // Lógica para cliente
+                       
                         System.out.println("Inicio de sesión como cliente");
                     }
                 } else {
-                    // Lógica si la autenticación falla
+                   
                     System.out.println("Inicio de sesión fallido");
                 }
             }
@@ -88,10 +88,10 @@ public class panelLogin extends JPanel {
 
                 boolean registrado = registroUsuario.registrarUsuario(usuario, contrasena);
                 if (registrado) {
-                    // Lógica después de registrar un nuevo usuario
+                 
                     System.out.println("Registro exitoso");
                 } else {
-                    // Lógica si el registro falla
+                   
                     System.out.println("Registro fallido");
                 }
             }

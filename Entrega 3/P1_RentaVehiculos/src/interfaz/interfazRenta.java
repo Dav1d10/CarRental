@@ -28,15 +28,15 @@ public class interfazRenta extends JFrame {
 		setTitle("DGA RENTAL");
         setLayout(new BorderLayout());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(800, 600); // Establece el tamaño del marco según tus necesidades
-        setLocationRelativeTo(null); // Centra el marco en la pantalla
+        setSize(800, 600); 
+        setLocationRelativeTo(null); 
 
-        // Inicializa los paneles
+        
         panelLogin = new panelLogin();
         panelCliente = new panelCliente(rentaVehiculos);
         panelAdmin = new panelAdmin();
 
-        // Añade los paneles al marco con CardLayout
+     
         CardLayout cardLayout = new CardLayout();
         JPanel cardPanel = new JPanel(cardLayout);
         cardPanel.add(panelLogin, "login");
@@ -45,7 +45,7 @@ public class interfazRenta extends JFrame {
 
         add(cardPanel, BorderLayout.CENTER);
 
-        // Agrega un ActionListener al botón de inicio de sesión en PanelLogin
+       
         panelLogin.getLoginButton().addActionListener(e -> {
             String usuario = panelLogin.getUsuarioField().getText();
             String contrasena = new String(panelLogin.getContrasenaField().getPassword());
@@ -57,7 +57,7 @@ public class interfazRenta extends JFrame {
                     cardLayout.show(cardPanel, "cliente");
                 }
             } else {
-                // Lógica si la autenticación falla
+              
                 System.out.println("Inicio de sesión fallido");
             }
         });
@@ -75,7 +75,6 @@ public class interfazRenta extends JFrame {
 		File archivoSedes = new File("data/sedes.txt");
 		rentaVehiculos.cargarInformacionInventario(archivoInventario, archivoSedes);
 		cargarTemporada();
-		//rentaVehiculos.temporada();
 	}
 
 	

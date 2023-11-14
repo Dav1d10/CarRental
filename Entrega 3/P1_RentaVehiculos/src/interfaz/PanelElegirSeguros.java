@@ -63,7 +63,7 @@ public class PanelElegirSeguros extends JPanel {
     }
 
     private void actualizarSegurosSeleccionados() {
-        segurosSeleccionados.clear(); // Limpiar la lista antes de actualizarla
+        segurosSeleccionados.clear(); 
 
         for (Map.Entry<String, JCheckBox> entry : checkBoxes.entrySet()) {
             String nombreSeguro = entry.getKey();
@@ -76,40 +76,17 @@ public class PanelElegirSeguros extends JPanel {
     }
 
     private void obtenerSegurosSeleccionados() {
-        // Lógica para utilizar la lista de seguros seleccionados
+        
         for (String seguro : segurosSeleccionados) {
             System.out.println("Seguro seleccionado: " + seguro);
         }
     }
 
-    // Método para obtener la lista de seguros seleccionados
+   
     public static List<String> getSegurosSeleccionados() {
         return new ArrayList<>(segurosSeleccionados);
     }
     
-    /*
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                createAndShowGUI();
-            }
-        });
-    }
-
-    private static void createAndShowGUI() {
-        JFrame frame = new JFrame("Panel Elegir Seguros");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        rentaVehiculos.setAdministradorGeneral();
-        rentaVehiculos.AgregarSeguroaMapa();
-        Map<String, Integer> seguros = rentaVehiculos.getSeguros();
-        PanelElegirSeguros panelSeguros = new PanelElegirSeguros(seguros);
-        frame.getContentPane().add(panelSeguros, BorderLayout.CENTER);
-        frame.pack();
-        frame.setVisible(true);
-    }
-    */
 }
     
 	
