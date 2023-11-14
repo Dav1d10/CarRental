@@ -104,3 +104,7 @@ El numero de la tarjeta es a , la fecha de vencimiento es a , el cvv es a , el b
 El precio que se debe pagar con esa tarjeta es:  1285
 El numero de la tarjeta es a , la fecha de vencimiento es a , el cvv es a , el banco es a
 El precio que se debe pagar con esa tarjeta es:  1285
+El numero de la tarjeta es a , la fecha de vencimiento es a , el cvv es a , el banco es a
+El precio que se debe pagar con esa tarjeta es:  1285
+El numero de la tarjeta es a , la fecha de vencimiento es a , el cvv es a , el banco es a
+El precio que se debe pagar con esa tarjeta es:  1285

@@ -6,10 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -20,18 +18,17 @@ import javax.swing.SwingUtilities;
 
 import archivo.ArchivoLog;
 import archivo.ArchivoPagos;
-import modelo.AdministradorGeneral;
 import modelo.Alquiler;
 import modelo.Cliente;
 import modelo.DatosLicencia;
 import modelo.DatosTarjetaCredito;
 import modelo.Persona;
 import modelo.RentaVehiculos;
+import modelo.Reserva;
 import modelo.Sedes;
 import modelo.Vehiculo;
 
-public class PanelAlquiler extends JPanel {
-	
+public class PanelReserva extends JPanel {
 	
 	private static RentaVehiculos rentaVehiculos;
 	private JTextField nombreField;
@@ -51,6 +48,7 @@ public class PanelAlquiler extends JPanel {
     private JTextField sedeEntregaField;
     private JTextField sedeDevolucionField;
     private JTextField diasAlquilerField;
+    private JTextField fechayhoraEntregaField;
     private JButton siButton;
     private JButton noButton;
     private JButton VerSeguros;
@@ -60,7 +58,7 @@ public class PanelAlquiler extends JPanel {
     
    
 
-    public PanelAlquiler(RentaVehiculos rentaVehiculos) {
+    public PanelReserva(RentaVehiculos rentaVehiculos) {
     	this.rentaVehiculos = rentaVehiculos;
     	panelConductorAdicional = new PanelConductorAdicional();
         setLayout(new BorderLayout());
@@ -145,6 +143,9 @@ public class PanelAlquiler extends JPanel {
         VerSeguros = new JButton("Ver Seguros");
         formPanel.add(VerSeguros);
         
+        formPanel.add(new JLabel("Fecha y hora de devolucion del vehiculo:"));
+        formPanel.add(fechayhoraEntregaField = new JTextField());
+        
         add(formPanel, BorderLayout.CENTER);
         
         
@@ -174,11 +175,11 @@ public class PanelAlquiler extends JPanel {
      
  
         JPanel buttonPanel = new JPanel();
-        JButton alquilarButton = new JButton("Guardar");
-        buttonPanel.add(alquilarButton);
+        JButton reservaButton = new JButton("Guardar");
+        buttonPanel.add(reservaButton);
 
 
-        alquilarButton.addActionListener(new ActionListener() {
+        reservaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -190,14 +191,15 @@ public class PanelAlquiler extends JPanel {
 					Persona conductorAdicional = panelConductorAdicional.quiereConductorAdicional();
                     String diasString = diasAlquilerField.getText();
                     int dias = Integer.parseInt(diasString);
-                    List<String> seguro = PanelElegirSeguros.getSegurosSeleccionados();                    
-                    List <Alquiler> alquileres = rentaVehiculos.generarAlquiler(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro);
-                    rentaVehiculos.guardarAlquileres(alquileres);
+                    List<String> seguro = PanelElegirSeguros.getSegurosSeleccionados();    
+                    String fechayhoraEntrega = fechayhoraEntregaField.getText();
+                    List <Reserva> reservas = rentaVehiculos.generarReserva(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro, fechayhoraEntrega);
+                    rentaVehiculos.guardarReservas(reservas);
                     Vehiculo carroAsignado = rentaVehiculos.asignarCarro(tipodeCarro);
                     String lineaAEliminar = rentaVehiculos.lineaString(carroAsignado);
                     rentaVehiculos.eliminarLinea(lineaAEliminar);
                     ArchivoLog.agregarLog(cliente, carroAsignado);
-                    JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(PanelAlquiler.this);
+                    JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(PanelReserva.this);
                     frame.dispose();
 
                  
@@ -304,10 +306,7 @@ public class PanelAlquiler extends JPanel {
         frame.setVisible(true);
     }
     
+	
+	
+
 }
-
-    
-	
-	
-
-

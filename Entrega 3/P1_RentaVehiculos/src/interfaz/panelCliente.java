@@ -59,7 +59,13 @@ public class panelCliente extends JPanel {
         reservaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+            	PanelReserva panelReserva = new PanelReserva(rentaVehiculos);
+                JFrame reservaFrame = new JFrame("Reserva");
+                reservaFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                reservaFrame.getContentPane().add(panelReserva);
+                reservaFrame.pack();
+                reservaFrame.setLocationRelativeTo(null);
+                reservaFrame.setVisible(true);
             }
         });
 

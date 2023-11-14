@@ -17,6 +17,7 @@ import archivo.ArchivoInventario;
 import archivo.ArchivoPagos;
 import archivo.ArchivoSedes;
 import interfaz.PanelInformacionAlquiler;
+import interfaz.PanelInformacionReserva;
 import administradorLocal.IngresoUsuario;
 import administradorLocal.RegistroUsuario;
 
@@ -171,15 +172,24 @@ public class RentaVehiculos {
 			Sedes sedeDevolucion, int dias, List<String> seguro, String fechayhoraEntrega) {
 		Reserva reserva = new Reserva(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro, fechayhoraEntrega, admin, categoria);
 		reservas.add(reserva);
+		for (Reserva info : reservas) {
+			System.out.println(info);
+		}
 		int precio = reserva.cobroFinal(seguro);
 		double cobroInicial = reserva.cobroInicial(seguro);
 		System.out.println("La temporada actual es: " + admin.getTemporada());
 		System.out.println("Debe pagar " + cobroInicial + " para confirmar la reserva.");
-		System.out.println("El precio total del alquiler es " + precio);
-		for (Reserva info : reservas) {
-			System.out.println(info);
-		}
+		System.out.println("El precio total de la reserva es " + precio);
+		
 		ArchivoPagos.agregarPrecio(precio);
+		Vehiculo carroAsignado = empleado.asignarVehiculo(tipodeCarro);
+		String info = "La marca del carro asignado es " + carroAsignado.getMarca() + ", de color " + carroAsignado.getColor() + ", modelo " + carroAsignado.getModelo() +
+        		", con una capacidad de " + carroAsignado.getCapacidadPersonas() + " personas," +" de placa " + carroAsignado.getPlaca() + "\n"
+        		+ "La temporada actual es: " + admin.getTemporada() + "\n" +
+        		"Debe pagar " + cobroInicial + " para confirmar la reserva." + "\n" +
+        		"El precio total del alquiler es: " + precio;
+		PanelInformacionReserva panelInformacionReserva = new PanelInformacionReserva();
+		panelInformacionReserva.mostrarInformacionReserva(reservas, info);
 		return reservas;	
 	}
 	
