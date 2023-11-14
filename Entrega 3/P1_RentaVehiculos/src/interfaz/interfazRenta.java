@@ -21,6 +21,7 @@ public class interfazRenta extends JFrame {
     private panelCliente panelCliente;
     private panelAdmin panelAdmin;
     private IngresoUsuario ingresoUsuario;
+    private panelEmpleado panelEmpleado;
 
 	
 	public interfazRenta() {
@@ -35,13 +36,14 @@ public class interfazRenta extends JFrame {
         panelLogin = new panelLogin();
         panelCliente = new panelCliente(rentaVehiculos);
         panelAdmin = new panelAdmin();
-
+        panelEmpleado = new panelEmpleado();
      
         CardLayout cardLayout = new CardLayout();
         JPanel cardPanel = new JPanel(cardLayout);
         cardPanel.add(panelLogin, "login");
         cardPanel.add(panelCliente, "cliente");
         cardPanel.add(panelAdmin, "admin");
+        cardPanel.add(panelEmpleado, "empleado");
 
         add(cardPanel, BorderLayout.CENTER);
 
@@ -53,7 +55,11 @@ public class interfazRenta extends JFrame {
             if (ingresoUsuario.autenticarUsuario(usuario, contrasena)) {
                 if (ingresoUsuario.esAdmin(contrasena)) {
                     cardLayout.show(cardPanel, "admin");
-                } else {
+                } 
+                else if (ingresoUsuario.esEmpleado(contrasena)) {
+                	cardLayout.show(cardPanel, "empleado");
+                }
+                else {
                     cardLayout.show(cardPanel, "cliente");
                 }
             } else {
