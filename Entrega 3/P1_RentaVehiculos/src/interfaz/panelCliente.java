@@ -69,6 +69,15 @@ public class panelCliente extends JPanel {
         gbc.gridwidth = 2; 
         gbc.insets = new Insets(10, 10, 10, 10); 
         add(salirButton, gbc);
+        
+        
+        salirButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelCliente.this);
+                frame.dispose();
+            }
+        });
 	}
 	
 	/*
