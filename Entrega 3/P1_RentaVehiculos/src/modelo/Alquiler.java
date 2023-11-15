@@ -128,7 +128,7 @@ public class Alquiler {
 	}
 	
 	
-	
+	/*
 	private int tarifaSedeDevolucion() {
 		String nombreSedeDevolucion = sedeDevolucion.getNombreSede();
 		String nombreSedeEntrega = sedeEntrega.getNombreSede();
@@ -148,7 +148,7 @@ public class Alquiler {
 		
 		return precioF;
 	}
-
+	*/
 	
 	
 	private int cobroPorDias() {
@@ -174,9 +174,8 @@ public class Alquiler {
 		int precioSeguros = cobroSeguros(seguroElegido);
 		int precioConductorAdicional = cobroConductorAdicional();
 		int precioTemporada = tarifaTemporada();
-		int precioSedeDevolucion = tarifaSedeDevolucion();
 		int precioPorDias = cobroPorDias();
-		return (precioSeguros + precioConductorAdicional + precioTemporada + precioSedeDevolucion + precioPorDias);
+		return (precioSeguros + precioConductorAdicional + precioTemporada + precioPorDias);
 	}
 
 }
