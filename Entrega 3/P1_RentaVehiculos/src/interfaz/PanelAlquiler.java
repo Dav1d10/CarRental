@@ -1,7 +1,11 @@
 package interfaz;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -63,89 +67,182 @@ public class PanelAlquiler extends JPanel {
     public PanelAlquiler(RentaVehiculos rentaVehiculos) {
     	this.rentaVehiculos = rentaVehiculos;
     	panelConductorAdicional = new PanelConductorAdicional();
-        setLayout(new BorderLayout());
-        JPanel formPanel = new JPanel(new GridLayout(16, 2));
+        setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(5,5,5,5);
 
         
-        formPanel.add(new JLabel("Nombre:"));
-        formPanel.add(nombreField = new JTextField());
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        add(new JLabel("Nombre:"), gbc);
+        gbc.gridx = 1;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        add(nombreField = new JTextField(), gbc);
+        nombreField.setPreferredSize(new Dimension(200, 25));
         
 
-        formPanel.add(new JLabel("Teléfono:"));
-        formPanel.add(telefonoField = new JTextField());
+        gbc.gridx = 0;
+        gbc.gridy++;
+        add(new JLabel("Teléfono:"), gbc);
+        gbc.gridx = 1;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        add(telefonoField = new JTextField(), gbc);
+        telefonoField.setPreferredSize(new Dimension(200, 25));
         
-
-        formPanel.add(new JLabel("Fecha de Nacimiento:"));
-        formPanel.add(fechadeNacimientoField = new JTextField());
+        gbc.gridx = 0;
+        gbc.gridy++;
+        add(new JLabel("Fecha de Nacimiento:"), gbc);
+        gbc.gridx = 1;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        add(fechadeNacimientoField = new JTextField(), gbc);
+        fechadeNacimientoField.setPreferredSize(new Dimension(200, 25));
         
-
-        formPanel.add(new JLabel("Nacionalidad:"));
-        formPanel.add(nacionalidadField = new JTextField());
+        
+        gbc.gridx = 0;
+        gbc.gridy++;
+        add(new JLabel("Nacionalidad:"), gbc);
+        gbc.gridx = 1;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        add(nacionalidadField = new JTextField(), gbc);
+        nacionalidadField.setPreferredSize(new Dimension(200, 25));
+        
        
-
-        formPanel.add(new JLabel("Documento de Identidad:"));
-        formPanel.add(documentodeIdentidadField = new JTextField());
+        gbc.gridx = 0;
+        gbc.gridy++;
+        add(new JLabel("Documento de Identidad:"), gbc);
+        gbc.gridx = 1;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        add(documentodeIdentidadField = new JTextField(), gbc);
+        documentodeIdentidadField.setPreferredSize(new Dimension(200, 25));
+        
        
-
-        formPanel.add(new JLabel("Número de Licencia:"));
-        formPanel.add(numeroLicenciaField = new JTextField());
+        gbc.gridx = 0;
+        gbc.gridy++;
+        add(new JLabel("Número de Licencia:"), gbc);
+        gbc.gridx = 1;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        add(numeroLicenciaField = new JTextField(), gbc);
+        numeroLicenciaField.setPreferredSize(new Dimension(200, 25));
         
         
-        formPanel.add(new JLabel("País de Expedición:"));
-        formPanel.add(paisExpField = new JTextField());
+        gbc.gridx = 0;
+        gbc.gridy++;
+        add(new JLabel("País de Expedición:"), gbc);
+        gbc.gridx = 1;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        add(paisExpField = new JTextField(), gbc);
+        paisExpField.setPreferredSize(new Dimension(200, 25));
+        
        
-
-        formPanel.add(new JLabel("Dirección de la Licencia:"));
-        formPanel.add(licenciaField = new JTextField());
+        gbc.gridx = 0;
+        gbc.gridy++;
+        add(new JLabel("Dirección de la Licencia:"), gbc);
+        gbc.gridx = 1;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        add(licenciaField = new JTextField(), gbc);
+        licenciaField.setPreferredSize(new Dimension(200, 25));
+        
        
-
-        formPanel.add(new JLabel("Fecha de Vencimiento de la Licencia:"));
-        formPanel.add(fechadeVencimientoLicenciaField = new JTextField());
+        gbc.gridx = 0;
+        gbc.gridy++;
+        add(new JLabel("Fecha de Vencimiento de la Licencia:"), gbc);
+        gbc.gridx = 1;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        add(fechadeVencimientoLicenciaField = new JTextField(), gbc);
+        fechadeVencimientoLicenciaField.setPreferredSize(new Dimension(200, 25));
+        
        
-
-        formPanel.add(new JLabel("Número de Tarjeta:"));
-        formPanel.add(numeroTarjetaField = new JTextField());
+        gbc.gridx = 0;
+        gbc.gridy++;
+        add(new JLabel("Número de Tarjeta:"), gbc);
+        gbc.gridx = 1;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        add(numeroTarjetaField = new JTextField(), gbc);
+        numeroTarjetaField.setPreferredSize(new Dimension(200, 25));
+        
        
-
-        formPanel.add(new JLabel("Fecha de Vencimiento de la Tarjeta:"));
-        formPanel.add(fechaVencimientoField = new JTextField());
+        gbc.gridx = 0;
+        gbc.gridy++;
+        add(new JLabel("Fecha de Vencimiento de la Tarjeta:"), gbc);
+        gbc.gridx = 1;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        add(fechaVencimientoField = new JTextField(), gbc);
+        fechaVencimientoField.setPreferredSize(new Dimension(150, 25));
+        
        
-
-        formPanel.add(new JLabel("CVV:"));
-        formPanel.add(cvvField = new JTextField());
+        gbc.gridx = 0;
+        gbc.gridy++;
+        add(new JLabel("CVV:"), gbc);
+        gbc.gridx = 1;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        add(cvvField = new JTextField(), gbc);
+        cvvField.setPreferredSize(new Dimension(200, 25));
         
-
-        formPanel.add(new JLabel("Banco:"));
-        formPanel.add(bancoField = new JTextField());
+        gbc.gridx = 0;
+        gbc.gridy++;
+        add(new JLabel("Banco:"), gbc);
+        gbc.gridx = 1;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        add(bancoField = new JTextField(), gbc);
+        bancoField.setPreferredSize(new Dimension(200, 25));
         
-
-        formPanel.add(new JLabel("Tipo de Carro:"));
-        formPanel.add(tipoCarroField = new JTextField());
+        gbc.gridx = 0;
+        gbc.gridy++;
+        add(new JLabel("Tipo de Carro:"), gbc);
+        gbc.gridx = 1;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        add(tipoCarroField = new JTextField(), gbc);
+        tipoCarroField.setPreferredSize(new Dimension(200, 25));
         
         
-        formPanel.add(new JLabel("Sede Entrega:"));
-        formPanel.add(sedeEntregaField = new JTextField());
+        gbc.gridx = 0;
+        gbc.gridy++;
+        add(new JLabel("Sede Entrega:"), gbc);
+        gbc.gridx = 1;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        add(sedeEntregaField = new JTextField(), gbc);
+        sedeEntregaField.setPreferredSize(new Dimension(200, 25));
         
         
-        formPanel.add(new JLabel("Sede Devolucion: "));
-        formPanel.add(sedeDevolucionField = new JTextField());
+        gbc.gridx = 0;
+        gbc.gridy++;
+        add(new JLabel("Sede Devolucion: "), gbc);
+        gbc.gridx = 1;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        add(sedeDevolucionField = new JTextField(), gbc);
+        sedeDevolucionField.setPreferredSize(new Dimension(200, 25));
         
         
-        formPanel.add(new JLabel("Conductor Adicional: "));
+        gbc.gridx = 0;
+        gbc.gridy++;
+        add(new JLabel("Conductor Adicional: "), gbc);
         siButton = new JButton("Si");
         noButton = new JButton("No");
-        formPanel.add(siButton);
-        formPanel.add(noButton);
+        JPanel panel = new JPanel();
+        panel.add(siButton);
+        panel.add(noButton);
+        gbc.gridx = 1;
+        add(panel, gbc);
         
-        formPanel.add(new JLabel("Dias Alquiler:"));
-        formPanel.add(diasAlquilerField = new JTextField());
         
         
-        formPanel.add(new JLabel("Seguros:"));
+        gbc.gridx = 0;
+        gbc.gridy++;
+        add(new JLabel("Dias Alquiler:"), gbc);
+        gbc.gridx = 1;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        add(diasAlquilerField = new JTextField(), gbc);
+        diasAlquilerField.setPreferredSize(new Dimension(200, 25));
+        
+        
+        gbc.gridx = 0;
+        gbc.gridy++;
+        add(new JLabel("Seguros:"), gbc);
         VerSeguros = new JButton("Ver Seguros");
-        formPanel.add(VerSeguros);
-        
-        add(formPanel, BorderLayout.CENTER);
+        JPanel panel2 = new JPanel();
+        panel2.add(VerSeguros);
+        gbc.gridx = 1;
+        add(panel2, gbc);
         
         
         siButton.addActionListener(new ActionListener() {
@@ -208,7 +305,11 @@ public class PanelAlquiler extends JPanel {
             }
         });
         
-        add(buttonPanel, BorderLayout.SOUTH);
+        gbc.gridx = 0;
+        gbc.gridy++;
+        gbc.gridwidth = 2;
+        gbc.anchor = GridBagConstraints.CENTER;
+        add(buttonPanel, gbc);
     }
     
     private Cliente nuevoCliente() {
