@@ -98,8 +98,8 @@ public class AdministradorGeneral {
     public void agregarSeguro(String nombre, int precio) {
     	String datos = nombre + ";" + precio;
     	try (BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo, true))) {
-            writer.write(datos);
-            writer.newLine(); 
+    		writer.newLine(); 
+    		writer.write(datos);
         } catch (IOException e) {
             System.err.println("Error al escribir en el archivo: " + e.getMessage());
         }

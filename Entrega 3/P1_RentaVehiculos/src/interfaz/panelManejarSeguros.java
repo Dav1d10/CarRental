@@ -57,6 +57,8 @@ public class panelManejarSeguros extends JPanel  {
 
                     ex.printStackTrace();
                 }
+                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelManejarSeguros.this);
+                frame.dispose();
             }
         });
 

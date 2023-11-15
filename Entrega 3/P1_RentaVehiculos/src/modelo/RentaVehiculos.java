@@ -199,8 +199,8 @@ public class RentaVehiculos {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("data/historialAlquileres.txt", true))){
             for (Alquiler alquiler : alquileres) {
                 String alquilerString = alquiler.toString();
-                writer.write(alquilerString);
                 writer.newLine();
+                writer.write(alquilerString);
             }
         } catch (IOException e){
             e.printStackTrace();
@@ -213,8 +213,8 @@ public class RentaVehiculos {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("data/historialReservas.txt", true))){
             for (Reserva reserva : reservas) {
                 String reservaString = reserva.toString();
-                writer.write(reservaString);
                 writer.newLine();
+                writer.write(reservaString);
             }
         } catch (IOException e){
             e.printStackTrace();

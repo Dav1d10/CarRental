@@ -31,3 +31,4 @@ El cliente a alquilo el vehiculo con placa STU456
 El cliente a alquilo el vehiculo con placa OPQ123
 El cliente a alquilo el vehiculo con placa YZA901
 El cliente a alquilo el vehiculo con placa STU890
+El cliente a alquilo el vehiculo con placa LMN789
