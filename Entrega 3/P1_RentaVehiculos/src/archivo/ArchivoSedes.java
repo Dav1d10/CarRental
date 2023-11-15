@@ -70,8 +70,8 @@ public class ArchivoSedes {
 	public void agregarArchivo(String nombreSede, String ubicacion, String horarioAtencion) {
 		String datos = nombreSede + ";" + ubicacion + ";" + horarioAtencion;
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo, true))) {
-            writer.write(datos);
-            writer.newLine(); 
+            writer.newLine();
+			writer.write(datos);
         } catch (IOException e) {
             System.err.println("Error al escribir en el archivo: " + e.getMessage());
         }

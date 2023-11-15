@@ -49,7 +49,7 @@ public class panelTemporada extends JPanel {
 
                         RentaVehiculos rentaVehiculos = new RentaVehiculos();
                         rentaVehiculos.setAdministradorGeneral();
-
+                        rentaVehiculos.resetearTemporada();
                         rentaVehiculos.cambiarTemporada(temporadaSeleccionada);
                         
                         temporada.setText("");
@@ -61,6 +61,8 @@ public class panelTemporada extends JPanel {
                 } catch (NumberFormatException ex) {
                     ex.printStackTrace();
                 }
+                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelTemporada.this);
+                frame.dispose();
             }
         });
         

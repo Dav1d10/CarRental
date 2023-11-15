@@ -68,14 +68,14 @@ public class panelLogin extends JPanel {
                 if (ingresoUsuario.autenticarUsuario(usuario, contrasena)) {
                     if (ingresoUsuario.esAdmin(contrasena)) {
                         
-                        System.out.println("Inicio de sesión como admin");
+                        System.out.println("Inicio de sesion como admin");
                     } else {
                        
-                        System.out.println("Inicio de sesión como cliente");
+                        System.out.println("Inicio de sesion como cliente");
                     }
                 } else {
                    
-                    System.out.println("Inicio de sesión fallido");
+                    System.out.println("Inicio de sesion fallido");
                 }
             }
         });

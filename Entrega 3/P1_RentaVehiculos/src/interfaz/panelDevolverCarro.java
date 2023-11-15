@@ -90,14 +90,14 @@ public class panelDevolverCarro extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    String placaCarro = placa.getText();
-                    String marcaCarro = marca.getText();
+                    String placaCarro = placa.getText().toUpperCase();
+                    String marcaCarro = marca.getText().toUpperCase();
                     String modeloCarro = modelo.getText();
-                    String colorCarro = color.getText();
-                    String transmisionCarro = transmision.getText();
+                    String colorCarro = color.getText().toUpperCase();
+                    String transmisionCarro = transmision.getText().toUpperCase();
                     String capacidadCarro = capacidad.getText();
-                    String tipoCarro = tipo.getText();
-                    String sedeCarro = sede.getText();
+                    String tipoCarro = tipo.getText().toUpperCase();
+                    String sedeCarro = sede.getText().toUpperCase();
 
                     RentaVehiculos rentaVehiculos = new RentaVehiculos();
                     rentaVehiculos.setAdministradorGeneral();
@@ -116,6 +116,8 @@ public class panelDevolverCarro extends JPanel {
                 } catch (NumberFormatException ex) {
                     ex.printStackTrace();
                 }
+                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelDevolverCarro.this);
+                frame.dispose();
             }
         });
 

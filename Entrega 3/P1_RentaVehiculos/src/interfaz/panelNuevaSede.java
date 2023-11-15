@@ -52,8 +52,8 @@ public class panelNuevaSede extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    String nombreSede = nombre.getText();
-                    String ubicacionSede = ubicacion.getText();
+                    String nombreSede = nombre.getText().toUpperCase();
+                    String ubicacionSede = ubicacion.getText().toUpperCase();
                     String horarioAtencionSede = horarioAtencion.getText();
                     RentaVehiculos rentaVehiculos = new RentaVehiculos();
                     rentaVehiculos.setAdministradorGeneral();
@@ -66,6 +66,8 @@ public class panelNuevaSede extends JPanel {
                 } catch (NumberFormatException ex) {
                     ex.printStackTrace();
                 }
+                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panelNuevaSede.this);
+                frame.dispose();
             }
         });
 

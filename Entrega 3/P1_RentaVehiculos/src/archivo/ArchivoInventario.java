@@ -136,7 +136,6 @@ public class ArchivoInventario {
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo, true))) {
 			writer.newLine();
             writer.write(datos);
-            writer.newLine(); 
         } catch (IOException e) {
             System.err.println("Error al escribir en el archivo: " + e.getMessage());
         }

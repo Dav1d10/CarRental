@@ -21,8 +21,8 @@ public class ArchivoLog {
     public static void agregarLog(Cliente cliente, Vehiculo vehiculo) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo, true))) {
             String datos = "El cliente " + cliente.getNombre() + " alquilo el vehiculo con placa " + vehiculo.getPlaca();
-            writer.write(datos);
             writer.newLine(); 
+            writer.write(datos);
         } catch (IOException e) {
             System.err.println("Error al escribir en el archivo: " + e.getMessage());
         }

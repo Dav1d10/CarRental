@@ -98,32 +98,67 @@ public class panelAdmin extends JPanel {
         gbc.insets = new Insets(20, 20, 20, 20);
         add(tituloLabel, gbc);
         
-        JButton manejarSegurosButton = new JButton("Manejar Seguros");
+        manejarSegurosButton = new JButton("Manejar Seguros");
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.gridwidth = 1;
         gbc.insets = new Insets(10, 10, 10, 10);
         add(manejarSegurosButton, gbc);
+        
+        manejarSegurosButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	abrirPanelManejarSeguros();
+            }
+        });
 
-        JButton elegirTemporadaButton = new JButton("Elegir Temporada");
+        elegirTemporadaButton = new JButton("Elegir Temporada");
         gbc.gridx = 1;
         add(elegirTemporadaButton, gbc);
+        
+        elegirTemporadaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	abrirPanelTemporada();
+            }
+        });
 
-        JButton agregarCarroNuevoButton = new JButton("Agregar Carro Nuevo");
+        agregarCarroNuevoButton = new JButton("Agregar Carro Nuevo");
         gbc.gridx = 0;
         gbc.gridy = 2;
         add(agregarCarroNuevoButton, gbc);
+        
+        agregarCarroNuevoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	abrirPanelCarroNuevo();
+            }
+        });
 
-        JButton agregarSedeNuevaButton = new JButton("Agregar Sede Nueva");
+        agregarSedeNuevaButton = new JButton("Agregar Sede Nueva");
         gbc.gridx = 1;
         add(agregarSedeNuevaButton, gbc);
+        
+        agregarSedeNuevaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	abrirPanelNuevaSede();
+            }
+        });
 
-        JButton eliminarSegurosButton = new JButton("Eliminar Seguros");
+        eliminarSegurosButton = new JButton("Eliminar Seguros");
         gbc.gridx = 0;
         gbc.gridy = 3;
         add(eliminarSegurosButton, gbc);
+        
+        eliminarSegurosButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	abrirPanelEliminarSeguros();
+            }
+        });
 
-        JButton salirButton = new JButton("Salir");
+        salirButton = new JButton("Salir");
         gbc.gridx = 0;
         gbc.gridy = 4;
         gbc.gridwidth = 2;
@@ -138,7 +173,56 @@ public class panelAdmin extends JPanel {
             }
         });
 	}
-		
+	
+	
+	private void abrirPanelManejarSeguros() {
+        
+        JFrame frame = new JFrame("Manejar seguros");
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.getContentPane().add(new panelManejarSeguros());
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+    }
+	
+	private void abrirPanelTemporada() {
+        
+        JFrame frame = new JFrame("Elegir temporada");
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.getContentPane().add(new panelTemporada());
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+    }
+	private void abrirPanelCarroNuevo() {
+        
+        JFrame frame = new JFrame("Agregar carro nuevo");
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.getContentPane().add(new panelCarroNuevo());
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+    }
+	
+	private void abrirPanelNuevaSede() {
+        
+        JFrame frame = new JFrame("Agregar sede");
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.getContentPane().add(new panelNuevaSede());
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+    }
+
+	private void abrirPanelEliminarSeguros() {
+    
+		JFrame frame = new JFrame("Eliminar seguros");
+    	frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    	frame.getContentPane().add(new panelEliminarSeguros());
+    	frame.pack();
+    	frame.setLocationRelativeTo(null);
+    	frame.setVisible(true);
+	}
 	
 	public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
@@ -154,5 +238,3 @@ public class panelAdmin extends JPanel {
         });
     }
 }
-
-

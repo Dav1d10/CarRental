@@ -56,8 +56,8 @@ public class ArchivoPagos {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo, true))) {
             String datos = "El numero de la tarjeta es " + tarjeta.getNumeroTarjeta() + " , la fecha de vencimiento es " 
         + tarjeta.getFechaVencimiento() + " , el cvv es " + tarjeta.getCvv() + " , el banco es " + tarjeta.getBanco();
-            writer.write(datos);
             writer.newLine(); 
+            writer.write(datos);
         } catch (IOException e) {
             System.err.println("Error al escribir en el archivo: " + e.getMessage());
         }
@@ -67,8 +67,8 @@ public class ArchivoPagos {
     public static void agregarPrecio(int precio) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo, true))) {
             String datos = "El precio que se debe pagar con esa tarjeta es:  " + precio;
-            writer.write(datos);
             writer.newLine(); 
+            writer.write(datos);
         } catch (IOException e) {
             System.err.println("Error al escribir en el archivo: " + e.getMessage());
         }
