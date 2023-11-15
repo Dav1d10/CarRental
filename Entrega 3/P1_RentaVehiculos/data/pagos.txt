@@ -116,3 +116,5 @@ El numero de la tarjeta es a , la fecha de vencimiento es a , el cvv es a , el b
 El numero de la tarjeta es dsadsa , la fecha de vencimiento es dsadsa , el cvv es dsadas , el banco es dsadsa
 El numero de la tarjeta es a , la fecha de vencimiento es a , el cvv es a , el banco es a
 El precio que se debe pagar con esa tarjeta es:  1260
+El numero de la tarjeta es a , la fecha de vencimiento es a , el cvv es a , el banco es a
+El precio que se debe pagar con esa tarjeta es:  1660

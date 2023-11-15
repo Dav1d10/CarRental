@@ -33,3 +33,4 @@ El cliente a alquilo el vehiculo con placa YZA901
 El cliente a alquilo el vehiculo con placa STU890
 El cliente a alquilo el vehiculo con placa LMN789
 El cliente a alquilo el vehiculo con placa FGH012
+El cliente a alquilo el vehiculo con placa ABC123
