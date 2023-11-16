@@ -157,7 +157,8 @@ public class RentaVehiculos {
 			
 			ArchivoPagos.agregarPrecio(precio);
 			Vehiculo carroAsignado = empleado.asignarVehiculo(tipodeCarro);
-			String info =  "La marca del carro asignado es " + carroAsignado.getMarca() + ", de color " + carroAsignado.getColor() + ", modelo " + carroAsignado.getModelo() +
+			String info =  "Sus datos han sido confirmados, gracias por realizar el alquiler con nosotros! - DGA Team" + "\n" +
+			"La marca del carro asignado es " + carroAsignado.getMarca() + ", de color " + carroAsignado.getColor() + ", modelo " + carroAsignado.getModelo() +
             		", con una capacidad de " + carroAsignado.getCapacidadPersonas() + " personas," +" de placa " + carroAsignado.getPlaca() + "\n"
             		+ "La temporada actual es: " + admin.getTemporada() + "\n" +
             		"El precio total del alquiler es: " + precio;
@@ -183,11 +184,12 @@ public class RentaVehiculos {
 		
 		ArchivoPagos.agregarPrecio(precio);
 		Vehiculo carroAsignado = empleado.asignarVehiculo(tipodeCarro);
-		String info = "La marca del carro asignado es " + carroAsignado.getMarca() + ", de color " + carroAsignado.getColor() + ", modelo " + carroAsignado.getModelo() +
+		String info = "Sus datos han sido confirmados, gracias por realizar la reserva con nosotros! - DGA Team" + "\n" +
+		"La marca del carro asignado es " + carroAsignado.getMarca() + ", de color " + carroAsignado.getColor() + ", modelo " + carroAsignado.getModelo() +
         		", con una capacidad de " + carroAsignado.getCapacidadPersonas() + " personas," +" de placa " + carroAsignado.getPlaca() + "\n"
         		+ "La temporada actual es: " + admin.getTemporada() + "\n" +
         		"Debe pagar " + cobroInicial + " para confirmar la reserva." + "\n" +
-        		"El precio total del alquiler es: " + precio;
+        		"El precio total de la reserva es: " + precio;
 		PanelInformacionReserva panelInformacionReserva = new PanelInformacionReserva();
 		panelInformacionReserva.mostrarInformacionReserva(reservas, info);
 		return reservas;	

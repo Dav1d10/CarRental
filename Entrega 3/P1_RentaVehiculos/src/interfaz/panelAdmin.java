@@ -224,17 +224,5 @@ public class panelAdmin extends JPanel {
     	frame.setVisible(true);
 	}
 	
-	public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                JFrame frame = new JFrame("Panel de Administrador");
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add(new panelAdmin());
-                frame.pack();
-                frame.setLocationRelativeTo(null); 
-                frame.setVisible(true);
-            }
-        });
-    }
+	
 }

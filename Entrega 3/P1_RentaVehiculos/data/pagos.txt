@@ -118,3 +118,13 @@ El numero de la tarjeta es a , la fecha de vencimiento es a , el cvv es a , el b
 El precio que se debe pagar con esa tarjeta es:  1260
 El numero de la tarjeta es a , la fecha de vencimiento es a , el cvv es a , el banco es a
 El precio que se debe pagar con esa tarjeta es:  1660
+El numero de la tarjeta es 31231231231223 , la fecha de vencimiento es 11/31 , el cvv es 343 , el banco es Bancolombia
+El precio que se debe pagar con esa tarjeta es:  1740
+El numero de la tarjeta es 321123123123 , la fecha de vencimiento es 11/30 , el cvv es 343 , el banco es Bancolombia
+El precio que se debe pagar con esa tarjeta es:  1800
+El numero de la tarjeta es a , la fecha de vencimiento es a , el cvv es a , el banco es a
+El precio que se debe pagar con esa tarjeta es:  1260
+El numero de la tarjeta es a , la fecha de vencimiento es a , el cvv es a , el banco es a
+El precio que se debe pagar con esa tarjeta es:  1260
+El numero de la tarjeta es a , la fecha de vencimiento es a , el cvv es a , el banco es a
+El precio que se debe pagar con esa tarjeta es:  1260

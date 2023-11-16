@@ -34,3 +34,8 @@ El cliente a alquilo el vehiculo con placa STU890
 El cliente a alquilo el vehiculo con placa LMN789
 El cliente a alquilo el vehiculo con placa FGH012
 El cliente a alquilo el vehiculo con placa ABC123
+El cliente david alquilo el vehiculo con placa YUH586
+El cliente David Caro alquilo el vehiculo con placa MUV354
+El cliente a alquilo el vehiculo con placa QRS678
+El cliente a alquilo el vehiculo con placa BCD890
+El cliente a alquilo el vehiculo con placa FGH012

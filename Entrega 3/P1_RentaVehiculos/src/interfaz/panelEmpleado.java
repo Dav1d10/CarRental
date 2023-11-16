@@ -48,7 +48,7 @@ public class panelEmpleado extends JPanel {
         gbc.insets = new Insets(20, 20, 20, 20);
         add(tituloLabel, gbc);
         
-        devolverCarroButton = new JButton("Agregar Carro Nuevo");
+        devolverCarroButton = new JButton("Devolver Carro");
         gbc.gridx = 0;
         gbc.gridy = 2;
         add(devolverCarroButton, gbc);
@@ -130,17 +130,5 @@ public class panelEmpleado extends JPanel {
         return sb.toString();
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                JFrame frame = new JFrame("Panel de Empleado");
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add(new panelEmpleado());
-                frame.pack();
-                frame.setLocationRelativeTo(null);
-                frame.setVisible(true);
-            }
-        });
-    }
+   
 }
