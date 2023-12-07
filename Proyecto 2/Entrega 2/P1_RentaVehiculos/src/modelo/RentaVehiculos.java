@@ -19,7 +19,7 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
-
+import com.itextpdf.layout.property.TextAlignment;
 
 import archivo.ArchivoInventario;
 import archivo.ArchivoPagos;
@@ -151,12 +151,14 @@ public class RentaVehiculos {
 	}
 	
 	
-	public static void generarFactura(String nombreArchivo, Alquiler alquiler, Vehiculo carro, int precio, AdministradorGeneral admin) {
+	public static void generarFacturaAlquiler(String nombreArchivo, Alquiler alquiler, Vehiculo carro, int precio, AdministradorGeneral admin) {
 		try {
 			PdfWriter writer = new PdfWriter(nombreArchivo);
 			PdfDocument pdf = new PdfDocument(writer);
 			Document document = new Document(pdf);
-			document.add(new Paragraph("Factura de Alquiler"));
+			Paragraph titulo = new Paragraph("Factura de Alquiler");
+			titulo.setTextAlignment(TextAlignment.CENTER);
+			document.add(titulo);
 			document.add(new Paragraph("DGA Rental"));
 			document.add(new Paragraph("Informacion del cliente: "));
 			document.add(new Paragraph("Nombre: " + alquiler.getCliente().getNombre()));
@@ -176,6 +178,43 @@ public class RentaVehiculos {
 			document.add(new Paragraph("Información de la entrega y devolución del vehiculo: "));
 			document.add(new Paragraph("Sede de entrega del vehiculo: " + alquiler.getSedeEntrega()));
 			document.add(new Paragraph("Sede de devolución del vehiculo: " + alquiler.getSedeDevolucion()));
+			Image firmaAdmin = new Image(ImageDataFactory.create("data/firma.png"));
+			document.add(firmaAdmin);
+			document.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	public static void generarFacturaReserva(String nombreArchivo, Reserva reserva, Vehiculo carro, int precio, double cobroInicial, AdministradorGeneral admin) {
+		try {
+			PdfWriter writer = new PdfWriter(nombreArchivo);
+			PdfDocument pdf = new PdfDocument(writer);
+			Document document = new Document(pdf);
+			Paragraph titulo = new Paragraph("Factura de Reserva");
+			titulo.setTextAlignment(TextAlignment.CENTER);
+			document.add(titulo);
+			document.add(new Paragraph("DGA Rental"));
+			document.add(new Paragraph("Informacion del cliente: "));
+			document.add(new Paragraph("Nombre: " + reserva.getCliente().getNombre()));
+			document.add(new Paragraph("Telefono: " + reserva.getCliente().getTelefono()));
+			document.add(new Paragraph("Detalles del vehiculo: "));
+			document.add(new Paragraph("Placa del vehiculo: " + carro.getPlaca()));
+			document.add(new Paragraph("Capacidad del vehiculo: " + carro.getCapacidadPersonas()));
+			document.add(new Paragraph("Color del vehiculo: " + carro.getColor()));
+			document.add(new Paragraph("Marca del vehiculo: " + carro.getMarca()));
+			document.add(new Paragraph("Tipo de vehiculo: " + carro.getTipoCategoria()));
+			document.add(new Paragraph("Tipo de transmición: " + carro.getTipodeTransmicion()));
+			document.add(new Paragraph("Modelo del vehiculo: " + carro.getModelo()));
+			document.add(new Paragraph("Información del pago: "));
+			document.add(new Paragraph("Número de la tarjeta de credito : " + reserva.getCliente().getTarjetaCredito().getNumeroTarjeta()));
+			document.add(new Paragraph("Cobro Inicial ($): " + cobroInicial));
+			document.add(new Paragraph("Valor del pago ($): " + precio));
+			document.add(new Paragraph("Temporada actual: " + admin.getTemporada()));
+			document.add(new Paragraph("Información de la entrega y devolución del vehiculo: "));
+			document.add(new Paragraph("Sede de entrega del vehiculo: " + reserva.getSedeEntrega()));
+			document.add(new Paragraph("Sede de devolución del vehiculo: " + reserva.getSedeDevolucion()));
 			Image firmaAdmin = new Image(ImageDataFactory.create("data/firma.png"));
 			document.add(firmaAdmin);
 			document.close();
@@ -206,7 +245,7 @@ public class RentaVehiculos {
 			PanelInformacionAlquiler panelInformacionAlquiler = new PanelInformacionAlquiler();
 			panelInformacionAlquiler.mostrarInformacionAlquiler(alquileres, info);
 			String archivo = "data/factura.pdf";
-			generarFactura(archivo, alquiler, carroAsignado, precio, admin);
+			generarFacturaAlquiler(archivo, alquiler, carroAsignado, precio, admin);
 			return alquileres;
 		}
 	
@@ -235,6 +274,8 @@ public class RentaVehiculos {
         		"El precio total de la reserva es: " + precio;
 		PanelInformacionReserva panelInformacionReserva = new PanelInformacionReserva();
 		panelInformacionReserva.mostrarInformacionReserva(reservas, info);
+		String archivo = "data/factura.pdf";
+		generarFacturaReserva(archivo, reserva, carroAsignado, precio, cobroInicial, admin);
 		return reservas;	
 	}
 	

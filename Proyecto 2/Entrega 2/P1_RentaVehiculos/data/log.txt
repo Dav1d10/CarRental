@@ -39,3 +39,5 @@ El cliente David Caro alquilo el vehiculo con placa MUV354
 El cliente a alquilo el vehiculo con placa QRS678
 El cliente a alquilo el vehiculo con placa BCD890
 El cliente a alquilo el vehiculo con placa FGH012
+El cliente a alquilo el vehiculo con placa TUV345
+El cliente a alquilo el vehiculo con placa OPQ567
