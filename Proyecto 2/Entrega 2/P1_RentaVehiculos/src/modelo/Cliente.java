@@ -25,6 +25,14 @@ public class Cliente extends Persona {
 		           ", datosTarjetaCredito=" + tarjetaCredito +
 		           "]";
 		}
+
+
+	
+	public DatosTarjetaCredito getTarjetaCredito() {
+		return tarjetaCredito;
+	}
+	
+	
 }
 	
 	

@@ -13,6 +13,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+import com.itextpdf.io.image.ImageDataFactory;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Image;
+import com.itextpdf.layout.element.Paragraph;
+
+
 import archivo.ArchivoInventario;
 import archivo.ArchivoPagos;
 import archivo.ArchivoSedes;
@@ -143,6 +151,39 @@ public class RentaVehiculos {
 	}
 	
 	
+	public static void generarFactura(String nombreArchivo, Alquiler alquiler, Vehiculo carro, int precio, AdministradorGeneral admin) {
+		try {
+			PdfWriter writer = new PdfWriter(nombreArchivo);
+			PdfDocument pdf = new PdfDocument(writer);
+			Document document = new Document(pdf);
+			document.add(new Paragraph("Factura de Alquiler"));
+			document.add(new Paragraph("DGA Rental"));
+			document.add(new Paragraph("Informacion del cliente: "));
+			document.add(new Paragraph("Nombre: " + alquiler.getCliente().getNombre()));
+			document.add(new Paragraph("Telefono: " + alquiler.getCliente().getTelefono()));
+			document.add(new Paragraph("Detalles del vehiculo: "));
+			document.add(new Paragraph("Placa del vehiculo: " + carro.getPlaca()));
+			document.add(new Paragraph("Capacidad del vehiculo: " + carro.getCapacidadPersonas()));
+			document.add(new Paragraph("Color del vehiculo: " + carro.getColor()));
+			document.add(new Paragraph("Marca del vehiculo: " + carro.getMarca()));
+			document.add(new Paragraph("Tipo de vehiculo: " + carro.getTipoCategoria()));
+			document.add(new Paragraph("Tipo de transmición: " + carro.getTipodeTransmicion()));
+			document.add(new Paragraph("Modelo del vehiculo: " + carro.getModelo()));
+			document.add(new Paragraph("Información del pago: "));
+			document.add(new Paragraph("Número de la tarjeta de credito : " + alquiler.getCliente().getTarjetaCredito().getNumeroTarjeta()));
+			document.add(new Paragraph("Valor del pago ($): " + precio));
+			document.add(new Paragraph("Temporada actual: " + admin.getTemporada()));
+			document.add(new Paragraph("Información de la entrega y devolución del vehiculo: "));
+			document.add(new Paragraph("Sede de entrega del vehiculo: " + alquiler.getSedeEntrega()));
+			document.add(new Paragraph("Sede de devolución del vehiculo: " + alquiler.getSedeDevolucion()));
+			Image firmaAdmin = new Image(ImageDataFactory.create("data/firma.png"));
+			document.add(firmaAdmin);
+			document.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	
 	public List<Alquiler> generarAlquiler(String tipodeCarro, Sedes sedeEntrega, Persona conductorAdicional, Cliente cliente,
 			Sedes sedeDevolucion, int dias, List<String> seguro) {
@@ -164,6 +205,8 @@ public class RentaVehiculos {
             		"El precio total del alquiler es: " + precio;
 			PanelInformacionAlquiler panelInformacionAlquiler = new PanelInformacionAlquiler();
 			panelInformacionAlquiler.mostrarInformacionAlquiler(alquileres, info);
+			String archivo = "data/factura.pdf";
+			generarFactura(archivo, alquiler, carroAsignado, precio, admin);
 			return alquileres;
 		}
 	

@@ -178,4 +178,84 @@ public class Alquiler {
 		return (precioSeguros + precioConductorAdicional + precioTemporada + precioPorDias);
 	}
 
+
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
+
+
+	public Sedes getSedeDevolucion() {
+		return sedeDevolucion;
+	}
+
+
+
+	public void setSedeDevolucion(Sedes sedeDevolucion) {
+		this.sedeDevolucion = sedeDevolucion;
+	}
+
+
+
+	public int getDias() {
+		return dias;
+	}
+
+
+
+	public void setDias(int dias) {
+		this.dias = dias;
+	}
+
+
+
+	public List<String> getSeguro() {
+		return seguro;
+	}
+
+
+
+	public void setSeguro(List<String> seguro) {
+		this.seguro = seguro;
+	}
+
+
+
+	public AdministradorGeneral getAdmin() {
+		return admin;
+	}
+
+
+
+	public void setAdmin(AdministradorGeneral admin) {
+		this.admin = admin;
+	}
+
+
+
+	public void setConductorAdicional(Persona conductorAdicional) {
+		this.conductorAdicional = conductorAdicional;
+	}
+	
+	
+
 }
