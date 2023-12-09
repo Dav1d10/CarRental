@@ -184,6 +184,36 @@ public class Aplicacion {
     }
 	
 	
+	private static void eleccionPasarela(String tipo) {
+        System.out.println("Eliga su metodo de pago");
+        System.out.println("1. Pago en tarjeta");
+        System.out.println("2. PayPal");
+        System.out.println("3. Sire");
+        System.out.println("4. Efectivo");
+        System.out.println("5. PayU");
+        String s = scanner.nextLine();
+        int seleccion = Integer.parseInt(s);
+
+        if (seleccion == 1){
+            rentaVehiculos.AsignarEleccionPasarela(tipo, "ArchivoTarjeta");
+        }
+        else if ( seleccion == 2){
+            rentaVehiculos.AsignarEleccionPasarela(tipo, "ArchivoPaypal");
+        }
+        if (seleccion == 3){
+            rentaVehiculos.AsignarEleccionPasarela(tipo,"archivo.ArchivoSire");
+        }
+        else if ( seleccion == 4){
+            rentaVehiculos.AsignarEleccionPasarela(tipo,"ArchivoEfectivo");
+
+        }
+        else if ( seleccion == 6){
+            rentaVehiculos.AsignarEleccionPasarela(tipo,"ArchivoPayU");
+
+        }
+    }
+	
+	
 	
 	private static String iniciarAlquiler() throws FileNotFoundException, IOException {
 		System.out.println("Iniciando Alquiler...");
@@ -424,22 +454,24 @@ public class Aplicacion {
 	
 	
 	private static void ejecutarOpcion(int opcion) throws IOException {
-		switch (opcion) {
-		case 1:
-			String msjF = iniciarAlquiler();
-			System.out.println(msjF);
-			break;
-		case 2:
-			String msj = iniciarReserva();
-			System.out.println(msj);
-			break;
-		case 0:
-			System.out.println("Gracias por utilizar la aplicacion!");
-			break;
-		default:
-			System.out.println("Opcion invalida, intentelo de nuevo.");
-			break;
-		}
+        switch (opcion) {
+        case 1:
+            String msjF = iniciarAlquiler();
+            System.out.println(msjF);
+            eleccionPasarela("a");
+            break;
+        case 2:
+            String msj = iniciarReserva();
+            System.out.println(msj);
+            eleccionPasarela("r");
+            break;
+        case 0:
+            System.out.println("Gracias por utilizar la aplicacion!");
+            break;
+        default:
+            System.out.println("Opcion invalida, intentelo de nuevo.");
+            break;
+        }
 	}
 	
 

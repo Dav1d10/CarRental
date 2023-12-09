@@ -41,3 +41,5 @@ El cliente a alquilo el vehiculo con placa BCD890
 El cliente a alquilo el vehiculo con placa FGH012
 El cliente a alquilo el vehiculo con placa TUV345
 El cliente a alquilo el vehiculo con placa OPQ567
+El cliente 1 alquilo el vehiculo con placa CDE567
+El cliente david alquilo el vehiculo con placa ABC123

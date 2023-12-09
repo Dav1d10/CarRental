@@ -43,7 +43,9 @@ public class RentaVehiculos {
 	private ArchivoSedes archivoSedes;
 	private static RegistroUsuario registroUsuario = new RegistroUsuario();
 	private static IngresoUsuario ingresoUsuario = new IngresoUsuario();
-	
+	private Alquiler alquiler;
+	private Reserva reserva;
+	private int precio;
 	
 	
 	public RentaVehiculos() {
@@ -226,13 +228,13 @@ public class RentaVehiculos {
 	
 	public List<Alquiler> generarAlquiler(String tipodeCarro, Sedes sedeEntrega, Persona conductorAdicional, Cliente cliente,
 			Sedes sedeDevolucion, int dias, List<String> seguro) {
-			Alquiler alquiler = new Alquiler(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro, admin, categoria);
+			this.alquiler = new Alquiler(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro, admin, categoria);
 			alquileres.add(alquiler);
 			for (Alquiler info : alquileres) {
 				System.out.println(info);
 			}
 			System.out.println("La temporada actual es: " + admin.getTemporada());
-			int precio = alquiler.cobroFinal(seguro);
+			this.precio = alquiler.cobroFinal(seguro);
 			System.out.println("El precio total del alquiler es " + precio);
 			
 			ArchivoPagos.agregarPrecio(precio);
@@ -253,12 +255,12 @@ public class RentaVehiculos {
 	
 	public List<Reserva> generarReserva(String tipodeCarro, Sedes sedeEntrega, Persona conductorAdicional, Cliente cliente,
 			Sedes sedeDevolucion, int dias, List<String> seguro, String fechayhoraEntrega) {
-		Reserva reserva = new Reserva(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro, fechayhoraEntrega, admin, categoria);
+		this.reserva = new Reserva(tipodeCarro, sedeEntrega, conductorAdicional, cliente, sedeDevolucion, dias, seguro, fechayhoraEntrega, admin, categoria);
 		reservas.add(reserva);
 		for (Reserva info : reservas) {
 			System.out.println(info);
 		}
-		int precio = reserva.cobroFinal(seguro);
+		this.precio = reserva.cobroFinal(seguro);
 		double cobroInicial = reserva.cobroInicial(seguro);
 		System.out.println("La temporada actual es: " + admin.getTemporada());
 		System.out.println("Debe pagar " + cobroInicial + " para confirmar la reserva.");
@@ -402,6 +404,30 @@ public class RentaVehiculos {
 	public String temporada() {
 		return "La temporada actual es: " + admin.getTemporada();
 	}
+	
+	
+	
+	public void AsignarEleccionPasarela(String tipo, String clasepasarela) {
+        if (tipo.equals("a")) {
+            String numeroTarjeta = alquiler.getCliente().getTarjetaCredito().getNumeroTarjeta();
+            String nombre = alquiler.getCliente().getNombre();
+            String precioo = String.valueOf(precio);
+            new EleccionPasarela(clasepasarela, numeroTarjeta, nombre, precioo);
+        } else {
+            String numeroTarjeta = reserva.getCliente().getTarjetaCredito().getNumeroTarjeta();
+            String nombre = reserva.getCliente().getNombre();
+            String precioo = String.valueOf(precio);
+            new EleccionPasarela(clasepasarela, numeroTarjeta, nombre, precioo);
+        }
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
