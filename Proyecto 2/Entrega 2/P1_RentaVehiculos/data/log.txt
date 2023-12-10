@@ -48,3 +48,8 @@ El cliente a alquilo el vehiculo con placa QRS678
 El cliente 1 alquilo el vehiculo con placa FGH456
 El cliente 1 alquilo el vehiculo con placa YZA345
 El cliente 1 alquilo el vehiculo con placa BCD234
+El cliente 1 alquilo el vehiculo con placa OPQ567
+El cliente ALEXANDER alquilo el vehiculo con placa LMN789
+El cliente 1 alquilo el vehiculo con placa CDE901
+El cliente 1 alquilo el vehiculo con placa STU890
+El cliente 1 alquilo el vehiculo con placa QRS012

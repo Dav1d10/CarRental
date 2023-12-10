@@ -189,26 +189,22 @@ public class Aplicacion {
         System.out.println("1. Pago en tarjeta");
         System.out.println("2. PayPal");
         System.out.println("3. Sire");
-        System.out.println("4. Efectivo");
-        System.out.println("5. PayU");
+        System.out.println("4. PayU");
         String s = scanner.nextLine();
         int seleccion = Integer.parseInt(s);
 
         if (seleccion == 1){
-            rentaVehiculos.AsignarEleccionPasarela(tipo, "ArchivoTarjeta");
+            rentaVehiculos.AsignarEleccionPasarela(tipo, "archivo.ArchivoTarjeta");
         }
         else if ( seleccion == 2){
-            rentaVehiculos.AsignarEleccionPasarela(tipo, "ArchivoPaypal");
+            rentaVehiculos.AsignarEleccionPasarela(tipo,"archivo.ArchivoPayPal");
         }
         if (seleccion == 3){
             rentaVehiculos.AsignarEleccionPasarela(tipo,"archivo.ArchivoSire");
         }
-        else if ( seleccion == 4){
-            rentaVehiculos.AsignarEleccionPasarela(tipo,"ArchivoEfectivo");
 
-        }
-        else if ( seleccion == 6){
-            rentaVehiculos.AsignarEleccionPasarela(tipo,"ArchivoPayU");
+        else if ( seleccion == 4){
+            rentaVehiculos.AsignarEleccionPasarela(tipo,"archivo.ArchivoPayU");
 
         }
     }
