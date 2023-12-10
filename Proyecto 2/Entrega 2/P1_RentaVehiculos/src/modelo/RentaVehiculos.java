@@ -103,7 +103,7 @@ public class RentaVehiculos {
 	
 	
 	
-	private void cargarInventario(File archivoInventario) throws FileNotFoundException, IOException {
+	public void cargarInventario(File archivoInventario) throws FileNotFoundException, IOException {
 		try (BufferedReader reader = new BufferedReader(new FileReader(archivoInventario))){
 			String linea;
 			while ((linea = reader.readLine()) != null) {
@@ -116,7 +116,7 @@ public class RentaVehiculos {
 	
 	
 	
-	private void cargarSedes(File archivoSedes) throws FileNotFoundException, IOException {
+	public void cargarSedes(File archivoSedes) throws FileNotFoundException, IOException {
 		try (BufferedReader reader = new BufferedReader(new FileReader(archivoSedes))){
 			String linea;
 			while ((linea = reader.readLine()) != null) {
@@ -420,14 +420,6 @@ public class RentaVehiculos {
             new EleccionPasarela(clasepasarela, numeroTarjeta, nombre, precioo);
         }
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	

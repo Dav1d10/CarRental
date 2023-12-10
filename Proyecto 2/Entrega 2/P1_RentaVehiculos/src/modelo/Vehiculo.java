@@ -2,6 +2,7 @@ package modelo;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class Vehiculo {
 	
@@ -132,7 +133,27 @@ public class Vehiculo {
 	}
 
 
+	@Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+
+        Vehiculo vehiculo = (Vehiculo) obj;
+        return modelo == vehiculo.modelo &&
+                capacidadPersonas == vehiculo.capacidadPersonas &&
+                Objects.equals(placa, vehiculo.placa) &&
+                Objects.equals(marca, vehiculo.marca) &&
+                Objects.equals(color, vehiculo.color) &&
+                Objects.equals(tipodeTransmicion, vehiculo.tipodeTransmicion) &&
+                Objects.equals(tipoCategoria, vehiculo.tipoCategoria) &&
+                Objects.equals(ubicacion, vehiculo.ubicacion);
+    }
+
 	
+    @Override
+    public int hashCode() {
+        return Objects.hash(placa, marca, modelo, color, tipodeTransmicion, capacidadPersonas, tipoCategoria, ubicacion);
+    }
 	
 	
 	
