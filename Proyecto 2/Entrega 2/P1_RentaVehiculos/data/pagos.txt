@@ -136,3 +136,13 @@ El numero de la tarjeta es 1 , la fecha de vencimiento es 1 , el cvv es 1 , el b
 El precio que se debe pagar con esa tarjeta es:  1260
 El numero de la tarjeta es 32131231212 , la fecha de vencimiento es 1 , el cvv es 1 , el banco es 1
 El precio que se debe pagar con esa tarjeta es:  1660
+El numero de la tarjeta es 1 , la fecha de vencimiento es 1 , el cvv es 1 , el banco es 1
+El precio que se debe pagar con esa tarjeta es:  1260
+El numero de la tarjeta es a , la fecha de vencimiento es a , el cvv es a , el banco es a
+El precio que se debe pagar con esa tarjeta es:  1260
+El numero de la tarjeta es 1 , la fecha de vencimiento es 1 , el cvv es 1 , el banco es 1
+El precio que se debe pagar con esa tarjeta es:  1260
+El numero de la tarjeta es 1 , la fecha de vencimiento es 1 , el cvv es 1 , el banco es 1
+El precio que se debe pagar con esa tarjeta es:  1260
+El numero de la tarjeta es 1 , la fecha de vencimiento es 1 , el cvv es 1 , el banco es 1
+El precio que se debe pagar con esa tarjeta es:  1260

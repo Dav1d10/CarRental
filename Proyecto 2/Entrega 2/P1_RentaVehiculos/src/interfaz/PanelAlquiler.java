@@ -294,9 +294,9 @@ public class PanelAlquiler extends JPanel {
                     String lineaAEliminar = rentaVehiculos.lineaString(carroAsignado);
                     rentaVehiculos.eliminarLinea(lineaAEliminar);
                     ArchivoLog.agregarLog(cliente, carroAsignado);
+                    abrirPanelPagos();
                     JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(PanelAlquiler.this);
                     frame.dispose();
-
                  
                 } catch (Exception ex) {
                     ex.printStackTrace();
@@ -402,6 +402,17 @@ public class PanelAlquiler extends JPanel {
         PanelElegirSeguros panelSeguros = new PanelElegirSeguros(seguros, rentaVehiculos);
         frame.getContentPane().add(panelSeguros, BorderLayout.CENTER);
         frame.pack();
+        frame.setVisible(true);
+    }
+    
+    
+    private void abrirPanelPagos() {
+    	JFrame frame = new JFrame("Pago del movimiento");
+    	frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.getContentPane().add(new PanelPago(rentaVehiculos));
+        frame.setSize(300, 200);
+        frame.pack();
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
     
