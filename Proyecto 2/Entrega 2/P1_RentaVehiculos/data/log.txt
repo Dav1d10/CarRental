@@ -53,3 +53,4 @@ El cliente ALEXANDER alquilo el vehiculo con placa LMN789
 El cliente 1 alquilo el vehiculo con placa CDE901
 El cliente 1 alquilo el vehiculo con placa STU890
 El cliente 1 alquilo el vehiculo con placa QRS012
+El cliente 1 alquilo el vehiculo con placa FGH456
