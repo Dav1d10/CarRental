@@ -13,12 +13,12 @@ import javax.swing.SwingUtilities;
 
 import modelo.RentaVehiculos;
 
-public class PanelPago extends JPanel {
+public class PanelPagoReserva extends JPanel {
 	
 	 private static RentaVehiculos rentaVehiculos;
-	 private String tipo = "a";
+	 private String tipo = "r";
 	
-	  public PanelPago(RentaVehiculos rentaVehiculos) {
+	  public PanelPagoReserva(RentaVehiculos rentaVehiculos) {
 		    this.rentaVehiculos = rentaVehiculos;
 	        setLayout(new BorderLayout());
 	        JPanel textoPanel = new JPanel();
@@ -35,7 +35,7 @@ public class PanelPago extends JPanel {
 	            @Override
 	            public void actionPerformed(ActionEvent e) {
 	                rentaVehiculos.AsignarEleccionPasarela(tipo, "archivo.ArchivoTarjeta");
-	                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(PanelPago.this);
+	                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(PanelPagoReserva.this);
 	                frame.dispose();
 	            }
 	        });
@@ -44,7 +44,7 @@ public class PanelPago extends JPanel {
 	            @Override
 	            public void actionPerformed(ActionEvent e) {
 	            	rentaVehiculos.AsignarEleccionPasarela(tipo, "archivo.ArchivoPayPal");
-	                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(PanelPago.this);
+	                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(PanelPagoReserva.this);
 	                frame.dispose();
 	            }
 	        });
@@ -53,7 +53,7 @@ public class PanelPago extends JPanel {
 	            @Override
 	            public void actionPerformed(ActionEvent e) {
 	                rentaVehiculos.AsignarEleccionPasarela(tipo, "archivo.ArchivoSire");
-	                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(PanelPago.this);
+	                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(PanelPagoReserva.this);
 	                frame.dispose();
 	            }
 	        });
@@ -62,7 +62,7 @@ public class PanelPago extends JPanel {
 	            @Override
 	            public void actionPerformed(ActionEvent e) {
 	            	rentaVehiculos.AsignarEleccionPasarela(tipo, "archivo.ArchivoPayU");
-	                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(PanelPago.this);
+	                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(PanelPagoReserva.this);
 	                frame.dispose();
 	            }
 	        });

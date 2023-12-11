@@ -98,7 +98,7 @@ public class Alquiler {
 	
 	
 	
-	private int cobroConductorAdicional() {
+	public int cobroConductorAdicional() {
 		int precioF = 0;
 		if (conductorAdicional != null) {
 			precioF = 100;
@@ -111,7 +111,7 @@ public class Alquiler {
 	
 	
 	
-	private int tarifaTemporada() {
+	public int tarifaTemporada() {
 		String temporada = admin.getTemporada();
 		int precioF = 0;
 		if (temporada.equals("ALTA")) {
@@ -128,32 +128,10 @@ public class Alquiler {
 	}
 	
 	
-	/*
-	private int tarifaSedeDevolucion() {
-		String nombreSedeDevolucion = sedeDevolucion.getNombreSede();
-		String nombreSedeEntrega = sedeEntrega.getNombreSede();
-		int precioF = 0;
-		if (!nombreSedeDevolucion.equals(nombreSedeEntrega)) {
-			String sedeDsinLetras = nombreSedeDevolucion.replaceAll("[^0-9-]", "");
-			String sedeEsinLetras = nombreSedeEntrega.replaceAll("[^0-9-]", "");
-			int sedeD = Integer.parseInt(sedeDsinLetras);
-			int sedeE = Integer.parseInt(sedeEsinLetras);
-				if (sedeD > sedeE) {
-					precioF = sedeD-sedeE;
-				}
-				else {
-					precioF = sedeE - sedeD;
-				}
-		}
-		
-		return precioF;
-	}
-	*/
 	
-	
-	private int cobroPorDias() {
+	public int cobroPorDias() {
 		int precioCarro;
-		if (tipodeCarro.equals("PEQUEÑO")) {
+		if (tipodeCarro.equals("PEQUENO")) {
             precioCarro = categoria.getTarifaPequeños();
         } else if (tipodeCarro.equals("SUV")) {
         	precioCarro = categoria.getTarifaSUV();

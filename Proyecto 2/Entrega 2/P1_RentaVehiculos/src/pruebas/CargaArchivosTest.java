@@ -1,15 +1,11 @@
 package pruebas;
 
 import org.junit.jupiter.api.Test;
-
 import com.itextpdf.io.IOException;
-
 import modelo.RentaVehiculos;
 import modelo.Sedes;
 import modelo.Vehiculo;
-
 import static org.junit.jupiter.api.Assertions.*;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.List;
@@ -50,5 +46,7 @@ public class CargaArchivosTest {
 		assertTrue(sedes.contains(sede), "La sede no se encuentra en la lista");
 		assertTrue(sedes.contains(sede1), "La sede 1 no se encuentra en la lista");
 	}
+	
+	
 
 }
