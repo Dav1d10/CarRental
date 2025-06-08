@@ -6,9 +6,9 @@ This Java application project was developed as part of the **ISIS1226 Diseño y 
 
 ## Project Documentation
 
-- [UML Diagram](docs/UML.pdf)
+- [UML Diagram](P1_RentaVehiculos/docs/UML.pdf)
 
-- [Detailed guide on how to understand and run the project](docs/HowToRun.pdf)
+- [Detailed guide on how to understand and run the project](P1_RentaVehiculos/docs/HowToRun.pdf)
 
 ## Repository Structure
 
