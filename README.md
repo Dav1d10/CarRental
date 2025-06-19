@@ -8,7 +8,7 @@ This Java application project was developed as part of the **ISIS1226 Diseño y 
 
 - [UML Diagram](P1_RentaVehiculos/docs/UML.jpg)
 
-- [Detailed guide on how to understand and run the project](P1_RentaVehiculos/docs/HowToRun.pdf)
+- [Detailed Guide on How to Run the Project](P1_RentaVehiculos/docs/HowToRun.pdf)
 
 ## Repository Structure
 
@@ -20,26 +20,26 @@ The project is organized into one main folder:
 ## Prerequisites
 
 - **Java Development Kit (JDK)** — version 8 or higher (JDK 17 recommended) You can check your installation with:
-  ```bash
-  java -version
-  ```
-  ```bash
-  javac -version
-  ```
+```bash
+java -version
+```
+```bash
+javac -version
+```
 ## How to run 
 
 1. **Open a terminal** and navigate to the `main project folder`:
-    ```bash
-    cd P1_RentaVehiculos
-     ```
+```bash
+cd P1_RentaVehiculos
+ ```
 2. **Compile the code**:
-    ```bash
-    javac -cp "lib/*" -d bin src/**/*.java
-    ```
+```bash
+javac -cp "lib/*" -d bin src/**/*.java
+```
 3. **Run the application**:
-    ```bash
-    java -cp "lib/*;bin" interfaz.interfazRenta
-    ```
+```bash
+java -cp "lib/*;bin" interfaz.interfazRenta
+```
 
 ## Collaborators
 
